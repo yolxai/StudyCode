@@ -1,0 +1,33 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#canvas1{background:#CCC}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oCanvas = document.getElementById('canvas1');
+			var oHuabu = oCanvas.getContext('2d');
+
+			drawRect(0,0,500,500);
+
+			function drawRect(startX,startY,width,height){
+				oHuabu.beginPath();
+				oHuabu.moveTo(startX,startY)
+				oHuabu.lineTo(startX+width,startY);
+				oHuabu.lineTo(startX+width,startY+height);
+				oHuabu.lineTo(startX,startY+height)
+				oHuabu.closePath();
+				oHuabu.stroke();
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<canvas width=500 height=500 id="canvas1">
+		
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0;}
+		#div1{position:absolute;width:100%;bottom:0;text-align:center;}
+		#div1 img{width:64px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var aImg = oDiv.getElementsByTagName('img');
+			var aInput = document.getElementsByTagName('input');
+
+
+		
+
+			document.onmousemove = function(ev){
+
+				var oEvent = ev || event;
+
+				for(var i=0;i<aImg.length;i++){
+
+			//找到每个图片的圆心
+
+					var iLeft = ( aImg[i].offsetLeft + aImg[i].offsetWidth/2); //圆心的Left
+
+					var iTop = (aImg[i].offsetTop + aImg[i].offsetHeight/2 + oDiv.offsetTop);//圆心的top
+
+
+			//获得鼠标坐标与每个图片圆心的位置的距离
+					var iB = oEvent.clientX - iLeft;
+					var iA = oEvent.clientY - iTop;
+
+
+			//获取斜边长度 A平+B平=C平  C的长度=根号C
+
+					var iClength = Math.sqrt( Math.pow(iA,2) + Math.pow(iB,2) );
+
+			//设置放大倍数  iClength/300  离圆心越近越小 要达到越近越大 数全部在0.x之间 那么1-0.x 就越近越大
+
+					 var change = 1 - (iClength / 300);
+
+					 if(change < 0.5){
+					 	change = 0.5;
+					 }
+
+			//倍数 * 图片原本的宽高就可以实现了
+
+					var width = change * 128;
+					var height = change * 128;
+
+			//修改CSS样式
+
+					aImg[i].style.width = width + 'px';
+					aImg[i].style.height = height + 'px';
+					
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+
+	<div id="div1">
+		<img src="img/1.png" alt="">
+		<img src="img/2.png" alt="">
+		<img src="img/3.png" alt="">
+		<img src="img/4.png" alt="">
+		<img src="img/5.png" alt="">
+	</div>
+</body>
+</html>

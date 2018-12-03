@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+		window.onload = function(){
+
+			function setDatas(){
+
+					var now_Date = new Date();
+					var come_Date = new Date(2015,1,19,0,0,0);
+					
+					var diff_Date = come_Date.getTime() - now_Date.getTime();
+
+					var diff_Day = parseInt(diff_Date/(1000*60*60*24)); // 8天
+
+					diff_Date = diff_Date%(1000*60*60*24);
+
+					var diff_Hours = parseInt(diff_Date/(1000*60*60)); // 小时
+
+					diff_Date = diff_Date%(1000*60*60);
+
+					var diff_Minutes = parseInt(diff_Date/(1000*60)); // 分钟
+
+					diff_Date = diff_Date%(1000*60);
+
+					var diff_Seconds = parseInt(diff_Date/1000);//秒
+
+					document.body.innerHTML = '还剩'+diff_Day+'天'+diff_Hours+'小时'+diff_Minutes+'分'+diff_Seconds+'秒';
+
+			}
+
+			setDatas();
+			setInterval(setDatas,1000);
+			alert(oBox);
+
+		}
+
+
+	</script>
+</head>
+<body>
+	<div id="time"></div>
+</body>
+</html>

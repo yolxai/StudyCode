@@ -1,0 +1,203 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:black;
+			padding:0;
+			margin: 0;
+		}
+
+		#div1 {
+			width:1285px;
+			height:754px;
+			background:red;
+			margin:60px auto;
+			background:url(img/1.jpg) no-repeat;
+			position: absolute;
+			left:310px;
+		}
+		#div1 p{
+			display:block;
+			width:50px;
+			height:200px;
+			background:white;
+			position:absolute;
+			text-align:center;
+			line-height:200px;
+			font-size:22px;
+			font-weight:700;
+			color:black;
+			opacity:0.3;
+			filter:alpha(opacity:30);
+
+		}
+		p.up{
+			top:250px;
+			left:0;
+			border-bottom-right-radius: 20px;
+			border-top-right-radius: 20px;
+		}
+		p.down{
+			top:250px;
+			left:1235px;
+			border-bottom-left-radius: 20px;
+			border-top-left-radius: 20px;
+		}
+		p.info {
+			width:400px;
+			height:200px;
+			color:white;
+			opacity:0.8;
+			filter:alpha(opacity:80);
+			border-radius: 5px;
+			background:url(http://www.dglives.com/demo/jquery-cycle-slideshows/css/trans-black-70.png) ;
+			padding:20px;
+			font-size: 15px;
+			font-family:"微软雅黑";
+			display:none;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+
+
+
+		function startMove( obj , iTarget){ //缓冲运动
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+
+				var iSpeed = (iTarget - obj.alpha)/8;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+				if( obj.alpha == iTarget){
+
+					clearInterval(obj.timer);
+
+				}else{
+
+					obj.alpha = obj.alpha + iSpeed;
+					obj.style.filter = 'alpha(opacity:'+ obj.alpha +')';
+					obj.style.opacity = obj.alpha/100;
+
+				}
+
+			},30);
+
+		}
+
+
+		window.onload = function(){
+
+			var arr = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+
+			var oDiv = document.getElementById('div1');
+
+			var aP = oDiv.getElementsByTagName('p');
+
+			var cP = document.getElementById('content').getElementsByTagName('p');
+
+			var num = 0;
+
+			for(var i=0;i<aP.length;i++){
+				aP[i].alpha = 30; //添加alpha （透明度）
+			}
+
+
+			aP[0].onclick = function(){ // 上一页
+
+				if( num == 0 ){
+					num = arr.length-1;
+				}else{
+					num--;
+				}
+
+				oDiv.style.background = 'url('+ arr[num] +') no-repeat';
+			}
+
+			aP[1].onclick = function(){ // 下一页
+
+				if(num > arr.length-2 ){
+					num = 0;
+				}else{
+					num++;
+				}
+
+				oDiv.style.background = 'url('+ arr[num] +') no-repeat';
+			}
+
+			aP[0].onmouseover = function(){startMove(this,100);this.style.cursor='pointer'}
+			aP[0].onmouseout = function(){startMove(this,30);}
+			aP[1].onmouseover = function(){startMove(this,100);this.style.cursor='pointer'}
+			aP[1].onmouseout = function(){startMove(this,30);}
+
+
+
+			oDiv.onmousemove = cP[num].onmousemove = function(){aTrue()};
+
+
+			function aTrue(ev){
+
+					var oEvent = ev || event;
+
+					oEvent.cancelBubble = false;
+
+					for(var i=0;i<cP.length;i++){
+						cP[i].style.display = 'none';
+					}
+
+					cP[num].style.display = 'block';
+
+					cP[num].style.left = oEvent.clientX + 'px';
+					cP[num].style.top = oEvent.clientY + 'px';
+
+
+			}
+
+			var tf = false; // 右键
+			oDiv.oncontextmenu = function(){
+
+				if(tf === false){
+					oDiv.onmousemove = null;
+					cP[num].onmousemove = null;
+					tf = true;
+					return false;
+				}else{
+					
+					oDiv.onmousemove = cP[num].onmousemove = function(){aTrue()};
+
+					tf = false;
+
+					return false;
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<p class="up"> < </p>
+		<p class="down"> > </p>
+	</div>
+
+	<div id="content">
+
+	<p class="info">农村草地<br/><br/>草地是生长草本和灌木植物为主并适宜发展畜牧业生产的土地。它具有特有的生态系统，是一种可更新的自然资源。世界草地面积约占陆地总面积的1/5，是发展草地畜牧业的最基本的生产资料和基地。</p>
+
+
+	<p class="info">日落夕阳<br/><br/>人们都喜爱观赏日出，无不赞叹太阳升起时的壮观景象。而对日落，却很少有人去流连观赏、吟咏描绘。原因何在?恐怕是一种感情的影响,"日薄西山，气息奄奄"
+	</p>
+	
+
+	<p class="info">静静河流<br/><br/>水，是九寨沟的精灵，而九寨沟的海子（湖泊）更具特色，湖水终年碧蓝澄澈，明丽见底，而且随着光照变化、季节推移，呈现不同的色调与水韵。</p>
+
+
+
+	<p class="info">日出朝霞<br/><br/>阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。
+	</p>
+</div>
+</body>
+</html>

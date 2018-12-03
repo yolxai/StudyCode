@@ -1,0 +1,27 @@
+<html>
+<head>
+	<script type="text/javascript" src="vQuery.js"></script>
+	<title></title>
+	<script type="text/javascript">
+		$(function(){
+			// $("div").eq(0).css('background','red');
+			// alert( $("#div1").eq(2).index() );
+			// alert($("div").eq(0));
+			$("div").find("div").css('background','red');
+		})
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div class="asd">a</div>
+	</div>
+	<div class="div2">div2</div>
+	<div class="div2">
+		div2
+		<div id="asd">sad</div>
+	</div>
+	<div class="div2">div2</div>
+	<div class="div2">div2</div>
+	<div class="div2">div2</div>
+</body>
+</html>

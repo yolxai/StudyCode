@@ -1,0 +1,44 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content-type="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		#div1{
+			width:200px;
+			height:500px;
+			background:green;
+			position:absolute;
+			top:-480px;
+			opacity:0.3;
+			filter:alpha(opacity:30);
+		}
+	</style>
+	<script src="move.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+
+
+			oDiv.onmouseover = function(){
+
+				startMove(this,{top:0,opacity:100});
+
+			}
+			oDiv.onmouseout = function(){
+
+				startMove(this,{top:-480,opacity:30});
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

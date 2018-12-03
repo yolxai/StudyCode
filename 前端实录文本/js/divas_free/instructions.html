@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+		<title>Divas Slider How To - responsive slider, plugin jQuery</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="HandheldFriendly" content="true">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/CSSreset.min.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/divas_instructions_style.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/prism.css" />
+		<link rel="icon"          href="images/favicon.ico" type="image/x-icon" />
+    	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+		<meta name="robots" content="index,follow" />
+		<meta name="keywords" content="jQuery responsive slider, jQuery plugin, jQuery slider, gallery jQuery, carousel jQuery, CSS3, html5, jQuery" />
+    	<meta name="description" content="Divas Slider - responsive slider, plugin jQuery" /> 	
+		<meta name="author" content="Federica Sibella - musings.it | Michela Chiucini - colazionedamichy.it" />
+		<meta name="geo.placename" content="via Generale Alberico Albricci 1, 24128 Bergamo, Italy">
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// animation slide for paragraphs
+				$("a[href^='#'], p.up").click(function(e) {
+					e.preventDefault();
+					var who = $(this).attr("href"),
+					    where = $(who).offset(),
+						scrollElem = 'html,body';
+					
+					if(who == undefined || who == "#logo") {
+						$(scrollElem).animate({scrollTop: 0}, 2500);	
+					}
+					else {
+						$(scrollElem).animate({scrollTop: where.top}, 1500);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<header>
+			<div id="nav">
+				<ul>
+					<li><a href="index.html" title="Instructions">Demo</a></li>
+				</ul>
+			</div>
+			<div id="logo">
+				<a href="index.html"><img src="images/DivasSliderLogo.png" alt="Divas Slider Logo" title="Divas Slider Logo" /></a>
+			</div>
+		</header>
+       <div class="wrapper">
+		<section class="instructions" id="toc">
+			<h2>Table of contents</h2>
+			<ol>
+	            <li><a href="#setup">How to set up Divas Slider</a></li>
+	            <li><a href="#parameters">Configurable parameters</a></li>
+	            <li><a href="#demos">Demo configuration</a></li>
+	            <li><a href="#sources-credits">Sources and credits</a></li>
+	            <li><a href="#help-contacts">Help and contacts</a></li>
+          	</ol>
+		</section>	
+		<section class="instructions" id="intro">
+			<h2>Divas Slider documentation</h2>
+			<h3>Thank you for your interest in our jQuery plugin!</h3>
+			<p>If you have any questions that are beyond the scope of this help file, please feel free to email us writing to the email address below. Enjoy!</p>
+			<p class="version_log">
+				Version: 1.1<br />
+				Created: September 30th 2014<br />
+				By: Federica Sibella &amp; Michela Chiucini<br />
+				Email: support@codingdivas.net
+			</p>
+		</section>
+		<section class="instructions" id="setup">
+			<h2>How to set up Divas Slider (mandatory steps)</h2>
+			<!--files to include-->
+			<h3>Files to include (mandatory)</h3>
+			<p>Remember to add these files in your &lt;head&gt; section.</p>
+			<pre>
+<code class="language-markup">&lt;!-- Divas Slider skin -->
+&lt;link rel="stylesheet" type="text/css" media="screen" href="path-to-css/divas_free_skin.css" />
+
+&lt;!-- your jQuery version -->
+&lt;script type="text/javascript" src="path-to-js/jquery-2.1.1.min.js">&lt;/script>
+
+&lt;!-- your Divas Slider version -->
+&lt;script type="text/javascript" src="path-to-js/jquery.divas-1.0.min.js">&lt;/script>
+</code>				
+			</pre>
+			<!--basic HTML-->		
+			<h3>Basic HTML (mandatory)</h3>
+			<p>
+				You should create a basic HTML structure like in the example below.<br />
+				All classes names are mandatory.
+				Please note that you should have at least 3 images to create a Divas Slider.
+			</p>
+			<pre>
+<code class="language-markup">&lt;div id="YourSliderContainer" class="divas-slider">
+	&lt;ul class="divas-slide-container">
+		&lt;li class="divas-slide">
+			&lt;!-- for images lazy loading insert a placeholder in "src" and the path to the image in "data-src" -->
+			&lt;img src="path/to/placeholder.gif" data-src="path/to/img.jpg" data-title="slide title"/>
+			&lt;!-- insert an image "data-title" if you want a caption for your image -->
+			&lt;!-- you can also insert HTML code in the "data-title" and style it in your CSS as you wish -->
+		&lt;/li>
+		&lt;li class="divas-slide">
+			&lt;img src="path/to/placeholder.gif" data-src="path/to/img.jpg" />
+		&lt;/li>
+		&lt;li class="divas-slide">
+			&lt;img src="path/to/placeholder.gif" data-src="path/to/img.jpg" />
+		&lt;/li>
+	&lt;/ul>
+	&lt;!-- navigation and controls -->
+	&lt;div class="divas-navigation">
+		&lt;span class="divas-prev">previous&lt;/span>
+		&lt;span class="divas-next">next&lt;/span>
+	&lt;/div>
+	&lt;div class="divas-controls">
+		&lt;span class="divas-start">start&lt;/span>
+		&lt;span class="divas-stop">stop&lt;/span>
+	&lt;/div>	
+&lt;/div></code>
+			</pre>
+			<!--basic CSS-->
+			<h3>Basic CSS (mandatory)</h3>
+			<p>You should add these CSS rules to your stylesheet or just link to one our Divas Skin, if you prefer.</p>
+			<pre>
+<code class="language-css">/*
+ * Divas Slider main style
+ * Do not edit or edit with extreme care!
+ * These rules are mandatory for Divas Slider to work correctly
+ */
+.divas-slider {
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+.divas-slide-container {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.divas-slide-container:before,
+.divas-slider-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.divas-slide {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	float: left;
+	overflow: hidden;
+}
+
+.divas-slide img {
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+	outline: 0 none;
+	-webkit-backface-visibility: hidden;
+  	-moz-backface-visibility: hidden;
+ 	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+}</code>				
+			</pre>
+			<!--basic initialization-->
+			<h3>Basic initialization (mandatory)</h3>
+			<p>Just call Divas Slider on your slider container.</p>
+			<pre>
+<code class="language-javascript">$(document).ready(function() {
+	$("#YourSliderContainer").divas();
+});</code>				
+			</pre>
+			<p class="up"><i class="fa fa-arrow-circle-o-up"></i></p>
+			<h2>How to tune Divas Slider (optionals)</h2>
+			<!--optionals-->
+			<h3>Slide CSS3 Transition (optional)</h3>
+			<p>Sliding movement can be done using CSS3 transitions: just use this class as value for the "slideTransitionClass" parameter in the settings (for detailed instructions see below "Divas Slider Configurable parameters").</p>
+			<pre>
+<code class="language-css">/*
+ * Divas slide CSS3 transition
+ * Do not edit or edit with extreme care!
+ * This is mandatory only if you want to use CSS3 transitions for slides, 
+ * otherwise Divas Slider will fall back to jQuery animation
+ */
+.divas-slide-transition-left {
+	 -webkit-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	 -moz-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	 -o-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	 transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+}</code>
+			</pre>
+			
+			<h3>Caption styling (optional)</h3>
+			<p>You can style Divas Slider captions as you wish using CSS rules, this is only an example for our demo.</p>
+			<pre>
+<code class="language-css">/*
+ * Divas caption styling - Edit as you wish
+ */
+.divas-caption {
+	position: absolute;
+	top: 50%;
+	width: auto;
+	background: rgba(0,0,0,0.7);
+	color: #f7f7f7;
+	border: none;
+	padding: 0 1.6em 1.6em;
+	margin: 0 2em;
+}
+
+.divas-caption h1 {
+	font-weight: 300;
+	font-size: 4.8em;
+	line-height: 1.1;
+}
+
+.divas-caption p {
+	font-style: italic;
+	font-size: 1.6em;
+}</code>				
+				</pre>
+
+			<h3>Caption CSS3 Transition (optional)</h3>
+			<p>
+				Caption entering movement can be done using CSS3 transitions: just use this class as value for the "titleTransitionClass" 
+				parameter in the settings (for detailed instructions see below "Divas Slider Configurable parameters").
+			</p>
+			<pre>
+<code class="language-css">/*
+ * Divas caption transitions - example for left transition (used in the demo)
+ * These CSS rules are mandatory only if you want to use CSS3 transitions for captions
+ * Edit as you wish but take care to the classes names!
+ * There must be always 3 classes:
+ * 1. start value of the parameter(s) that should be used for caption transition
+ * 2. transition effect for the parameter(s)
+ * 3. stop value of the parameter(s) that should be used for caption transition
+ */
+.divas-caption.divas-title-transition-left-start {
+	left: -999px; // start value for "left"
+}
+
+.divas-caption.divas-title-transition-left {
+	-webkit-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	-moz-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	-o-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s; // transition effect for "left"
+}
+
+.divas-caption.divas-title-transition-left-stop {
+	left: 0px; // stop value for "left"
+}</code>
+			</pre>
+			
+			<h3>Navigation styling (optional)</h3>
+			<p>You can style Divas Slider navigation buttons as you wish using CSS rules, this is only an example for our demo.</p>
+			<pre>
+<code class="language-css">/*
+ * Divas navigation buttons - Edit as you wish
+ */
+.divas-navigation {
+	clear: both;
+	position: absolute;
+	margin: 0px auto;
+	height: 0;
+	width: 100%;
+	text-align: center;
+	top: 47%;
+	top: calc(50% - 6em);
+}
+
+.divas-navigation span {
+	height: 67px;
+	outline: 0 none; 
+	position: absolute;
+	width: 42px; 
+	z-index: 9999;
+	cursor: pointer;
+	margin: 0;
+	font-size: 3em;
+	color: #ff9900;
+}
+
+.divas-navigation span:hover {
+	color: #ffffff;
+}
+
+.divas-navigation span.divas-prev {
+	left: 1em;
+	background: url("../images/prev.svg") no-repeat top center rgba(0, 0, 0, 0);
+}
+
+.divas-navigation span.divas-next {
+	right: 1em;
+	background: url("../images/next.svg") no-repeat top center rgba(0, 0, 0, 0);
+}
+
+.divas-controls span.divas-start,
+.divas-controls span.divas-stop {
+	display: none;
+}
+</code>
+			</pre>
+			<p class="up"><i class="fa fa-arrow-circle-o-up"></i></p>
+		</section>
+		<section class="instructions" id="parameters">
+			<h2>Divas Slider configurable parameters</h2>
+			<p class="intro">Divas Slider can be configured to fit your needs with many straightforward parameters that you can set when calling the plugin.</p>
+			
+			<h3>sliderWidth <span class="variable_type">(string)</span></h3>
+			<p>It is the width of Divas Slider with respect to its parent (which can be also &lt;body>). It must be a percentage.<br />Deafult value: 100%. Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	sliderWidth: "75%"	
+});</code>					
+			</pre>
+			
+			<h3>mainImageWidth <span class="variable_type">(string)</span></h3>
+			<p>It is the width of the central image of Divas Slider with respect to the slider itself. It must be a percentage.
+			<br />Deafult value: 60%. Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	mainImageWidth: "60%"	
+});</code>					
+			</pre>
+			<p class="note">
+				Note: if you set it to 100%, Divas Slider will fall back to a "classic" jQuery image slider with no lateral wings.
+			</p>
+			
+			
+			<h3>start <span class="variable_type">(string)</span></h3>
+			<p>It is the start method for the slider. Accepted values are "manual" or "auto".
+			<br />Deafult value: "manual". Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	start: "auto"	
+});</code>					
+			</pre>
+			
+			<h3>slideInterval <span class="variable_type">(integer)</span></h3>
+			<p>It is the time interval (in msec) between slides if "start" is "auto". Acccepts only integer numbers.
+			<br />Deafult value: 4000. Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	slideInterval: 5000	
+});</code>					
+			</pre>
+			<p class="note">
+				Note: values under 3000 are not recommended and could lead to slider instability.
+			</p>
+			
+			<h3>slideTransitionClass <span class="variable_type">(string)</span></h3>
+			<p>It is the name of the CSS3 transition class for slide scrolling. 
+			<br />Deafult value: "" (Divas Slider will use jQuery animation as default). Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	slideTransitionClass: "divas-slide-transition-left"	
+});</code>					
+			</pre>
+			<p class="note">
+				Note: if you set this value Divas Slider will use CSS3 transitions for slides scrolling if CSS3 is supported by the user's browser, otherwise it will fall back to jQuery animation.
+				<br />A slide transition class named "divas-slide-transition-left" is available in the CSS (see above "Slide CSS3 Transition"). 
+				Please note that if you modify this class or you write your own unexpected Divas Slider behaviour may occur. 
+			</p>
+			
+			<h3>titleTransitionClass <span class="variable_type">(string)</span></h3>
+			<p>It is the name of the CSS3 transition class to be used for showing the caption. 
+			<br />
+			Deafult value: "" (Divas Slider just shows the caption, if present). Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	titleTransitionClass: "divas-title-transition-left"	
+});</code>					
+			</pre>
+			<p class="note">
+				Note: if you set this value Divas Slider will use CSS3 transitions for showing the caption if CSS3 is supported by the user's browser, 
+				otherwise it will fall back to jQuery animation, if you set the proper parameters (see next configuration parameters).
+				<br />Some title transition classes are available in the CSS (see above "Caption CSS3 Transition" and the demos). 
+				Please note that if you modify these classes or you write your own unexpected Divas Slider behaviour may occur, read "Caption CSS3 Transition" before doing any modification.  
+			</p>
+			
+			<h3>titleTransitionParameter <span class="variable_type">(string)</span> - jQuery fallback for "titleTransitionClass"</h3>
+			<p>It is the name of the parameter(s) used for showing the caption for jQuery fallback animation. You can also specify an array of parameters ["parameter1","parameter2", ...]. 
+			<br />
+			Deafult value: "". Configuration example (jQuery fallback for "divas-title-transition-left" above): </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	titleTransitionParameter: "left"	
+});</code>					
+			</pre>
+			<p class="note">
+				Note: if you set this value Divas Slider will use it to build a jQuery fallback for caption transitions if CSS3 is not available. 
+				If you set this value, you must also set at least the next two ("titleTransitionStartValue" and "titleTransitionStopValue" value) for the jQuery fallback to work properly.
+			</p>
+			
+			<h3>titleTransitionStartValue <span class="variable_type">(string or number)</span> - jQuery fallback for "titleTransitionClass"</h3>
+			<p>It is the start value for the parameter used for showing the caption for jQuery fallback animation (see above). 
+			You must specify an array of values ["value1","value2", ...] if you did so for "titleTransitionParameter". 
+			<br />Deafult value: null. Configuration example (jQuery fallback for "divas-title-transition-left" above): </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	titleTransitionStartValue: "-999px"	
+});</code>					
+			</pre>
+			
+			<h3>titleTransitionStopValue <span class="variable_type">(string or number)</span> - jQuery fallback for "titleTransitionClass"</h3>
+			<p>It is the stop value for the parameter used for showing the caption for jQuery fallback animation (see above). 
+			You must specify an array of values ["value1","value2", ...] if you did so for "titleTransitionParameter". 
+			<br />Deafult value: null. Configuration example (jQuery fallback for "divas-title-transition-left" above): </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	titleTransitionStopValue: "0px"
+});</code>					
+			</pre>
+			
+			<h3>titleTransitionDuration <span class="variable_type">(integer)</span> - jQuery fallback for "titleTransitionClass"</h3>
+			<p>It is the duration value (in msec) of the jQuery fallback animation used for showing the caption. It is not mandatory. It must be an integer.
+			<br />Deafult value: 1000. Configuration example (jQuery fallback for "divas-title-transition-left" above): </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	titleTransitionDuration: 2000	
+});</code>					
+			</pre>
+			<p class="note">
+				Note: values below 500 are not recommended.	
+			</p>
+			
+			<h3>titleTransitionEasing <span class="variable_type">(string)</span> - jQuery fallback for "titleTransitionClass"</h3>
+			<p>It is the easing type for the jQuery fallback animation used for showing the caption. It is not mandatory. Accepted values: "swing" or "linear".
+			<br />Deafult value: "swing". Configuration example (jQuery fallback for "divas-title-transition-left" above): </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	titleTransitionEasing: "linear"	
+});</code>					
+			</pre>
+			
+			<p>Complete configuration example (with jQuery fallback) for "divas-title-transition-left"</p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	titleTransitionClass: "divas-title-transition-left", // class for showing captions if CSS3 is available
+	titleTransitionParameter: "left", // jQuery fallback
+	titleTransitionStartValue: "-999px",
+	titleTransitionStopValue: "0px",
+	titleTransitionDuration: 2000,
+	titleTransitionEasing: "linear" 	
+});</code>					
+			</pre>
+			
+			<h3>startFrom <span class="variable_type">(string)</span></h3>
+			<p>It is the position from which Divas Slider should start, according to the slides positions. Accepted values: "left", "center", "right".
+			<br />Deafult value: "center". Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	startFrom: "left"	
+});</code>					
+			</pre>
+			<p class="note">
+				Note: for example, if you have 7 slides, setting "startFrom": "center" will show the 4<sup>th</sup> slide as main image when Divas Slider is started. 	
+			</p>
+			
+			<h3>imagesToPreload <span class="variable_type">(integer)</span></h3>
+			<p>It is the number of images to preload when Divas Slider is called the first time. It must be an integer. It must be less than the total number of slides. 	
+			<br />Deafult value: 3. Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	imagesToPreload: 5	
+});</code>					
+			</pre>
+			
+			<h3>bullets <span class="variable_type">(string)</span></h3>
+			<p>If set to "yes" will show the "bullets" indicating how many slides there are and which of them is the current one. Accepted values: "yes" or "no". 	
+			<br />Deafult value: "no". Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	bullets: "yes"	
+});</code>					
+			</pre>
+			
+			<h3>wingsOverlayColor <span class="variable_type">(string)</span></h3>
+			<p>It is the color of the lateral "wings" panes of Divas Slider. Accepted values: HEX colors or rgba values. 	
+			<br />Deafult value: "". Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	wingsOverlayColor: "rgba(0,0,0,0.6)"	
+});</code>					
+			</pre>
+			
+			<h3>placeholderImg <span class="variable_type">(string)</span></h3>
+			<p>It is the URL of your placeholder image. It is not mandatory, but suggested if you want to use your own placeholder image instead of the one provided with the demo.	
+			<br />Deafult value: "". Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	placeholderImg: "images/myPlaceholder.gif"	
+});</code>					
+			</pre>
+			<p class="up"><i class="fa fa-arrow-circle-o-up"></i></p>
+			
+			<h2>Divas Slider callback functions</h2>
+			<p class="intro">There are three available callback function that you can build and use as you wish.</p>
+			<h3>onImageClick <span class="variable_type">(function)</span></h3>
+			<p>It is a custom callback function that you can set when the user clicks on an image.	
+			<br />Deafult value: function() {}. Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	onImageClick: function() {alert("image was clicked!");}	
+});</code>					
+			</pre>
+			
+			<h3>beforeSlide <span class="variable_type">(function)</span></h3>
+			<p>It is a custom callback function that you can set and will be executed before each slide scrolls.	
+			<br />Deafult value: function() {}. Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	beforeSlide: function() {alert("I'm about to move!");}	
+});</code>					
+			</pre>
+			
+			<h3>afterSlide <span class="variable_type">(function)</span></h3>
+			<p>It is a custom callback function that you can set and will be executed after each slide has finished scrolling.	
+			<br />Deafult value: function() {}. Configuration example: </p>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	afterSlide: function() {alert("I've just moved!");}	
+});</code>					
+			</pre>
+			<p class="up"><i class="fa fa-arrow-circle-o-up"></i></p>
+		</section>
+		<section class="instructions" id="demos">
+			<h2>Divas Slider demo configuration</h2>
+			<p class="intro">Here we will show you the set up for the demo provided in our package, besides the basic CSS described above.
+				Please note that media queries for the responsiveness of the different slider parts are not reported here to be short, 
+				for deeper insight on media queries please refer to the CSS files provided in our package.</p>
+
+			<h3>Demo CSS</h3>
+			<pre>
+<code class="language-css">/*
+ * divas slide transitions
+ */
+.divas-slide-transition-left {    
+	 -webkit-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	 -moz-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	 -o-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	 transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+}
+
+/*
+ * divas navigation buttons
+ */
+.divas-navigation {
+	clear: both;
+	position: absolute;
+	margin: 0px auto;
+	height: 0;
+	width: 100%;
+	text-align: center;
+	top: 47%;
+	top: calc(50% - 33px);
+}
+
+.divas-has-bullets .divas-navigation {
+    top: calc(50% - 61px);
+}
+
+.divas-navigation span {
+	height: 66px;
+	outline: 0 none; 
+	position: absolute;
+	width: 42px; 
+	z-index: 9999;
+	cursor: pointer;
+	margin: 0;
+	font-size: 3em;
+	color: #fff;
+}
+
+.divas-navigation span:hover {
+	color: #ffffff;
+}
+
+.divas-controls span.divas-start,
+.divas-controls span.divas-stop {
+	display: none;
+}
+
+.divas-navigation span.divas-prev {
+	left: 1em;
+	background: url("../../images/prev.svg") no-repeat top center rgba(0, 0, 0, 0);
+}
+
+.divas-navigation span.divas-next {
+	right: 1em;
+	background: url("../../images/next.svg") no-repeat top center rgba(0, 0, 0, 0);
+}
+
+/*
+ * divas caption styling
+ */
+.divas-caption {
+	position: absolute;
+	top: 50%;
+	width: auto;
+	background: rgba(0,0,0,0.7);
+	color: #f7f7f7;
+	border: none;
+	padding: 1em 2em 1.6em;
+	margin: 0 2em;
+}
+
+/*
+ * divas caption transitions: left
+ */
+.divas-caption.divas-title-transition-left-start {
+	left: -999px;
+}
+
+.divas-caption.divas-title-transition-left {
+	-webkit-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	-moz-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	-o-transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+	transition: left 1s cubic-bezier(0.23, 1, 0.32, 1) 0s;
+}
+
+.divas-caption.divas-title-transition-left-stop {
+	left: 0px;
+}
+
+.divas-caption h1 {
+	font-weight: 900;
+	font-size: 4.8em;
+	line-height: 1.1;
+}
+
+.divas-caption p {
+	font-style: italic;
+	font-size: 1.6em;
+}
+
+@media screen and (max-width: 40em) {
+	.divas-navigation span.divas-prev,
+	.divas-navigation span.divas-next{
+		background-position:center center;
+		background-size: 75% auto;
+	}
+	
+	.divas-navigation span.divas-prev {
+		left: 0.5em;
+	}
+	
+	.divas-navigation span.divas-next {
+		right: 0.5em;
+	}
+}</code>				
+			</pre>
+			<h3>Demo configuration</h3>
+			<pre>
+<code class="language-javascript">$("#YourSliderContainer").divas({
+	slideTransitionClass: "divas-slide-transition-left",
+	titleTransitionClass: "divas-title-transition-left",
+	titleTransitionParameter: "left",
+	titleTransitionStartValue: "-999px",
+	titleTransitionStopValue: "0px",
+	wingsOverlayColor: "rgba(0,0,0,0.6)" // for light version "rgba(255,255,255,0.6)"
+});</code>					
+			</pre>
+			<p class="up"><i class="fa fa-arrow-circle-o-up"></i></p>
+		</section>
+		<section class="instructions" id="sources-credits">
+			<h2>Sources and Credits</h2>
+			<ul>
+				<li>
+					The jQuery library: <a href="http://jquery.com">http://jquery.com</a>
+				</li>
+				<li>
+					Images for the demo are by Markus Spiske / www.temporausch.com / CC-BY: <a href="http://http://raumrot.com/10/">Raumrot</a>
+				</li>
+				<li>
+					The font used for the demos is "Lato" from Google Fonts: <a href="https://www.google.com/fonts/specimen/Lato">Lato</a>
+				</li>
+				<li>
+					Icons come from Font Awesome: <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>
+				</li>
+				<li>
+					The code in this file is formatted using Prism: <a href="http://prismjs.com">http://prismjs.com</a>
+				</li>	
+			</ul>
+			<p class="up"><i class="fa fa-arrow-circle-o-up"></i></p>
+		</section>
+		<section class="instructions" id="help-contacts">
+			<h2>Help and contacts</h2>
+			<p>Have any further question? Need help or a custom feature? Want to give suggestions?<br />Feel free to contact us at: support@codingdivas.net we'll get back to you as soon as we can.</p>
+			<p>Thanks again for your interest in our plugin!</p>
+			<p class="up"><i class="fa fa-arrow-circle-o-up"></i></p>
+		</section>
+        </div>
+		<footer>
+        	<div>
+				<p>
+					&copy; 2014 Coding Divas - <a href="http://www.codingdivas.net">codingdivas.net</a>
+			 		&nbsp;&nbsp; <i class="fa fa-hand-o-right"></i> &nbsp;&nbsp; The Coding Divas are <a href="http://www.musings.it">Federica Sibella</a> &amp; <a href="http://www.colazionedamichy.it">Michela Chiucini</a>
+				</p>
+            </div>
+		</footer>
+		<script type="text/javascript" src="js/prism.js"></script>
+	</body>
+</html>

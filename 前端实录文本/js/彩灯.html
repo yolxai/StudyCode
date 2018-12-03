@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		html{
+			background: black;
+		}
+		li{
+			width:20px;
+			height:20px;
+			background:red;
+			border:2px solid #ccc;
+			float: left;
+			margin-left:2px;
+		}
+		p {
+			width:98%;
+			height:30px;
+			background:black;
+			float: left;
+			border:1px solid black;
+		}
+
+	</style>
+	
+	<script type="text/javascript">
+
+		window.onload = function (){
+
+			var oDiv = document.getElementById('div1');
+			var oBdiv = document.getElementById('big_div');
+
+			for(var i=0;i<10;i++){
+				
+				var aDiv = document.createElement('li');
+
+				oDiv.insertBefore(aDiv);
+
+			}
+
+			for(var i=0;i<10;i++){
+				
+				var bDiv = document.createElement('p');
+
+				oBdiv.insertBefore(bDiv);
+			
+			}
+
+			var aDiv = oDiv.getElementsByTagName('li');
+			var aBdiv = oBdiv.getElementsByTagName('p');
+
+			for(var i=0;i<aDiv.length;i++){
+				aDiv[i].index = i;
+
+				aDiv[i].onmouseover = function(){
+
+					for(var i=0;i<aBdiv.length;i++ ){
+
+						aBdiv[i].style.backgroundColor = 'black';
+
+					}
+
+					aBdiv[this.index].style.backgroundColor = 'white';
+
+				}
+
+			}
+
+
+
+
+
+		}
+
+
+	</script>
+
+</head>
+<body>
+	<div id="div1">
+		
+
+	</div>
+
+	<div id="big_div"></div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="miaov.js"></script>
+<script>
+	window.onload = function(){
+		var aDiv = document.getElementsByTagName('div');
+		var len = 20;
+		var str='';
+		var num = 0;
+		var timer = null;
+		var Onoff = false;
+		
+		for(var i=0;i<len;i++){
+			str += '<div style="width:50px;height:50px;background:red;position:absolute;top:10px;left:'+ i*60 +'px"></div>';
+		}
+		document.body.innerHTML = str;
+		
+		document.onclick = function(){
+			clearInterval(timer);
+			if( Onoff === false ){
+			timer = setInterval(function(){
+					doMove(aDiv[num],'top',20,500,function(){
+						Onoff = true;	
+					});
+					num++;
+					if( num == len ){
+					clearInterval( timer);
+				}
+			},100);
+		}else if( Onoff === true ){
+			clearInterval(timer);
+			timer = setInterval(function(){
+						num--;
+						doMove(aDiv[num],'top',20,10,function(){
+						Onoff = false;	
+					});
+					
+					if( num == 0  ){
+					clearInterval( timer);
+				}
+			},100);
+		}
+			
+			
+			
+		}
+	}
+</script>
+</head>
+
+<body>
+</body>
+</html>

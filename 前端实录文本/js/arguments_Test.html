@@ -1,0 +1,41 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" Content="text/html;charset=utf-8" />
+	<title></title>
+	<style>
+		#div1 {
+			width:200px;
+			height:200px;
+			background:red;
+		}
+	</style>
+	<script src="arguments.js"></script>
+	<script>
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+			var oSub = document.getElementById('set');
+
+			oDiv.onclick = function(){
+
+				alert( VsCss(oDiv , 'width') );
+
+			}
+			oSub.onclick = function(){
+
+				VsCss(oDiv , 'backgroundColor' , 'green');
+
+			}
+
+
+		}
+	</script>
+
+</head>
+<body>
+	<input id="set" type="button" value="点我改变背景颜色">
+	<div id="div1">点击我弹出样式</div>
+
+
+</body>
+</html>

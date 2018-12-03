@@ -1,0 +1,52 @@
+<html>
+<head>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<title></title>
+	<style type="text/css">	
+		*{padding:0;margin:0}
+		#box{
+			width:500px;
+			border:2px solid #999;
+			height:400px;
+			overflow:hidden;
+		}
+		#box li{
+			width:100%;
+			text-align:center;
+			line-height:200px;
+			font-size:50px;
+			font-family:"微软雅黑";
+			overflow:hidden;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			for(var i=0;i<$("#box li").length;i++){
+				$('#box li').eq(i).html(i);
+			};
+			var timer = null;
+
+			timer = setInterval(function(){
+
+				//$('#box li').last().css('height',0).prependTo("#box");
+				//$('#box li').eq(0).animate({'height':'180px'});
+
+				$("#box li").last().css('height','0px').prependTo("#box").animate({'height':'200px'});
+
+			},1000);
+		});
+	</script>
+</head>
+<body>
+	<ul id="box">
+		<li style="background:red"></li>
+		<li style="background:green"></li>
+		<li style="background:pink"></li>
+		<li style="background:white"></li>
+		<li style="background:black"></li>
+		<li style="background:red"></li>
+		<li style="background:green"></li>
+		<li style="background:orange"></li>
+	</ul>
+</body>
+</html>

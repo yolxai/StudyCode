@@ -1,0 +1,24 @@
+<html>
+<head>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#ad{width:800px;height:500px;margin:0 auto;background:red;border:5px solid #ccc;text-align:center;font-size:50px;font-family:"微软雅黑";line-height:500px;position:relative;top:-510px;}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#ad").animate({'top':'0px'},500,function(){
+				$("#ad").animate({'top':'100px'},500,function(){
+					$("#ad").animate({'top':'0px'},200);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="ad">
+		欢迎学习Jquery
+	</div>
+</body>
+</html>

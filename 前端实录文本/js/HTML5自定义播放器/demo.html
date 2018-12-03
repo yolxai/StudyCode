@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+
+	<title>HTML5自定义播放器</title>
+
+	<style type="text/css">
+		#control{width:600px;height:50px;background:rgba(0,0,0,0.8);border-top-left-radius:5px;border-top-right-radius:5px;position:relative;}
+		#start.play{width:0px;height:0px;position:absolute;top:18px;left:15px;border-left:20px solid white;border-top:10px solid rgba(0,0,0,0);border-bottom:10px solid rgba(0,0,0,0);cursor:pointer;}
+		#start.pause{position:absolute;top:18px;left:15px;width:5px;height:20px;border-left:5px solid white;border-right:5px solid white;cursor:pointer;}
+
+		#jidnutiao{width:400px;height:10px;border-radius:10px;position:absolute;top:23px;left:45px;border:1px solid #CCC}
+		#jidnutiao #this_jindu{width:18px;height:18px;position:absolute;top:-5px;left:0px;border-radius:50%;background:white;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oVideo = document.getElementById('video');
+			var oControl  = document.getElementById('control');
+			var oPlayBtn = document.getElementById('start');
+
+			//开始按钮开始
+			oPlayBtn.onclick = oVideo.onclick = function(){
+				if( oVideo.paused ){
+					oVideo.play();
+					oPlayBtn.className = 'pause';
+				}else{
+					oVideo.pause();
+					oPlayBtn.className = 'play';
+				}
+			}
+			//开始按钮结束
+
+			//进度条拖动
+			var oJindutiao = document.getElementById('jidnutiao');
+			var oThisjindu = document.getElementById('this_jindu');
+
+			oThisjindu.onmousedown = function(ev){
+					var oEvent = ev || event;
+					var disX = oEvent.clientX-oThisjindu.offsetLeft;
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					var left = oEvent.clientX - disX;
+					if(left<0){
+						left = 0;
+					}else if( left>=(oJindutiao.offsetWidth-oThisjindu.offsetWidth) ){
+						left = oJindutiao.offsetWidth-oThisjindu.offsetWidth;
+					}
+
+					oThisjindu.style.left = left + 'px';
+
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+
+			//进度条拖动结束
+
+		
+		}
+
+	</script>
+</head>
+<body>
+	<video src="iceage4.mp4" poster="1.jpg" controls="true" id="video">
+	
+	</video>
+	<!-- 控制台 -->
+	<div id="control">
+		
+		<!-- 开始按钮 -->
+		<div id="start" class="play"></div>
+		<!-- 开始按钮结束 -->
+		<div id="jidnutiao">
+			<div id="this_jindu"></div>
+		</div>
+
+	</div>
+	<!-- 控制台结束 -->
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	body{
+		background:#000;
+	}
+	#div1 {
+		margin:10px auto 0;
+		width:1024px;
+		height:550px;
+		position:relative;
+	}
+	#img1 {
+		width:1024px;
+		height:550px;
+	}
+	.up,.down{
+		position:absolute;
+		top:0;
+		height:550px;
+		width:50px;
+		color:white;
+		display:block;
+		line-height:550px;
+		text-align:center;
+		text-decoration:none;
+		font-size:30px;
+		font-weight:900;
+	}
+	.up{
+		left:0;
+	}
+	.down {
+		right:0;	
+	}
+	#list{
+		position:absolute;
+		right:50px;
+		margin-top:10px;	
+	}
+	#list li{
+		list-style:none;
+		width:30px;
+		height:30px;
+		background:#030303;	
+		float:left;
+		margin-left:5px;
+		border:1px solid #D5D5D5;
+	}
+	#list li.active {
+		background:#C00;	
+	}
+	.a{
+		width:70px;
+		height:70px;
+		position:absolute;
+		top:-90px;
+		left:-50px;
+		border:2px solid white;
+		display:none;
+	}
+</style>
+<script>
+	window.onload = function (){
+			var oDiv = document.getElementById('div1');
+			var oImg = document.getElementById('img1');
+			var oUp = document.getElementsByTagName('a')[0];
+			var oDown = document.getElementsByTagName('a')[1];
+			var oList = document.getElementById('list');
+			var oLi = oList.getElementsByTagName('li');
+			var aDiv = null;
+			var arr = [];
+			
+			var arrImg = ['3_img/img/1.jpg','3_img/img/2.jpg','3_img/img/3.jpg','3_img/img/4.jpg'];  //图片地址
+			
+			var num = 0; 
+			
+			//初始化开始
+						
+			for( var i=0;i<arrImg.length;i++){
+				oList.innerHTML += '<li></li>';
+			}
+			
+			oLi[num].className = 'active'; //默认选中的Li
+			
+			
+			for( var i=0;i<oLi.length;i++){ // Li事件
+			
+				oLi[i].index = i; //添加索引
+				
+				oLi[i].onclick = function (){  //添加点击事件
+					
+					oImg.src = arrImg[this.index];
+					
+					for( var i = 0 ;i<oLi.length;i++){ //清空所有Li的class
+						oLi[i].className = '';
+					}
+					this.className = 'active'; //为当前Li设置class
+				
+				}
+			}
+			//初始化结束
+			
+			// 点击事件开始
+			oUp.onclick = function(){    //上一张 点击事件
+				num--;
+				if( num < 0){
+					num = arrImg.length-1;
+				}
+					oImg.src = arrImg[num];
+					
+					for( var i = 0 ;i<oLi.length;i++){ //清空所有Li的class
+						oLi[i].className = '';
+					}
+				
+				oLi[num].className = 'active';
+				
+			}
+			
+			
+			oDown.onclick = function(){  //下一张 点击事件
+				num++;
+				if( num > arrImg.length-1 ){
+					num = 0;
+				}
+				oImg.src = arrImg[num];
+				
+				for( var i = 0 ;i<oLi.length;i++){ //清空所有Li的class
+						oLi[i].className = '';
+				}
+				
+				oLi[num].className = 'active';
+				
+			}
+			// 点击事件结束
+			
+			
+			//缩略图开始
+				for( var i=0;i<oLi.length;i++){ //获取li里面的div 方便display
+						oLi[i].style.position = 'relative';
+						oLi[i].innerHTML = '<img class="a"/>';
+						
+						var aDiv = oLi[i].getElementsByTagName('img');
+						for(var j=0;j<aDiv.length;j++){
+							arr.push(aDiv[j]);
+						}
+				}
+				
+				for(var i=0;i<arr.length;i++){
+					oLi[i].onmouseover = function(){ //鼠标移入 显示缩略图
+						for(var i=0;i<arr.length;i++){
+							arr[i].style.display = 'none';
+						}
+						arr[this.index].style.display = 'block';	
+						arr[this.index].src = arrImg[this.index];
+					}
+					
+					oLi[i].onmouseout = function (){ // 鼠标移除 关闭缩略图
+						for(var i=0;i<arr.length;i++){
+							arr[i].style.display = 'none';
+						}
+					}
+				}
+			//缩略图结束
+	}
+</script>
+</head>
+
+<body>
+
+	<div id="div1">
+    
+    	<img src="3_img/img/1.jpg" id="img1" />
+        <a href="#" class="up">  < </a>
+        <a href="#" class="down">  > </a>
+        <ul id="list">
+        
+        </ul>
+    </div>
+
+
+</body>
+</html>

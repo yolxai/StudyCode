@@ -1,0 +1,8 @@
+/*
+	这里是CSS样式文件
+*/
+@import url('style2.css'); /*我引入第二个CSS文件*/
+#yinru{
+	color:green;
+	font-size:20px;
+}

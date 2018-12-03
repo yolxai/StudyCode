@@ -1,0 +1,97 @@
+<?php
+	$goods_car_db = isset($_COOKIE['car_data'])?unserialize($_COOKIE['car_data']):false;
+?>
+<html>
+<head>
+<style type="text/css">
+	*{margin:0;padding:0}
+	#header{width:100%;height:50px;position:relative;padding-bottom:50px;}
+	#header #goods_car{moz-user-select: -moz-none;-moz-user-select: none;-o-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;width:141px;height:36px;background:white;margin-top:1px;text-align:center;
+		position:absolute;top:-65px;right:150px;border:1px solid #CCC;color:#666;font: 12px/36px Arial,Verdana,"宋体";background:url(./img/car.png) no-repeat 15px 6px}
+	#header #goods_car #show{width:200%;height:auto;border:1px solid #CCC;position:absolute;left:-50%;background:white;}
+	#header #goods_car #show .car_price{background:white;}
+	.show{display:block}
+	.hidden{display:none}
+	
+	#list {background:#E64346;float:left;width:100%;}
+	#list li{float:left;list-style:none;height:50px;}
+	#list li.first{width:200px;text-align:center;line-height:50px;color:white;background:#A10000}
+	#list li a{color:white;height:50px;display:block;text-decoration:none;padding-left:10px;padding-right:10px;line-height:50px;}
+	#list li a:hover{background:#A10000}
+	
+	#logo{width:100%;height:80px;position:relative;}
+	#logo .search input.in{color:#999;text-indent:5px;width:500px;height:36px;border:3px solid #E4393C;position:absolute;top:20px;left:350px;}
+	#logo .search input.btn{cursor:pointer;outline:none;color:white;font-weight:700;position:absolute;left:772px;top:23px;width:78px;height:30px;background:#E4393C;border:none;}
+
+	.img{border:1px solid #CCC;}
+</style>
+
+</head>
+<body>
+<div id="logo">
+	<a href="index.php"><img src="./img/logo.png"></a>
+	
+	<div class="search">
+		<input class="in" type="text" value="游戏本"/>
+		<input class='btn' type='button' value='搜索'/>
+	</div>
+	
+</div>
+<div id="header" style="z-index:100">
+	<ul id="list">
+		<li a href="index.php" class="first">全部商品分类</li>
+		<li><a href="index.php">首页</a></li>
+		<li><a href="index.php">服装城</a></li>
+		<li><a href="index.php">美食</a></li>
+		<li><a href="index.php">团购</a></li>
+		<li><a href="index.php">夺宝岛</a></li>
+		<li><a href="index.php">闪购</a></li>
+	</ul>
+	<div id="goods_car">
+		我的购物车
+		<div id="show" class="hidden">
+			
+				<?php
+				if($goods_car_db){
+					echo "<h4>最新加入的商品</h4>";
+					echo "<table>";
+					foreach($goods_car_db as $key=>$value){
+						?>
+						
+						<tr class="car_price">
+							<?php echo $value;?>
+						</tr>
+						</table>
+						<?php
+					}
+				}else{
+						//<h3>购物车暂时没有物品!</h3>
+						?>
+							<script type="text/javascript">
+										var div = document.getElementById('show');
+										var num = div.getElementsByTagName('div').length;
+										
+										if(num < 1 ){
+											document.write('<h3>购物车暂时没有物品!</h3>');
+										}
+							</script>
+						<?php
+				}
+				?>
+			</div>
+		</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	var carBtn = document.getElementById('goods_car');
+	var div = document.getElementById('show');
+	carBtn.onclick = function(){
+			if(div.className == 'show'){
+					div.className = 'hidden';
+			}else{
+					div.className = 'show';
+			}
+	}
+	
+</script>

@@ -1,0 +1,29 @@
+<html>
+<head>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oText = document.getElementById('text');
+			var oBtn = document.getElementById('btn');
+			var exp = /\d@qq.com/;
+
+			oBtn.onclick = function(){
+
+				var HTML = oText.value;
+
+				if( exp.test(HTML) ){
+					alert('验证通过');
+				}else{
+					alert('请输入正确的邮箱');
+					alert('\n'+HTML);
+				}
+			}
+
+		}
+	</script>
+	<title></title>
+</head>
+<body>
+	<input type="type" id="text" value=""/>
+	<input type="button" id="btn" value="验证是否为邮箱"/>
+</body>
+</html>

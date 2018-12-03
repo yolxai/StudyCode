@@ -1,0 +1,35 @@
+<html>
+
+	<head>
+		<style>
+			*{margin:0;padding:0;}
+			#body{border:1px solid #CFCFCF;width:708px;height:454px;margin:10px auto;}
+			.title{background:#EEE;width:703px;height:27px;color:#000;font-size:10.5pt;padding-left:5px;line-height:27px;border-bottom:1px solid #CFCFCF;}
+			.title .small_title {float:right;text-decoration:none;color:#A00;padding-right:5px;}
+		
+			#list {margin-top:20px;}
+			#list li{list-style:none;text-decoration:none;line-height:25px;height:25px;width:100%;background: url("http://www.oschina.net/../img/thread_1.gif") no-repeat scroll 5px center transparent;}
+			#list li a{text-decoration:none;color:#3E62A6;font-size:14px;padding-left:30px}
+			#list li a:hover{color:#A10000}
+		</style>
+	</head>
+	
+	<body>
+		<div id="body">
+				<h2 class="title">IT招聘<a href="index.php?control=news&action=addshow" class="small_title">发布招聘信息 >></a></h2>
+				<ul id="list">
+					<?php
+						$db = include "db.php";
+						foreach($db as $key=>$value):
+					?>
+						<li>
+							<a href="index.php?control=index&action=view&id=<?php echo $key; ?>"><?php echo $value['title'] ?> </a>
+						</li>
+					<?php
+						endforeach;
+					?>
+				</ul>
+		</div>
+	</body>
+
+</html>

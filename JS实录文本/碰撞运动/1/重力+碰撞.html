@@ -1,0 +1,95 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#div1{
+			width:200px;
+			height:200px;
+			position:absolute;
+			background:green;
+		}
+	</style>
+	<script type="text/javascript">
+
+		var timer = null
+		var iSpeedX = 5;
+		var iSpeedY = 8;
+
+		function startMove(){
+
+			clearInterval(timer);
+
+			var oDiv = document.getElementById('div1');
+			
+
+			timer = setInterval(function(){
+
+				iSpeedY = iSpeedY + 3;
+
+				var left = iSpeedX + oDiv.offsetLeft;
+				var top = iSpeedY + oDiv.offsetTop;
+
+				var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+				var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+				if( left >= clientWidth - oDiv.offsetWidth ){
+
+					left = clientWidth - oDiv.offsetWidth;
+
+					iSpeedX = iSpeedX * -0.8;
+
+
+				}else if(left<=0){
+
+					left = 0;
+					iSpeedX = iSpeedX * -1;
+				}
+
+
+
+
+				if( top >= clientHeight - oDiv.offsetHeight){
+					top = clientHeight - oDiv.offsetHeight;
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+				}else if(top<=0){
+					top = 0;
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+				}
+
+				if(Math.abs(iSpeedX) < 1){
+					iSpeedX = 0;
+				}
+				if(Math.abs(iSpeedY) < 1){
+					iSpeedY = 0;
+				}
+
+				oDiv.style.left =  left + 'px';
+				oDiv.style.top = top + 'px';
+
+			},30);
+		}
+
+		window.onload = function (){
+			var oDiv = document.getElementById('div1');
+			
+			oDiv.onclick = function(){
+
+				startMove();
+
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+
+	</div>
+</body>
+</html>

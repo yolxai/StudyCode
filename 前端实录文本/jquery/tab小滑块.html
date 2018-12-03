@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#box{margin:0 auto;width:480px;height:300px;border:5px solid #999;position:relative;}
+		#box .list li{float:left;width:120px;height:50px;background:#888;color:#FFF;text-align:center;line-height:50px;}
+		#box #small{width:120px;height:2px;background:red;position:absolute;top:54px;left:2px;}
+	</style>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#box .list li").mouseover(function(){
+				$("#box #small").stop();
+				var iTarget = $("#box .list li").eq( $(this).index() ).position().left;
+				$("#box #small").animate({'left':iTarget});
+				$(this).css('background','#999');
+				//$("#box .list li").eq($(this).index())
+			});
+			$("#box .list li").mouseout(function(){
+				$(this).css('background','#888');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="list">
+			<li>新闻</li>
+			<li>军事</li>
+			<li>社会</li>
+			<li>娱乐</li>
+		</ul>
+		<div id="small"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+			font-family:"微软雅黑";
+		}
+		#big_div{
+			position:relative;/*
+			border:1px solid red;*/
+		}
+		#div1{
+			width:200px;
+			height:102px;
+			background:url(1/img/1.jpg);
+			position:absolute;
+			overflow:hidden;
+		}
+		#div1 a {
+			text-decoration:none;
+			color:white;
+			line-height:100px;
+			text-align:center;
+			text-decoration:none;
+			display:block;
+		}
+		#ul1{
+			width:1000px;
+			height:100px;
+			border:1px solid #ccc;
+			z-index:3;
+		}
+		#ul1 li{
+			list-style:none;
+			text-align:center;
+			width:200px;
+			height:100px;
+			float:left;
+			line-height:100px;
+		}
+		#ul1 li a{
+			text-decoration:none;
+			color:red;
+		}
+
+		#ul1 li .active {
+			/*position:absolute;
+			top:80px;
+			left:20px;*/
+			width:202px;
+			overflow:hidden;
+			display:none;
+			/*opacity:0;
+			filter:alpha(opacity:0);*/
+
+		}
+		#ul1 li .active div {
+			float:left;
+			height:100px;
+			width:200px;
+			/*background: red;*/
+			border:1px solid #ccc;
+		}
+		
+	</style>
+	<script type="text/javascript">
+
+		var iSpeed = 0;
+		var left = 0;
+		function startMove(obj , iTarget){
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				iSpeed = iSpeed + iTarget/5 - obj.offsetLeft/5;
+				iSpeed = iSpeed * 0.7;
+				left = iSpeed + obj.offsetLeft;
+
+				if(Math.abs(iSpeed) < 1 || Math.abs(obj.offsetLeft-iTarget) < 1){
+					clearInterval(obj.timer);
+					obj.style.left = iTarget + 'px';
+				}else{
+					obj.style.left = left + 'px';
+				}
+				
+			},30);
+			
+
+		}
+
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var oUl = document.getElementById('ul1');
+			var aLi = oUl.getElementsByTagName('li');
+			var oTxt = oDiv.getElementsByTagName('a')[0];
+			var aLiClass = getElementsByClassName(oUl,'active_1');
+			var i = 0;
+			var nArr = [];
+			var iHeight = 0;
+			var obj = null;
+
+			oTxt.innerHTML = aLi[0].innerHTML;
+				
+			for(i=0;i<aLiClass.length;i++){
+
+				var aUl = getElementsByClassName(aLiClass[i],'active');
+
+				if(aUl){
+					nArr.push(aUl[0]);
+				}
+
+
+			}
+
+
+				for( i=0;i<aLiClass.length;i++){
+				aLi[i].index = i;
+
+				aLi[i].onmouseover = function(){
+					startMove(oDiv,this.offsetLeft);
+					oTxt.innerHTML = this.innerHTML;
+
+					for(i=0;i<aLiClass.length;i++){
+						nArr[i].style.display ='none';
+					}
+					nArr[this.index].style.display = 'block';
+					nArr[this.index].style.height = 'auto';
+					iHeight = parseInt(getStyle(nArr[this.index],'height'));
+					nArr[this.index].style.height = 0;
+					obj = nArr[this.index];
+					startMove1(obj,{height:iHeight});
+					
+
+
+
+				}
+
+				/*aLi[i].onmouseout = function(){
+					obja = aLi[i];
+					startMove1(obja,{opacity:0},function(){
+						startMove1(obja,{height:0});
+					});
+				}*/
+
+
+
+
+			}
+
+		}
+
+
+
+
+
+
+
+
+		////////////////////
+
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj)[attr];
+			}
+		}
+
+		function startMove1(obj,json,fn){
+
+			clearInterval(obj.timers);
+
+			obj.timers = setInterval(function(){
+				var bStop = true;
+				for(var attr in json){
+
+					if(attr == 'opacity'){
+						var iCus = parseInt(parseFloat(getStyle(obj,attr))*100);
+					}else{
+						var iCus = parseInt(getStyle(obj,attr));
+					}
+					var iSpeed = (json[attr] - iCus)/8;
+					iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+
+					if(iCus != json[attr]){
+						bStop=false;
+					}
+					
+					if(attr == 'opacity'){
+						obj.style.opacity = (iCus+iSpeed)/100;
+						obj.style.filter = 'alpha(opacity:'+ (iCus+iSpeed) +')';
+					}else{
+						obj.style[attr] = iCus + iSpeed + 'px';
+					}
+				}
+
+				if(bStop){
+					clearInterval(obj.timers);
+					if(fn){
+						fn();
+					}
+				}
+					
+			},20);
+
+		}
+//////////////////
+
+function getElementsByClassName(Parent,cName){
+
+	var arr=[];
+	var i=0;
+	var num = Parent.getElementsByTagName('*');
+
+	for( i=0 ; i < num.length ; i++ ){
+
+		if( num[i].className == cName ){
+
+			arr.push( num[i] );
+
+		}
+
+
+	}
+
+	return arr;
+
+}
+	</script>
+</head>
+<body>
+	
+		<div id="big_div">
+			<div id="div1"><a href=""></a></div>
+			<ul id="ul1">
+				<li class="active_1"><a href="">首页</a>
+					<ul class="active">
+						<div>aaa</div>
+						<div>bbb</div>
+						<div>cccc</div>
+					</ul>
+				</li>
+				<li class="active_1"><a href="">留言</a>
+					<ul class="active">
+						<div>aaa</div>
+						<div>bbb</div>
+						<div>cccc</div>
+					</ul>
+				</li>
+				<li class="active_1"><a href="">公告</a>
+					<ul class="active">
+						<div>aaa</div>
+						<div>bbb</div>
+						<div>cccc</div>
+					</ul>
+				</li>
+				<li class="active_1"><a href="">联系我们</a>
+					<ul class="active">
+						<div>aaa</div>
+						<div>bbb</div>
+						<div>cccc</div>
+					</ul>
+				</li>
+				<li class="active_1"><a href="">论坛</a>
+					<ul class="active">
+						<div>aaa</div>
+						<div>bbb</div>
+						<div>cccc</div>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+	
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		body{background:black;}
+		div{
+			background:green;
+			font-size:100px;
+			text-align:center;
+			font-family:'微软雅黑';
+			position:absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var aBox = document.getElementsByTagName('div');
+			aBox[0].style.left = -document.documentElement.clientWidth + 'px';
+			aBox[2].style.left = document.documentElement.clientWidth + 'px';
+			for(var i=0;i<aBox.length;i++){
+
+				aBox[i].style.width = document.documentElement.clientWidth + 'px';
+				aBox[i].style.height = document.documentElement.clientHeight + 'px';
+				aBox[i].style.lineHeight = document.documentElement.clientHeight + 'px';
+
+					aBox[i].onmousedown = function(ev){
+
+					var startX = 0;
+					var endX = 0;
+						startX = ev.clientX;
+						var This = this;
+						this.onmouseup = function(ev){
+							endX = ev.clientX;
+							// document.title = '开始：'+startX + '| 结束：' + endX;
+
+							if(startX - endX > 0){
+								//alert(1);
+								//document.body.style.left = document.documentElement.clientWidth + 'px';
+								
+								for(var i=0;i<aBox.length;i++){
+									aBox[i].style.display = 'none';
+								}
+								aBox[2].style.left = 0;
+								aBox[2].style.display = 'block';
+							}
+							if(startX - endX < 0){
+								
+								for(var i=0;i<aBox.length;i++){
+									aBox[i].style.display = 'none';
+								}
+								aBox[0].style.left = 0;
+								aBox[0].style.display = 'block';
+								//document.body.style.left = -document.documentElement.clientWidth + 'px';
+							}
+
+						}
+				}
+
+
+			}
+
+			// document.body.style.width = 100+'px';
+
+
+			
+
+
+
+		}
+	</script>
+</head>
+<body>
+
+	<div onselectstart='return false'>我是左边的</div>
+	<div onselectstart='return false'>我是中间的</div>
+	<div onselectstart='return false'>我是右边的</div>
+	
+</body>
+</html>

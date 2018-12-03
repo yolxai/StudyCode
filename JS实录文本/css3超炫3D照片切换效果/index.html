@@ -1,0 +1,86 @@
+﻿<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title>CSS3照片切换</title>
+	<style type="text/css">
+		*{padding: 0;margin:0}
+		#box{margin:400px auto;width:800px;height:350px;-webkit-perspective:999999px;}
+		#box .ul {width:100%;height:87px;background: red;position:absolute;-webkit-transform-style:preserve-3d;-webkit-transition:3s;
+			-webkit-transform-origin:50% 50% 25px;}
+		#box .ul li{width:100%;height:100%;list-style:none;font:30px/40px "微软雅黑";position:absolute;}
+		#box .ul li:nth-of-type(1){top:-100px;left:0px;height:100px;width:100%;background:black;-webkit-transform-origin:bottom;-webkit-transform:rotateX(-90deg)}
+		#box .ul li:nth-of-type(2){top:0px;left:-100px;width:100px;height:100%;background:black;-webkit-transform-origin:right;-webkit-transform:rotateY(90deg)}
+		#box .ul li:nth-of-type(3){top:0px;left:0px;width:100%;height:100%;background:url(2.jpg) no-repeat;-webkit-transform:translateZ(-0px)}
+		#box .ul li:nth-of-type(4){top:0px;left:800px;height:100%;width:100px;background:black;-webkit-transform-origin:left;-webkit-transform:rotateY(-90deg)}
+		#box .ul li:nth-of-type(5){top:87px;left:0px;width:100%;height:100px;background:black;-webkit-transform-origin:top;-webkit-transform:rotateX(90deg)}
+		#box .ul li:nth-of-type(6){top:0px;left:0px;background:black;color:white;background:url(1.jpg) no-repeat;-webkit-transform:translateZ(100px)}
+
+		#btn{width:100px;height:100px;background:#CCC;border-radius:50%;position:absolute;top:750px;left:0;cursor:pointer;}
+	</style>
+	<script type="text/javascript">
+
+		function setCss3(obj,json){
+			
+			for(var i in json){
+
+				var index = i;
+
+				if(i.indexOf('-')>0){
+					i = i.replace(i.substr(i.indexOf('-'),2),i.substr(i.indexOf('-')+1,1).toUpperCase());
+				}
+
+				obj.style[i] = json[index];
+
+				i = i.replace(i.substr(0,1),i.substr(0,1).toUpperCase());				
+
+				obj.style['Moz'+i] = json[index];
+				obj.style['ms'+i] = json[index];
+				obj.style['o'+i] = json[index];
+				obj.style['webkit'+i] = json[index];
+
+			}
+		
+		}
+
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oBtn = document.getElementById('btn');
+			var str = '';
+			for(var i=0;i<4;i++){
+				str += '<ul class="ul" style="left:0px;top:'+(i*80)+'px"><li></li><li></li><li style="background-position:0 '+(-i*87)+'px"></li><li></li><li></li><li style="background-position:0 '+(-i*87)+'px"></li></ul>';
+			}
+
+			oBox.innerHTML = str;
+
+			var aUl = document.getElementsByTagName('ul');
+			var angle = 0;
+			var j = 0;
+			for(var i=0;i<aUl.length;i++){
+				setCss3(aUl[i],{'transition':'all 2s ease '+(j++)/10+'s'});
+			}
+
+			oBtn.onclick = function(){
+
+				angle += 180;
+
+				if(angle>180){
+					angle = 0;
+				}
+
+				for(var i=0;i<aUl.length;i++){
+					setCss3(aUl[i],{'transform':'rotateY('+angle+'deg)'});
+					
+				}
+
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+	</div>
+	<div id="btn"></div>
+</body>
+</html>

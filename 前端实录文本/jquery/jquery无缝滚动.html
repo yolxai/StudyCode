@@ -1,0 +1,52 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#box{width:800px;height:200px;border:10px solid #CCC;margin:100px auto;position:relative;overflow:hidden;}
+		#box #list{position:absolute;}
+		#box #list li{float:left;width:200px;height:200px;background:red;text-align:center;line-height:200px;font-size:20px;font-family:"微软雅黑"}
+	</style>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			$("#box #list").html($("#box #list").html()+$("#box #list").html());
+			$("#box #list").width($("#box #list li:eq(0)").width()*$("#box #list li").length);
+
+			var timer = null;
+
+			timer = setInterval(startMove,1);
+
+			function startMove(){
+				$("#box #list").css('left',$("#box #list").position().left -1);
+
+				if($("#box #list").position().left < ($("#box #list").width()/-2) ){
+					//console.log(parseInt($("#box #list").css('left')));
+					//console.log($("#box #list").width()/-2);
+					//$("#box #list").css('left','0');
+					//iNow=0;
+					//$("#box #list").stop();
+					//console.log('left:'+$("#box #list").position().left+';'+($("#box #list").width()/-2));
+					$("#box #list").css('left',0);
+				}
+
+					console.log('left:'+$("#box #list").position().left+';'+($("#box #list").width()/-2));
+				//console.log($("#box #list").width()/-2);
+			}
+
+		});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul id="list">
+			<li style="background:red;">1</li>
+			<li style="background:green;">2</li>
+			<li style="background:pink;">3</li>
+			<li style="background:purple;">4</li>
+		</ul>
+	</div>
+</body>
+</html>

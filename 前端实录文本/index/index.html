@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			setBrowerWH();
+		});
+
+		$(window).resize(function(){
+			setBrowerWH();
+
+			var clientWidth = $(window).width();
+			var clientHeight = $(window).height();
+
+			console.log(clientWidth + 'px × '+clientHeight+'px');
+		});
+
+		function setBrowerWH(){
+
+			var clientWidth = $(window).width();
+			var clientHeight = $(window).height();
+
+
+
+			$("div").css({'height':clientHeight,'width':clientWidth});
+
+			$("#header .index_img").css({'height':clientHeight,'width':clientWidth});
+
+			$("#header .index_font").css({'top':clientHeight/3,'left':clientWidth/2-$("#header .index_font").width()/2})
+
+
+		}
+	</script>
+	<style type="text/css">
+		
+		*{padding:0;margin:0;-webkit-user-select:none}
+
+		#header .index_img{-webkit-filter:blur(5px)}
+		#header .index_font{position:absolute;font:80px "微软雅黑";color:#FFF1FF;font-weight:500}
+
+	</style>
+</head>
+<body>
+	<div id="header">
+		<img src="./images/background.jpg" class="index_img">
+		<p class="index_font">Hello JavaScript!</p>
+	</div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

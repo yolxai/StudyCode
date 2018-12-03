@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTab = document.getElementById('tab1');
+			var data = [
+				{id:1,username:'lxai',sex:'man'},
+				{id:2,username:'lxai',sex:'man'},
+				{id:3,username:'lxai',sex:'man'},
+				{id:4,username:'lxai',sex:'man'}
+			];
+
+			for(var i=0;i<data.length;i++){
+
+				var oBody = oTab.tBodies[0];
+
+				var oTr = document.createElement('tr');
+
+				if( i % 2 == 0){
+					oTr.style.background = 'red';
+				}else{
+					oTr.style.background = 'green';
+				}
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = data[i].id;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = data[i].username;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = data[i].sex;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+
+				var oA = document.createElement('a');
+				oA.innerHTML = 'delete';
+				oA.href = 'javascript:;';
+				oA.onclick = function(){
+					oBody.removeChild(this.parentNode.parentNode);
+				}
+
+				oTd.appendChild(oA);
+				oTr.appendChild(oTd);
+
+				oBody.appendChild(oTr);
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<table id="tab1" border="1" width="50%">
+		<thead>
+			<th>id</th>
+			<th>username</th>
+			<th>sex</th>
+			<th>action</th>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+</body>
+</html>

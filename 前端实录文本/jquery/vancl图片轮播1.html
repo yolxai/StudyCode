@@ -1,0 +1,83 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#box{position:relative;margin:100px auto;width:500px;height:325px;}
+		#box img{width:500px;height:325px;position:absolute;display:none;opacity:0.3;filter:alpha(opacity:0.3)}
+		#box img.active{opacity:1;filter:alpha(opacity:1)}
+		#list{position:absolute;bottom:10px;right:10px;}
+		#list li{float:left;width:30px;height:30px;background:black;line-height:30px;text-align:center;font-weight:bold;margin-left:5px;color:white;opacity:0.5;filter:alpha(opacity:50)}
+		#list li.active{opacity:1;filter:alpha(opacity:100)}
+	</style>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var iNow = 0;
+			var timer = null;
+
+			function startMove(){
+					iNow++;
+					if(iNow == $("#box img").length){
+						iNow = 0;
+					}
+					$("#box img").animate({'opacity':0.3}).hide();
+					$("#box img").eq(iNow).animate({'opacity':1},500).addClass('active').show().removeClass('active');
+
+					$("#box #list li").removeClass('active');
+					$("#box #list li").eq(iNow).addClass('active');
+				}
+
+			//Jquery实现自动轮播
+			timer = setInterval(function(){
+				startMove();
+			},3000);
+			//Jquery实现自动轮播结束
+
+			//Jquery鼠标移入
+			$("#box #list li").mouseover(function(){
+				clearInterval(timer);
+				iNow = $(this).index();
+				$("#box #list li").removeClass('active');
+				$(this).addClass('active');
+
+				$("#box img").animate({'opacity':0.3}).hide();
+				$("#box img").eq(iNow).animate({'opacity':1},500).addClass('active').show()}).removeClass('active');
+			//Jquery鼠标移入结束
+
+
+			//Jquery鼠标移出
+			$("#box #list li").mouseout(function(){
+				timer = setInterval(function(){
+					startMove();
+				},3000);
+			});
+			//Jquery鼠标移出结束
+
+
+
+		});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<img src="vancl/1.jpg" class="active" style="display:block" alt="">
+		<img src="vancl/2.jpg" alt="">
+		<img src="vancl/3.jpg" alt="">
+		<img src="vancl/4.jpg" alt="">
+		<img src="vancl/5.jpg" alt="">
+		<img src="vancl/6.jpg" alt="">
+		<img src="vancl/7.jpg" alt="">
+		<ul id="list">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+		</ul>
+	</div>
+</body>
+</html>

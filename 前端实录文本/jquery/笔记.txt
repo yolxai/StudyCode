@@ -1,0 +1,41 @@
+first();
+last();
+eq();
+
+html();
+val();
+css();
+addClass();
+removeClass();
+attr();
+removeAttr();
+index();
+
+hover();
+mouseover();
+monseout();
+click();
+live();
+bind();
+unbind();
+toggle();
+one();
+
+show();/hide();/toggle(); 显示隐藏
+slideDown();/slideUp();/slideToggle();滑动
+fadeIn();/fadeOut();/fadeTo(0.5);/fadeToggle();淡入淡出
+animate();自定义动画
+stop();停止动画
+
+
+siblings();兄弟节点
+children();儿子节点
+parent();父亲节点
+
+append();插入到里面 后面
+prepend();插入到里面 前面
+appendTo();将...添加到appendTo中
+prependTo();
+
+after();插入到外面 后面
+before();插入到外面 前面

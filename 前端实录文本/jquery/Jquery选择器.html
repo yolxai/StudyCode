@@ -1,0 +1,130 @@
+<html>
+<head>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<title></title>
+	<script type="text/javascript">
+
+	//基本选择器
+
+		 $(function(){ 
+			// window.onload 
+		 });
+
+		 $(document).ready(function(){
+		 	// window.onload 
+		 });
+
+		 $(function(){
+		 	$("#list li.active").css('color','red');  //ID选择器 标签选择器 class选择器
+		 	$("#list li").css({'background':'red','color':'white','textAlign':'center'});
+		 	//document.getElementById('list').getElementsByTagName('li')[0-4].style.color='red';
+		 });
+
+	//层级选择器
+		 $(function(){
+		 	$("#list2 > span").css('color','red'); //儿子选择器(子元素选择器)
+		 });
+
+		 $(document).ready(function(){
+		 	$("#list2 ~ a").css('color','blue'); //兄弟选择器(同级元素选择器)
+		 });
+
+	//类似CSS3的基本选择器
+
+	     $(function(){
+	     	$("#list3 li:first").css('color','pink'); //第一个
+	     });
+
+	     $(document).ready(function(){
+	     	$("#list3 li:last").css('color','green'); //最后一个
+	     });
+
+	     $(function(){
+	     	$("#list4 li:lt(3)").css('background','blue'); //小于(3) 不包括3
+	     });
+
+	     $(document).ready(function(){
+	     	$("#list4 li:gt(5)").css('background','red'); //大于(5) 不包括5
+	     });
+
+	     $(document).ready(function(){
+	     	$("#list4 li:eq(4)").css({'background':'black','color':'white'}); //指定元素
+	     });
+
+	     $(function(){
+	     	$("#list5 li:even").css('background','red'); //偶数
+	     	$("#list5 li:odd").css('background','blue'); //奇数
+	     });
+
+	     $(function(){
+	     	$(":header").css('fontSize','12px'); //匹配h1/h2/h3/h4/h5/h6标签
+	     });
+
+
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li class="active"> 1 </li>
+		<li> 2 </li>
+		<li> 3 </li>
+		<li> 4 </li>
+		<li> 5 </li>
+	</ul>
+
+	<ul id="list2">
+		<li> 1 <span>我是孙子标签</span></li>
+		<li> 2 </li>
+		<li> 3 </li>
+		<span>我是儿子标签</span>
+		<li> 4 </li>
+		<li> 5<span>我是孙子标签</span> </li>
+		<span>我是儿子标签</span>
+	</ul>
+	<a>asd</a>
+
+	<ul id="list3">
+		<li> 1 </li>
+		<li> 2 </li>
+		<li> 3 </li>
+		<li> 4 </li>
+		<li> 5 </li>
+		<li> 6 </li>
+		<li> 7 </li>
+		<li> 8 </li>
+		<li> 9 </li>
+		<li> 10 </li>
+	</ul>
+
+
+	<ul id="list4">
+		<li> 1 </li>
+		<li> 2 </li>
+		<li> 3 </li>
+		<li> 4 </li>
+		<li> 5 </li>
+		<li> 6 </li>
+		<li> 7 </li>
+		<li> 8 </li>
+		<li> 9 </li>
+		<li> 10 </li>
+	</ul>
+
+	<ul id="list5">
+		<li> 1 </li>
+		<li> 2 </li>
+		<li> 3 </li>
+		<li> 4 </li>
+		<li> 5 </li>
+		<li> 6 </li>
+		<li> 7 </li>
+		<li> 8 </li>
+		<li> 9 </li>
+		<li> 10 </li>
+	</ul>
+
+	<h1>我是h1</h1>
+	<h2>我是h2</h2>
+	<h3>我是h3</h3>
+</body>
+</html>

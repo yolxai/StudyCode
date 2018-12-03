@@ -1,0 +1,67 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title></title>
+	<style type="text/css" >
+		*{
+			padding:0;
+			margin:0;
+			margin-left:20px;
+		}
+		#div1{
+			width:50px;
+			height:200px;
+			background:red;
+			margin-left:16px;
+			display:none;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+	
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+			var oBtn = document.getElementById('btn');
+			var num = 0;
+
+			oBtn.onclick = function(ev){
+
+				var oEvent = ev || event;
+
+				if( num == 0 ){
+					oDiv.style.display = 'block';
+					num = 1;
+				}else{
+					oDiv.style.display = 'none';
+					num = 0;
+				}
+
+				oEvent.cancelBubble=true;
+
+			}
+
+			oDiv.onclick = function(ev){
+				var oEvent = ev || event;
+
+				oEvent.cancelBubble=true;
+			}
+
+			document.onclick = function(){
+
+				oDiv.style.display = 'none';
+				num = 0;
+
+			}
+
+		}
+	
+	</script>
+
+</head>
+<body>
+	<input id="btn" type="button" value="view" >
+	<div id="div1"></div>
+</body>
+</html>

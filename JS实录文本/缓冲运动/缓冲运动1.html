@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title></title>
+	<style>
+		#div1{
+			width:200px;
+			height:200px;
+			background:red;
+			border:1px solid #ccc;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+			var timer = null;
+
+			oDiv.onclick = function(){
+
+				clearInterval(timer);
+
+				timer = setInterval(function(){
+
+					var iV = parseInt(getStyle(oDiv,'width')); //当前的属性值
+					var iTarget = 800;
+					var iSpeed = ( iTarget - iV )/8;
+
+					iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+
+					if( iV == iTarget ){
+
+						clearInterval(timer);
+
+					}else{
+
+						oDiv.style.width = iV + iSpeed + 'px';
+
+					}
+
+
+				},30);
+			}
+
+			function getStyle(obj,attr){
+
+				if( obj.currentStyle ){
+					return obj.currentStyle[attr];
+				}else{
+					return getComputedStyle(obj)[attr];
+				}
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

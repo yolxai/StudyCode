@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Canvas1</title>
+		<style type="text/css">
+			*{margin:0;padding:0}
+			body{background:black}
+			#canvas1{background:white;}
+			.error{color:white;font:50px/800px "微软雅黑";}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oCanvas = document.getElementById('canvas1');
+				var oHuabu = oCanvas.getContext('2d'); //创建画布
+				var oImg = document.getElementById('img1');
+
+				oHuabu.fillStyle = 'red';
+				oHuabu.fillRect(0,0,100,100);//创建填充矩形
+
+				oHuabu.strokeStyle = 'green';
+				oHuabu.strokeRect(100,100,100,100);//创建边框矩形
+
+				oHuabu.shadowColor = '#999'; //创建阴影
+				oHuabu.shadowOffsetX = 5;
+				oHuabu.shadowOffsetY = 5;
+				oHuabu.shadowBlur = 7;
+				oHuabu.fillStyle = '#CCC';
+				oHuabu.fillRect(200,200,100,100);
+
+				//创建线性渐变
+				var xianxingjianbian = oHuabu.createLinearGradient(300,300,400,400);
+				xianxingjianbian.addColorStop(0,'blue');
+				xianxingjianbian.addColorStop(1,'green');
+				oHuabu.fillStyle = xianxingjianbian;
+				oHuabu.fillRect(300,300,100,100);
+
+				/*//创建径向渐变
+				var jingxiangjianbian = oHuabu.createRadialGradient(450,450,10,460,460,40);
+				xianxingjianbian.addColorStop(0,'blue');
+				xianxingjianbian.addColorStop(1,'green');
+				oHuabu.fillStyle = jingxiangjianbian;
+				oHuabu.fillRect(400,400,100,100);*/
+
+				//导入图片
+				var img = oHuabu.createPattern(oImg,'repeat');
+				oHuabu.fillStyle = img;
+				oHuabu.fillRect(400,400,100,100);
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<canvas width=800 height=800 id="canvas1">
+			<span class="error">对不起!您的浏览器不支持CANVAS!</span>
+		</canvas>	
+		<img id="img1" src="img1.jpg" alt="">
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<html>
+<head>
+<title><?php echo $title; ?></title>
+<style type="text/css">
+	*{margin:0;padding:0}
+	#body{width:750px;height:351px;border:1px solid #CCC;margin:10px auto;position:relative;}
+	#img{height:350px;width:350px;background:red;float:left;}
+	#context{float:left;width:398px;}
+	#context .title{color:#666;line-height: 1.5em;font-weight:bold;font-size:16px;font:"microsoft yahei","宋体";padding-top:10px;}
+	#context .price {width:378px;background:#F7F7F7;padding:10px;margin-top:10px;font-family: "宋体";color:#666;font-size:13px;}
+	#context .price strong{color:#E4393C;font-size:18px;}
+	
+	#btn a{display:block;width:137px;height:38px;background:url(./img/p-btns.png) no-repeat 0 0 ;position:absolute;bottom:50px;right:250px;}
+</style>
+<script src="js/Ajax.js"></script>
+<script type="text/javascript">
+	window.onload  = function(){
+			var oBtn = document.getElementById('add');
+			
+			function getByClass(oParent,sName){
+				var oAll = document.getElementsByTagName('*');
+				var result = [];
+				for(var i=0;i<oAll.length;i++){
+					if(oAll[i].className == sName){
+						result.push(oAll[i]);
+					}
+				}
+				return result;
+			}
+			
+			
+			
+			
+			oBtn.onclick = function(){
+				
+				//alert(getByClass(document.getElementById('context'),'price')[0].innerHTML);
+				var price = getByClass(document.getElementById('context'),'price')[0].getElementsByTagName('strong')[0].innerHTML;
+				var title = getByClass(document.getElementById('context'),'title')[0].innerHTML;
+				var smImg = document.getElementById('smImg').innerHTML;
+				
+				var car = document.getElementById('show');
+				if(car){
+										var div = document.getElementById('show');
+										var num = div.getElementsByTagName('div').length;
+										
+										if(num < 1 ){
+											car.innerHTML =  '<tr class="car_price"><td><img class="img" width=50 height=50 src='+smImg+' /></td><td>'+title+'</td><td>'+price+'</td></tr>';
+										}else{
+											car.innerHTML +=  '<tr class="car_price"><td><img class="img"  width=50 height=50  src='+smImg+' /></td><td>'+title+'</td><td>'+price+'</td></tr>';
+										}
+				}
+				
+					$.post({
+							'url':'setcookie.php',
+							'data':{'title':title,'price':price,'smImg':smImg},
+							'sucssce':function(data){
+								alert('添加之购物车成功!');
+							}
+					});
+			}
+	}
+</script>
+</head>
+
+<body>
+	<div id="body">
+		<div id="img"><img src="<?php echo $img; ?>" alt="<?php echo $title; ?>"/></div>
+		<div id="context">
+			<p class="title"><?php echo $title;?></p>
+			<p class="price">京东价 : <strong>￥<?php echo $price;?>.00</strong> </p>
+		</div>
+		<div id="btn">
+			<a href="#" id="add"></a>
+		</div>
+	</div>
+	<strong id="smImg" style="display:none"><?php echo $smImg;?></strong>
+</body>
+</html>

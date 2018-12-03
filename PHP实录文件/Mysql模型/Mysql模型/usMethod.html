@@ -1,0 +1,108 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+	<title>小小小小的Mysql模型 使用文档 作者Lxai</title>
+	<style>
+		td{text-align:center;}
+	</style>
+</head>
+<body>
+	<h1>作者:(?) （此程序只是练习,注释很详细,） 用途:学习</h1>
+	
+	<table width=800>
+		<thead>
+			<th>函数名</th>
+			<th>返回值</th>
+			<th>描述</th>
+			<th>使用方法</th>
+		</thead>
+		<tbody>
+				<tr>
+					<td>query($string)</td>
+					<td>array</td>
+					<td>执行查询语句</td>
+					<td>$obj->query('SELECT * FROM study');</td>
+				</tr>
+				
+				<tr>
+					<td>exe($string)</td>
+					<td>int</td>
+					<td>执行增删改语句</td>
+					<td>$obj->exe('UPDATE study set name="admin"');</td>
+				</tr>
+				
+				<tr>
+					<td>find($ing)</td>
+					<td>array</td>
+					<td>执行主键搜索</td>
+					<td>$obj->find(1);(根据主键搜索,自动查找主键)</td>
+				</tr>
+				
+				<tr>
+					<td>where($string)</td>
+					<td>array</td>
+					<td>where语句</td>
+					<td>$obj->where('id=1')->select();(需要搭配select())</td>
+				</tr>
+				
+				<tr>
+					<td>limit($string|$int)</td>
+					<td>array</td>
+					<td>limit语句</td>
+					<td>$obj->limit(1)->select();(需要搭配select())</td>
+				</tr>
+				
+				<tr>
+					<td>order($string)</td>
+					<td>array</td>
+					<td>order by语句</td>
+					<td>$obj->order('id desc')->select();(需要搭配select());</td>
+				</tr>
+				
+				<tr>
+					<td>update($array,$where)</td>
+					<td>int</td>
+					<td>update语句</td>
+					<td>$obj->query(array("name"=>"admin"),"id=1");</td>
+				</tr>
+				
+				<tr>
+					<td>insert($array)</td>
+					<td>int</td>
+					<td>insert语句</td>
+					<td>$obj->query(array("name"=>"admin"));</td>
+				</tr>
+		</tbody>
+	</table>
+	<p style="font-weight:700;font-size:15px;font-family:微软雅黑;">
+		看到这里不要惊讶!因为俺不会写文档啊!
+		注意:<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(1):只是学习用的,注释很详细,肯定看得懂的啦!<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(2):方法中有用到$where的,都可以使用$obj->where('id=1')->update(array("user"=>"admin"))的方式!;<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(3):有什么问题或者意见就跟作者说,反正作者不会去改的(你不知道自己改吗?不要这么懒好吗?吗??);<br/>
+		    &nbsp;&nbsp;&nbsp;&nbsp;(4):代码用notepad打开的话格式可能会乱,因为是在Linux下开发的,格式和WINDOWS不同(?好像是的把??嘻嘻),尽量用你常用的代码编辑器打开咯!
+		    <br/>
+		    <br/>
+		    
+		    使用方法:<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顺便打包了一个functions.php,里面有个M()方法,用处就是实例化Model对象,所以你需要包含一个functions.php和Model.class.php以及config.inc.php<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[config.inc.php]里面是MYSQL的配置项<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[functions.php]是作者自己常用的一些小功能(完整的我自己用!@#)<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Model.class.php]当然就是主要的功能咯!<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Debug.class.php]如果需要调试就include一下这个文件,里面有个showSql()方法,执行方法时可以看到SQL语句,然而我并没有写CSS
+			
+			<pre style="font-size:15px;font-weight:700;color:green;">
+			<br/>
+			<br/>
+			<br/>
+			[code]<br/>
+				include "Model.class.php";<br/>
+				include "functions.php";<br/>
+				C(include "config.inc.php");[C方法是functions里面用于配置的函数]<br/>
+				$db = M("study");[M方法是functions里面用于实例化MYSQL模型的函数,M中的参数是值要操作的表]<br/>
+				$db->query('select * from xx');<br/>
+			[/code]
+			</pre>
+	</p>
+</body>
+</html>

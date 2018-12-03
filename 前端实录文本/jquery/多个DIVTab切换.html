@@ -1,0 +1,87 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		.box{width:600px;height:500px;border:5px solid purple;position:relative;}
+		.list li{list-style:none;float:left;width:180px;height:50px;background:red;margin:10px;}
+		.list li a{text-decoration:none;text-align:center;font-size:20px;line-height:50px;display:block;width:100%;height:100%;color:white}
+		.box div{display:none;font-size:50px;color:#FFF;width:580px;height:400px;background:red;position:absolute;top:70px;left:10px;}
+		div.box{float:left;}
+	</style>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var cur = 0;
+			$(".box .list li").click(function(){
+				cur = $(this).index();
+				$(this).parent('ul').siblings('div').hide();
+				$(this).parent('ul').siblings('div').eq(cur).show();
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul class="list">
+			<li><a href="javascript:void(0);">新闻</a></li>
+			<li><a href="javascript:void(0);">体育</a></li>
+			<li><a href="javascript:void(0);">咨询</a></li>
+		</ul>
+		<div style="display:block">新闻</div>
+		<div>体育</div>
+		<div>咨询</div>
+	</div>
+	<div class="box">
+		<ul class="list">
+			<li><a href="javascript:void(0);">新闻</a></li>
+			<li><a href="javascript:void(0);">体育</a></li>
+			<li><a href="javascript:void(0);">咨询</a></li>
+		</ul>
+		<div style="display:block">新闻</div>
+		<div>体育</div>
+		<div>咨询</div>
+	</div>
+	<div class="box">
+		<ul class="list">
+			<li><a href="javascript:void(0);">新闻</a></li>
+			<li><a href="javascript:void(0);">体育</a></li>
+			<li><a href="javascript:void(0);">咨询</a></li>
+		</ul>
+		<div style="display:block">新闻</div>
+		<div>体育</div>
+		<div>咨询</div>
+	</div>
+	<div class="box">
+		<ul class="list">
+			<li><a href="javascript:void(0);">新闻</a></li>
+			<li><a href="javascript:void(0);">体育</a></li>
+			<li><a href="javascript:void(0);">咨询</a></li>
+		</ul>
+		<div style="display:block">新闻</div>
+		<div>体育</div>
+		<div>咨询</div>
+	</div>
+	<div class="box">
+		<ul class="list">
+			<li><a href="javascript:void(0);">新闻</a></li>
+			<li><a href="javascript:void(0);">体育</a></li>
+			<li><a href="javascript:void(0);">咨询</a></li>
+		</ul>
+		<div style="display:block">新闻</div>
+		<div>体育</div>
+		<div>咨询</div>
+	</div>
+	<div class="box">
+		<ul class="list">
+			<li><a href="javascript:void(0);">新闻</a></li>
+			<li><a href="javascript:void(0);">体育</a></li>
+			<li><a href="javascript:void(0);">咨询</a></li>
+		</ul>
+		<div style="display:block">新闻</div>
+		<div>体育</div>
+		<div>咨询</div>
+	</div>
+</body>
+</html>

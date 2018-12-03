@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+
+		var arr = ['北京','广西','广东','山西','新疆','黑龙江','广西','广东','新疆'];
+		var newArr = [];
+		
+		alert(ridArr(arr));
+
+		function ridArr(arr){
+
+			var newJson = {};
+
+			for(var i=0;i<arr.length;i++){
+
+				if( newJson[arr[i]] === undefined ){
+
+					newJson[arr[i]] = 1;
+					newArr.push(arr[i]);
+
+				}
+
+			}
+
+			return newArr;
+
+		}
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>画布</title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oCanvas = document.getElementById('canvas1');
+			var oHuabu = oCanvas.getContext('2d');
+
+			oCanvas.onmousedown = function(e){
+				oHuabu.moveTo(e.clientX,e.clientY);
+
+				oCanvas.onmousemove = function(e){
+
+					oHuabu.lineTo(e.clientX,e.clientY);
+					oHuabu.stroke();
+					// console.log(e.clientX+':'+e.clientY);
+				}
+				oCanvas.onmouseup = function(){
+					oCanvas.onmouseup=null;
+					oCanvas.onmousemove=null;
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<canvas width=1000 height=1000 id="canvas1" style="background:#CCC">
+		
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,1164 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	padding:0;
+	margin:0;
+	font-size:12px;
+}
+a{
+	text-decoration:none;
+	color:#333;
+}
+li{
+	list-style: none;
+}
+input{
+	border:none;
+}
+img{
+	border:none;
+}
+
+
+
+
+#box_top{
+	width:100%;
+	height:33px;
+	background:url(../image/box_top_bg.gif);
+	margin:0 auto;
+}
+#box_top #box_top_content {
+	width:1200px;
+	height:31px;
+	margin:0 auto;
+	/*background:red;*/
+/*	border-left:1px solid blue;
+	border-right:1px solid blue;*/
+}
+#box_top #box_top_content .box_top_left{
+	height:31px;
+	line-height:31px;
+	float:left;
+}
+#box_top #box_top_content .box_top_left .login_reg , .hello{
+	float:left;
+}
+#box_top #box_top_content .box_top_left .login_reg a , .login_reg{
+	color:#A10000;
+}
+#box_top #box_top_content .box_top_left .font{
+	float:left;
+	margin-left:10px;
+}
+#box_top #box_top_content .box_top_left .font:hover{
+	color:#A10000;
+}
+#box_top #box_top_content .box_top_right{
+	float:right;
+	height:31px;
+}
+#box_top #box_top_content .box_top_right li{
+	float:left;
+	line-height:31px;
+	padding-left:10px;	
+}
+#box_top #box_top_content .box_top_right .right_font a{
+	width:68px;
+	height:31px;
+	/*background: red;*/
+	display:block;
+	background:url(../image/vancl.png) no-repeat 52px 13px;
+}
+#box_top #box_top_content .box_top_right .right_font a:hover{
+	color:#A10000;
+}
+#box_top #box_top_content .box_top_right .shoujifanke{
+	width:56px;
+	height:31px;
+	background:url(../image/vancl.png) no-repeat 0px -77px;
+}
+#box_top #box_top_content .box_top_right .weibo{
+	width:17px;
+	height:31px;
+	background:url(../image/vancl.png) no-repeat -42px -115px;
+}
+#box_top #box_top_content .box_top_right .weixin{
+	width:16px;
+	height:31px;
+	background:url(../image/vancl.png) no-repeat -65px -114px;
+}
+
+
+
+
+
+
+
+#logo_search {
+	width:1200px;
+	height:108px;
+	/*background:red;*/
+	
+	margin:0 auto;
+	position: relative;
+}
+#logo_search #logo{
+	display:block;
+	width:347px;
+	height:96px;
+	line-height:96px;
+	background:url(../image/vancl.png) no-repeat 0px -148px;
+}
+#logo_search #search li{
+	float:left;
+	width:58px;
+	height:21px;
+	text-align: center;
+	line-height:21px;
+
+}
+#logo_search #search li.fankechengpin{
+	color:white;
+	background:url(../image/vancl.png) no-repeat -252px -502px;
+	position:absolute;
+	top:18px;
+	left:427px;
+}
+#logo_search #search li.vshangcheng{
+	position:absolute;
+	top:18px;
+	left:485px;
+	color:#C0C0C0;
+}
+#logo_search .Myform .window{
+	width:513px;
+	height:29px;
+	border:1px solid #E0E0E0;
+	position:absolute;
+	border-right:none;
+	top:39px;
+	left:427px;
+	background:#F5F5F5;
+	color:#999999;
+	text-indent:5px;
+	line-height:29px;
+}
+#logo_search .Myform .sousuo{
+	width:41px;
+	height:29px;
+	background:url(../image/vancl.png) no-repeat -0px -272px;
+	position:absolute;
+	top:39px;
+	left:940px;
+	cursor:pointer;
+}
+#logo_search .gouwuche{
+	display:block;
+	width:157px;
+	height:35px;
+	background:url(../image/vancl.png) no-repeat -244px -581px;
+	position:absolute;
+	top:33px;
+	left:1043px;
+	color:#333333;
+}
+#logo_search .gouwuche .gouwuche_font{
+	position:absolute;
+	top:10px;
+	left:44px;
+	background:red;	
+	width:97px;
+	height:12px;
+	background:url(../image/vancl.png) no-repeat 94px -497px;
+}
+#logo_search .gouwuche .gouwu_count{
+	font-weight:bold;
+	color:#A10000;
+}
+
+
+
+
+
+
+#menu{
+	width:1200px;
+	height:36px;
+	background:#B60005;
+	margin:0 auto;
+}
+#menu .frist{
+	width:226px;
+	height:36px;
+	display:block;
+	color:white;
+	font-size:16px;
+	line-height:36px;
+	text-align:center;
+	font-weight:bold;
+	float:left;
+	font-family:微软雅黑;
+}
+
+#menu .frist:hover{
+	text-decoration:underline;
+}
+
+#menu .menu_center li{
+	float:left;
+	height:34px;
+	line-height:34px;
+}
+#menu .menu_center li a{
+	color:#FFFFFF;
+	display:block;
+	height:36px;
+	text-align:center;
+	padding-left:16px;
+	padding-right:16px;
+	float:left;
+	font-size:13px;
+}
+#menu .menu_center li .index{
+	background:#7B0000;
+	height:36px;
+}
+#menu .menu_center li a:hover{
+	background:#7B0000;
+}
+
+
+#menu .menu_right{
+	float:right;
+}
+#menu .menu_right li{
+	float:left;
+}
+#menu .menu_right li a{
+	float:left;
+	display:block;
+	height:36px;
+	line-height:36px;
+	padding-left:5px;
+	padding-right:5px;
+	color:white;
+	font-size:13px;
+}
+#menu .menu_right li a.last{
+	padding-right:25px;
+	height:36px;
+	position:relative;
+}
+#menu .menu_right .ico{
+	width:7px;
+	height:4px;
+	display:block;
+	background:url(../image/vancl.png) no-repeat -159px -122px;
+	float:left;
+	position: absolute;
+	top:16px;
+	left:50px;
+}
+#menu .menu_right li a:hover{
+	text-decoration:underline;
+}
+
+
+
+
+#left_class{
+	width:1200px;
+	height:490px;
+	margin:0 auto;
+}
+#left_class #fenlei{
+	width:226px;
+	margin-top: 10px;
+	border:1px solid #CCCFC4;
+	float:left;
+	background:white;
+}
+#left_class #fenlei li{
+	width:190px;
+	height: 60px;
+	margin:0 auto;
+	border-bottom:1px solid #C9C9C9;
+	position:relative;
+}
+#left_class #fenlei li div{
+	width:20px;
+	height:15px;
+	position:absolute;
+	top:15px;
+	float:left;
+}
+#left_class #fenlei li div .title{
+	position:absolute;
+	top:0px;
+	left:18px;
+	float:left;
+	width:90px;
+	height:12px;
+	font-weight:bold;
+	color:#333;
+	font-family:"微软雅黑";
+}
+#left_class #fenlei li p{
+	position:absolute;
+	top:35px;
+	left:0px;
+	float:left;
+}
+#left_class #fenlei li p a{
+	color:#666;
+	font-family:"Simsun";
+}
+#left_class #fenlei li.last{
+	border-bottom:none;
+}
+
+
+#left_class #fenlei li .ico_nvzhuang{
+	background:url(../image/ico.png) no-repeat -8px -6px;
+}
+#left_class #fenlei li .ico_nanzhuang{
+	background:url(../image/ico.png) no-repeat -38px -6px;
+}
+#left_class #fenlei li .ico_nanxie{
+	background:url(../image/ico.png) no-repeat -125px -6px;
+}
+#left_class #fenlei li .ico_huwai{
+	background:url(../image/ico.png) no-repeat -235px -6px;
+}
+#left_class #fenlei li .ico_neiyi{
+	background:url(../image/ico.png) no-repeat -93px -6px;
+}
+#left_class #fenlei li .ico_tongzhuang{
+	background:url(../image/ico.png) no-repeat -61px -6px;
+}
+#left_class #fenlei li .ico_xiangbao{
+	background:url(../image/ico.png) no-repeat -207px -6px;
+}
+#left_class #fenlei li .ico_jiaju{
+	background:url(../image/ico.png) no-repeat -267px -6px;
+}
+#left_class #zhanshi {
+	width:969px;
+	height:490px;
+	background:white;
+	float:left;
+	margin-top:10px;
+	margin-left:3px;
+}
+
+
+#vancl_class {
+	width:1200px;
+	height:340px;
+	margin:0 auto;
+	margin-top:20px;
+}
+
+#vancl_class img{
+	float:left;
+	margin-right:9px;
+}
+#vancl_class img.five{
+	margin:0;
+}
+
+
+
+#big_class{
+	width:1200px;
+	height:1800px;
+	margin:0 auto;
+	margin-top:24px;
+}
+/*女装开始*/
+#big_class .nvzhuang_box{
+	height:378px;
+	width:1200px;
+	/*background:red;*/
+}
+#big_class .nvzhuang_box .first_line {
+	width:1200px;
+	height:26px;
+	border:1px solid #CACACA;
+	position:relative;
+	background:#F5F5F5;
+}
+#big_class .nvzhuang_box .first_line .nvzhuang_wenzi{
+	width:215px;
+	height:26px;
+	display:block;
+	background:url(../image/vancl_big_class.png) no-repeat;
+	float:left;
+}
+#big_class .nvzhuang_box .first_line .nvzhuang_more{
+	width:11px;
+	height:26px;
+	float:right;
+	background:url(../image/vancl_big_class.png) no-repeat -1px -288px;
+	display:block;
+	position:absolute;
+	top:6px;
+	right:11px;
+}
+#big_class .nvzhuang_box .first_line .nvzhuang_more:hover{
+	background:url(../image/vancl_big_class.png) no-repeat -34px -288px; 
+}
+#big_class .nvzhuang_box .ul_tuijian{
+	width:216px;
+	height:340px;
+	float:left;
+	margin-top:10px;
+	margin-right:6px;
+}
+#big_class .nvzhuang_box .ul_tuijian li{
+	width:216px;
+	float:left;
+	background:#F2F2F2;
+	margin-bottom:2px;
+	position:relative;
+}
+
+#big_class .nvzhuang_box .ul_tuijian li.bashiwu{
+	height:85px;
+}
+#big_class .nvzhuang_box .ul_tuijian li.qishi{
+	height:70px;
+}
+#big_class .nvzhuang_box .ul_tuijian li.last{
+	height:22px;
+}
+
+#big_class .nvzhuang_box .ul_tuijian li.last a{
+	display:block;
+	width:216px;
+	height:22px;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -144px;
+}
+
+#big_class .nvzhuang_box .ul_tuijian li .tuijian_wenzi{
+	color:#D7060E;
+	font-size:14px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+	position:absolute;
+	top:14px;
+	left:10px;
+	float: left;
+}
+#big_class .nvzhuang_box .ul_tuijian li .xiangxi_wenzi a{
+	float:left;
+	padding-right:8px;
+	color:#211A19;
+	line-height: 20px;
+}
+#big_class .nvzhuang_box .ul_tuijian li .xiangxi_wenzi a:hover{
+	color:#A10000;
+}
+#big_class .nvzhuang_box .ul_tuijian li .xiangxi_wenzi{
+	position:absolute;
+	top:38px;
+	left:10px;
+}
+#big_class .nvzhuang_box a.a_img{
+	float:left;
+	width:187px;
+	height:340px;
+	background:white;
+	margin-right:10px;
+	margin-top:10px;
+}
+/* 女装结束 */
+
+
+/* 男装开始 */
+#big_class .nanzhuang_box{
+	height:378px;
+	width:1200px;
+	margin-top:25px;
+	/*background:red;*/
+}
+#big_class .nanzhuang_box .first_line {
+	width:1200px;
+	height:26px;
+	border:1px solid #CACACA;
+	position:relative;
+	background:#F5F5F5;
+}
+#big_class .nanzhuang_box .first_line .nanzhuang_wenzi{
+	width:215px;
+	height:26px;
+	display:block;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -27px; /* 男装 */
+	float:left;
+}
+#big_class .nanzhuang_box .first_line .nanzhuang_more{
+	width:11px;
+	height:26px;
+	float:right;
+	background:url(../image/vancl_big_class.png) no-repeat -1px -288px; 
+	display:block;
+	position:absolute;
+	top:6px;
+	right:11px;
+}
+#big_class .nanzhuang_box .first_line .nanzhuang_more:hover{
+	background:url(../image/vancl_big_class.png) no-repeat -34px -288px; 
+}
+#big_class .nanzhuang_box .ul_tuijian{
+	width:216px;
+	height:340px;
+	float:left;
+	margin-top:10px;
+	margin-right:6px;
+}
+#big_class .nanzhuang_box .ul_tuijian li{
+	width:216px;
+	float:left;
+	background:#F2F2F2;
+	margin-bottom:2px;
+	position:relative;
+}
+
+#big_class .nanzhuang_box .ul_tuijian li.bashiwu{
+	height:85px;
+}
+#big_class .nanzhuang_box .ul_tuijian li.qishi{
+	height:70px;
+}
+#big_class .nanzhuang_box .ul_tuijian li.last{
+	height:22px;
+}
+
+#big_class .nanzhuang_box .ul_tuijian li.last a{
+	display:block;
+	width:216px;
+	height:22px;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -168px; /* 男装频道 */
+}
+
+#big_class .nanzhuang_box .ul_tuijian li .tuijian_wenzi{
+	color:#D7060E;
+	font-size:14px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+	position:absolute;
+	top:14px;
+	left:10px;
+	float: left;
+}
+#big_class .nanzhuang_box .ul_tuijian li .xiangxi_wenzi a{
+	float:left;
+	padding-right:8px;
+	color:#211A19;
+	line-height: 20px;
+}
+#big_class .nanzhuang_box .ul_tuijian li .xiangxi_wenzi a:hover{
+	color:#A10000;
+}
+#big_class .nanzhuang_box .ul_tuijian li .xiangxi_wenzi{
+	position:absolute;
+	top:38px;
+	left:10px;
+}
+#big_class .nanzhuang_box a.a_img{
+	float:left;
+	width:187px;
+	height:340px;
+	background:white;
+	margin-right:10px;
+	margin-top:10px;
+
+}
+/* 男装结束 */
+
+
+/* 鞋开始 */
+#big_class .xie_box{
+	height:378px;
+	width:1200px;
+	margin-top:25px;
+	/*background:red;*/
+}
+#big_class .xie_box .first_line {
+	width:1200px;
+	height:26px;
+	border:1px solid #CACACA;
+	position:relative;
+	background:#F5F5F5;
+}
+#big_class .xie_box .first_line .xie_wenzi{
+	width:215px;
+	height:26px;
+	display:block;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -54px; /* 鞋 */
+	float:left;
+}
+#big_class .xie_box .first_line .xie_more{
+	width:11px;
+	height:26px;
+	float:right;
+	background:url(../image/vancl_big_class.png) no-repeat -1px -288px; 
+	display:block;
+	position:absolute;
+	top:6px;
+	right:11px;
+}
+#big_class .xie_box .first_line .xie_more:hover{
+	background:url(../image/vancl_big_class.png) no-repeat -34px -288px; 
+}
+#big_class .xie_box .ul_tuijian{
+	width:216px;
+	height:340px;
+	float:left;
+	margin-top:10px;
+	margin-right:6px;
+}
+#big_class .xie_box .ul_tuijian li{
+	width:216px;
+	float:left;
+	background:#F2F2F2;
+	margin-bottom:2px;
+	position:relative;
+}
+
+#big_class .xie_box .ul_tuijian li.bashiwu{
+	height:85px;
+}
+#big_class .xie_box .ul_tuijian li.qishi{
+	height:70px;
+}
+#big_class .xie_box .ul_tuijian li.last{
+	height:22px;
+}
+
+#big_class .xie_box .ul_tuijian li.last a{
+	display:block;
+	width:216px;
+	height:22px;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -192px; /* 鞋频道 */
+}
+
+#big_class .xie_box .ul_tuijian li .tuijian_wenzi{
+	color:#D7060E;
+	font-size:14px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+	position:absolute;
+	top:14px;
+	left:10px;
+	float: left;
+}
+#big_class .xie_box .ul_tuijian li .xiangxi_wenzi a{
+	float:left;
+	padding-right:8px;
+	color:#211A19;
+	line-height: 20px;
+}
+#big_class .xie_box .ul_tuijian li .xiangxi_wenzi a:hover{
+	color:#A10000;
+}
+#big_class .xie_box .ul_tuijian li .xiangxi_wenzi{
+	position:absolute;
+	top:38px;
+	left:10px;
+}
+#big_class .xie_box .pTable{
+	width:788px;
+	height:340px;
+	float:left;
+}
+#big_class .xie_box .pTable a.a_img{
+	width:187px;
+	height:166px;
+	display:block;
+	background:white;
+	float:left;
+	margin-right:10px;
+	margin-top:10px;
+}
+#big_class .xie_box a.a_img_big{
+	width:187px;
+	height:341px;
+	background:white;
+	display:block;
+	float:left;
+	margin-top: 10px;
+}
+/* 鞋结束 */
+
+
+/* 童装开始 */
+
+#big_class .tongzhuang_box{
+	height:378px;
+	width:1200px;
+	margin-top:25px;
+	/*background:red;*/
+}
+#big_class .tongzhuang_box .first_line {
+	width:1200px;
+	height:26px;
+	border:1px solid #CACACA;
+	position:relative;
+	background:#F5F5F5;
+}
+#big_class .tongzhuang_box .first_line .tongzhuang_wenzi{
+	width:215px;
+	height:26px;
+	display:block;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -81px; /* 鞋 */
+	float:left;
+}
+#big_class .tongzhuang_box .first_line .tongzhuang_more{
+	width:11px;
+	height:26px;
+	float:right;
+	background:url(../image/vancl_big_class.png) no-repeat -1px -288px; 
+	display:block;
+	position:absolute;
+	top:6px;
+	right:11px;
+}
+#big_class .tongzhuang_box .first_line .tongzhuang_more:hover{
+	background:url(../image/vancl_big_class.png) no-repeat -34px -288px; 
+}
+#big_class .tongzhuang_box .ul_tuijian{
+	width:216px;
+	height:340px;
+	float:left;
+	margin-top:10px;
+	margin-right:6px;
+}
+#big_class .tongzhuang_box .ul_tuijian li{
+	width:216px;
+	float:left;
+	background:#F2F2F2;
+	margin-bottom:2px;
+	position:relative;
+}
+
+#big_class .tongzhuang_box .ul_tuijian li.bashiwu{
+	height:85px;
+}
+#big_class .tongzhuang_box .ul_tuijian li.qishi{
+	height:70px;
+}
+#big_class .tongzhuang_box .ul_tuijian li.last{
+	height:22px;
+}
+
+#big_class .tongzhuang_box .ul_tuijian li.last a{
+	display:block;
+	width:216px;
+	height:22px;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -216px; /* 鞋频道 */
+}
+
+#big_class .tongzhuang_box .ul_tuijian li .tuijian_wenzi{
+	color:#D7060E;
+	font-size:14px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+	position:absolute;
+	top:14px;
+	left:10px;
+	float: left;
+}
+#big_class .tongzhuang_box .ul_tuijian li .xiangxi_wenzi a{
+	float:left;
+	padding-right:8px;
+	color:#211A19;
+	line-height: 20px;
+}
+#big_class .tongzhuang_box .ul_tuijian li .xiangxi_wenzi a:hover{
+	color:#A10000;
+}
+#big_class .tongzhuang_box .ul_tuijian li .xiangxi_wenzi{
+	position:absolute;
+	top:38px;
+	left:10px;
+}
+#big_class .tongzhuang_box a.a_img{
+	float:left;
+	width:187px;
+	height:340px;
+	background:white;
+	margin-right:10px;
+	margin-top:10px;
+
+}
+
+/* 童装结束 */
+
+
+
+
+/* 运动开始 */
+
+#big_class .yundong_box{
+	height:378px;
+	width:1200px;
+	margin-top:25px;
+	/*background:red;*/
+}
+#big_class .yundong_box .first_line {
+	width:1200px;
+	height:26px;
+	border:1px solid #CACACA;
+	position:relative;
+	background:#F5F5F5;
+}
+#big_class .yundong_box .first_line .yundong_wenzi{
+	width:215px;
+	height:26px;
+	display:block;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -108px; /* 鞋 */
+	float:left;
+}
+#big_class .yundong_box .first_line .yundong_more{
+	width:11px;
+	height:26px;
+	float:right;
+	background:url(../image/vancl_big_class.png) no-repeat -1px -288px; 
+	display:block;
+	position:absolute;
+	top:6px;
+	right:11px;
+}
+#big_class .yundong_box .first_line .yundong_more:hover{
+	background:url(../image/vancl_big_class.png) no-repeat -34px -288px; 
+}
+
+#big_class .yundong_box .ul_tuijian{
+	width:216px;
+	height:340px;
+	float:left;
+	margin-top:10px;
+	margin-right:6px;
+}
+#big_class .yundong_box .ul_tuijian li{
+	width:216px;
+	float:left;
+	background:#F2F2F2;
+	margin-bottom:2px;
+	position:relative;
+}
+
+#big_class .yundong_box .ul_tuijian li.bashiwu{
+	height:85px;
+}
+#big_class .yundong_box .ul_tuijian li.qishi{
+	height:70px;
+}
+#big_class .yundong_box .ul_tuijian li.last{
+	height:22px;
+}
+
+#big_class .yundong_box .ul_tuijian li.last a{
+	display:block;
+	width:216px;
+	height:22px;
+	background:url(../image/vancl_big_class.png) no-repeat 0 -239px; /* 鞋频道 */
+}
+
+#big_class .yundong_box .ul_tuijian li .tuijian_wenzi{
+	color:#D7060E;
+	font-size:14px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+	position:absolute;
+	top:14px;
+	left:10px;
+	float: left;
+}
+#big_class .yundong_box .ul_tuijian li .xiangxi_wenzi a{
+	float:left;
+	padding-right:8px;
+	color:#211A19;
+	line-height: 20px;
+}
+#big_class .yundong_box .ul_tuijian li .xiangxi_wenzi a:hover{
+	color:#A10000;
+}
+#big_class .yundong_box .ul_tuijian li .xiangxi_wenzi{
+	position:absolute;
+	top:38px;
+	left:10px;
+}
+#big_class .yundong_box a.a_img{
+	float:left;
+	width:187px;
+	height:340px;
+	background:white;
+	margin-right:10px;
+	margin-top:10px;
+
+}
+/* 运动结束 */
+
+
+
+#iphone_box{
+	width:1200px;
+	height:50px;
+	margin:0 auto;
+	margin-top:221px;
+}
+
+
+/*列表1*/
+#bottom_box{
+	width:1200px;
+	height:195px;
+	border:1px solid #DDDDDD;
+	margin:0 auto;
+	margin-top:10px;
+}
+#bottom_box #bottom_box_top{
+	width:1200px;
+	height:134px;
+	position:relative;
+}
+#bottom_box #bottom_box_top .liebiao{
+	width:117px;
+	position:absolute;
+	top:16px;
+	left:52px;
+}
+#bottom_box #bottom_box_top .liebiao span{
+	font-weight:bold;
+	color:#333;
+	line-height:20px;
+	border-left:3px solid #A10000;
+	padding-left:4px;
+}
+#bottom_box #bottom_box_top .liebiao .content a{
+	padding-left:6px;
+	line-height:18px;
+	color:#666666;
+}
+/*列表1结束*/
+
+/*列表2*/
+
+#bottom_box #bottom_box_top .liebiao2{
+	width:117px;
+	position:absolute;
+	top:16px;
+	left:188px;
+}
+#bottom_box #bottom_box_top .liebiao2 span{
+	font-weight:bold;
+	color:#333;
+	line-height:20px;
+	border-left:3px solid #A10000;
+	padding-left:4px;
+}
+#bottom_box #bottom_box_top .liebiao2 .content a{
+	padding-left:6px;
+	line-height:18px;
+	color:#666666;
+}
+/*列表2结束*/
+
+/*列表3*/
+
+#bottom_box #bottom_box_top .liebiao3{
+	width:117px;
+	position:absolute;
+	top:16px;
+	left:333px;
+}
+#bottom_box #bottom_box_top .liebiao3 span{
+	font-weight:bold;
+	color:#333;
+	line-height:20px;
+	border-left:3px solid #A10000;
+	padding-left:4px;
+}
+#bottom_box #bottom_box_top .liebiao3 .content a{
+	padding-left:6px;
+	line-height:18px;
+	color:#666666;
+}
+/*列表3结束*/
+
+/*列表4*/
+
+#bottom_box #bottom_box_top .liebiao4{
+	width:117px;
+	position:absolute;
+	top:16px;
+	left:497px;
+}
+#bottom_box #bottom_box_top .liebiao4 span{
+	font-weight:bold;
+	color:#333;
+	line-height:20px;
+	border-left:3px solid #A10000;
+	padding-left:4px;
+}
+#bottom_box #bottom_box_top .liebiao4 .content a{
+	padding-left:6px;
+	line-height:18px;
+	color:#666666;
+}
+/*列表4结束*/
+
+/*列表5*/
+
+#bottom_box #bottom_box_top .liebiao5{
+	width:117px;
+	position:absolute;
+	top:16px;
+	left:667px;
+}
+#bottom_box #bottom_box_top .liebiao5 span{
+	font-weight:bold;
+	color:#333;
+	line-height:20px;
+	border-left:3px solid #A10000;
+	padding-left:4px;
+}
+#bottom_box #bottom_box_top .liebiao5 .content a{
+	padding-left:6px;
+	line-height:18px;
+	color:#666666;
+}
+/*列表5结束*/
+
+/*列表6*/
+
+#bottom_box #bottom_box_top .liebiao6{
+	width:117px;
+	position:absolute;
+	top:16px;
+	left:815px;
+}
+#bottom_box #bottom_box_top .liebiao6 span{
+	font-weight:bold;
+	color:#333;
+	line-height:20px;
+	border-left:3px solid #A10000;
+	padding-left:4px;
+}
+#bottom_box #bottom_box_top .liebiao6 .content a{
+	padding-left:6px;
+	line-height:18px;
+	color:#666666;
+}
+/*列表6结束*/
+
+
+/*二维码*/
+#bottom_box #bottom_box_top .erweima{
+	width:166;
+	height:90;
+	position:absolute;
+	top:15px;
+	right:87px;
+	border-left:1px solid #A10000;
+	background:url(../image/erweima.png) no-repeat right 0px;
+}
+
+#bottom_box #bottom_box_top .erweima_span{
+	position:absolute;
+	top:100px;
+	right:88px;
+	color:#333;
+	line-height:18px;
+}
+/*二维码结束*/
+
+
+
+
+#bottom_box #bottom_box_bottom{
+	width: 1200px;
+	height:60px;
+}
+
+#bottom_box #bottom_box_bottom div{
+	width:287px;
+	height:49px;
+	background:#F8F8F8;
+	float:left;
+	margin-left:10px;
+	margin-top:5px;
+}
+#bottom_box #bottom_box_bottom div span a{
+	width:124px;
+	height:28px;
+	float:left;
+	margin-left:62px;
+	margin-top:10px;
+	display:block;
+}
+
+#bottom_box #bottom_box_bottom div.one span a{
+	background:url(../image/vancl.png) no-repeat 0 -724px;
+}
+#bottom_box #bottom_box_bottom div.two span a{
+	background:url(../image/vancl.png) no-repeat 0 -756px;
+}
+#bottom_box #bottom_box_bottom div.three span a{
+	background:url(../image/vancl.png) no-repeat -204px -724px;
+}
+#bottom_box #bottom_box_bottom div.four span a{
+	background:url(../image/vancl.png) no-repeat -204px -756px;
+}
+
+
+#shengming{
+	width:1200px;
+	display:block;
+	margin:0 auto;
+	text-align:center;
+	color:#999999;
+	margin-top:15px;
+}
+#bottom{
+	width:1200px;
+	height:45px;
+	background:white;
+	margin:22px auto;
+	position:relative;
+}
+#bottom .chengxin a{
+	width:112px;
+	height:40px;
+	background:url(../image/vancl.png) no-repeat 0 -582px;
+	position:absolute;
+	top:6px;
+	left:337px;
+}
+#bottom .fuzhuang a{
+	width:156px;
+	height:45px;
+	background:url(../image/vancl.png) no-repeat 0 -629px;
+	position:absolute;
+	top:0px;
+	left:470px;
+}
+#bottom .jiaoyi a{
+	width:96px;
+	height:42px;
+	background:url(../image/vancl.png) no-repeat 0 -675px;
+	position:absolute;
+	top:0px;
+	left:647px;
+}
+#bottom .jingying a{
+	width:101px;
+	height:42px;
+	background:url(../image/vancl.png) no-repeat -97 -675px;
+	position:absolute;
+	top:0px;
+	left:762px;
+}

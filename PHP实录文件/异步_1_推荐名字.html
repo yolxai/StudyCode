@@ -1,0 +1,44 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8"/>
+	<title>大师为你推荐名字(english)</title>
+	<script type="text/javascript">
+		window.onload = function(){
+				var oText = document.getElementById('text');
+				
+				timer = setInterval(function(){
+						oText.onkeypress = function(){
+								
+								var sValue =  document.getElementById('text').value;
+								
+								function getAjax(){
+										if ( window.XMLHttpRequest ){
+											return new XMLHttpRequest(); //标准
+										}else{
+											return new ActiveXObject("Microsoft.XMLHTTP"); //非标准
+										}
+								}
+								ajax = getAjax();
+								ajax.open('get','异步_1_推荐名字.php?name='+sValue,true);
+								ajax.send();
+								//document.getElementById('result').innerHTML = ajax.responseText;
+								
+								ajax.onreadystatechange = function(){
+									if(ajax.readyState==4 && ajax.status==200){
+										document.getElementById('result').innerHTML = ajax.responseText;
+									}
+								}
+								
+						}
+				},10);
+				
+				
+				
+		}
+	</script>
+</head>
+<body>
+	<strong>请输入你的英文首字母:</strong><input type="text" id="text" value="" />
+	<p id="result"></p>
+</body>
+</html>

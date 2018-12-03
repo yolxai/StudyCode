@@ -1,0 +1,102 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0;font-family:"微软雅黑"}
+		#box{width:350px;height:500px;margin:100px auto;border-radius:20px;border:10px solid #000;padding:5px}
+		#box .list{width:350px;height:450px;border-bottom:2px solid #999;margin-bottom:5px;position:relative;overflow:auto;}
+		#box .list li{padding:1px 5px;border-radius:10px;list-style:none;width:auto;height:auto;line-height:50px;font-size:20px;position:absolute;background: red;}
+		#box input{float:left;}
+		#box input.text{width:290px;height:45px;text-indent:10px;}
+		#box input.btn{width:50px;margin-left:10px;height:45px;}
+	</style>
+	<script type="text/javascript">
+
+		var info = '本页面练习要点:\n\n1:DOM操作的创建\n2:验证内容\n3:滚动条事件\n4:键盘事件\n\n\n本作品为练习作品?';
+
+		alert(info);
+
+		
+		function getByClass(oParent,sClass){
+			var all = oParent.getElementsByTagName('*');
+			var result = [];
+
+			for(var i=0;i<all.length;i++){
+				if( all[i].className == sClass ){
+					result.push(all[i]);
+				}
+			}
+
+			return result;
+
+		}
+
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oList = getByClass(oBox,'list')[0];
+			var oText = getByClass(oBox,'text')[0];
+			var oBtn = getByClass(oBox,'btn')[0];
+			var num = 0;
+
+			function sub(){
+
+				if(oText.value == ''){
+					alert('请输入内容!');
+					return false;
+				}
+
+				var oLi = document.createElement('li');
+
+			 	oLi.innerHTML = oText.value;
+
+
+			 	if(num % 2 == 0){
+			 		oLi.style.left = 0;
+			 	}else{
+			 		oLi.style.right = 0;
+			 	}
+
+			 	num++;
+			 	//oLi.style.top = '10px';
+			 	//oList.getElementsByTagName('li')[oList.getElementsByTagName('li').length-1]
+			 	if(oList.getElementsByTagName('li').length <= 0){
+			 		oLi.style.top = '10px';
+			 	}else{
+			 		oLi.style.top = (oList.getElementsByTagName('li')[oList.getElementsByTagName('li').length-1].offsetHeight)*oList.getElementsByTagName('li').length-1 + 10 + 'px';
+			 		//alert(oList.getElementsByTagName('li')[oList.getElementsByTagName('li').length-1].offsetHeight + 10 + 'px');
+			 	}
+
+			 	oList.appendChild(oLi);
+
+			 	oList.scrollTop=oList.scrollHeight;
+
+			 	oText.value = '';
+			}
+
+			oBtn.onclick = function(){
+				sub();
+			 }
+
+
+			 oText.onkeypress = function(ev){
+			 	var ev = ev || window.event;
+			 	if( ev.keyCode == 13){
+			 		sub();
+			 	}
+			 }
+
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="list">
+
+		</ul>
+		<input type="text" value="" class="text">
+		<input type="button" value="Enter" class="btn">
+	</div>
+</body>
+</html>

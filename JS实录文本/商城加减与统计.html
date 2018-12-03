@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	li {
+		list-style:none;	
+	}
+</style>
+<script>
+function fn1( count){
+		var oInput = count.getElementsByTagName('input');//0是减 1是加
+		var oCount = count.getElementsByTagName('strong')[0]; // 数量
+		var oDanjia = count.getElementsByTagName('span')[0]; // 单价
+		var oXiaoji = count.getElementsByTagName('span')[1]; //小计
+		var Dan = parseFloat(oDanjia.innerHTML);
+		var Tong = oCount.innerHTML;
+		
+		oXiaoji.innerHTML = Dan * Tong + '元';
+		oInput[0].onclick = function(){
+			
+			Tong--;
+			if( Tong < 0){
+				alert(' 客官您到底买不买! ');
+			}else{
+				oCount.innerHTML = Tong;
+				oXiaoji.innerHTML = Dan * Tong + '元';
+			}
+			getCount();
+			
+		}
+		
+		oInput[1].onclick = function(){
+			Tong++;	
+			oCount.innerHTML = Tong;	
+			oXiaoji.innerHTML = Dan * Tong + '元';
+			getCount();
+		}
+
+	 	//获取总价值 重写过
+		getCount();
+		function getCount(){
+			var oUl = document.getElementById('list');
+			var aLi = oUl.getElementsByTagName('li');
+			var oCount = document.getElementById('count');
+			var aSpan = [];
+			var count = 0;
+
+			for(var i=0;i<aLi.length;i++){
+				var oSpan = aLi[i].getElementsByTagName('span')[1];
+				var oValue = parseInt(oSpan.innerHTML);
+				aSpan.push(oValue);
+			}
+
+			for(var i=0;i<aSpan.length;i++){
+				count += aSpan[i];
+			}
+
+			 oCount.innerHTML = count + '元';
+
+
+		}
+		
+
+		
+}
+window.onload = function(){
+	var oUl = document.getElementById('list');
+	var aLi = oUl.getElementsByTagName('li');
+	
+	for(var i=0;i<aLi.length;i++){
+		fn1( aLi[i]);
+	}
+}
+</script>
+</head>
+
+<body>
+<ul id="list">
+	<li>
+    	<input type="button" value="-" />
+        <strong>1</strong>
+    	<input type="button" value="+" />
+        单价：<span>12.5元</span>
+        小计：<span>0元</span>
+    </li>
+	<li>
+    	<input type="button" value="-" />
+        <strong>1</strong>
+    	<input type="button" value="+" />
+        单价：<span>145元</span>
+        小计：<span>0元</span>
+    </li>
+	<li>
+    	<input type="button" value="-" />
+        <strong>4</strong>
+    	<input type="button" value="+" />
+        单价：<span>5.5元</span>
+        小计：<span>0元</span>
+    </li>
+	<li>
+    	<input type="button" value="-" />
+        <strong>2</strong>
+    	<input type="button" value="+" />
+        单价：<span>22元</span>
+        小计：<span>0元</span>
+    </li>
+	<li>
+    	<input type="button" value="-" />
+        <strong>1</strong>
+    	<input type="button" value="+" />
+        单价：<span>1.45元</span>
+        小计：<span>0元</span>
+    </li>
+</ul>
+<div id="count"></div>
+</body>
+</html>

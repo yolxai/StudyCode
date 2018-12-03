@@ -1,0 +1,132 @@
+
+\ getStyle
+
+ ' obj.currentStyle[attr] ',
+ ' getComputedStyle(obj,false)[attr] ';
+
+
+
+\ arguments
+' length ',
+' array ';
+
+
+
+
+sort 
+
+sort(function(num1,num2){  //数字排序 
+	return num1-num2; 正序
+	return num2-num1; 倒序
+});
+
+
+split - join
+
+arr1.split(arr1);
+arr1.join('-');
+
+concat
+
+concat(arr1,arr2);
+
+push - unshift
+
+arr1.push('a'); 尾部
+arr1.unshift('a'); 头部
+
+pop - shift 
+
+arr.pop(); 头部
+arr.shift(); 尾部
+
+splice
+
+splice(start,num); 删除
+splice(start,0,'element'); 插入
+splice(start,num,'element'); 删除后插入
+
+
+DOM操作
+
+document.createElement('li');
+父.appendChild(child);
+父.insertBefore(child,who);
+父.removeChild(child);
+
+首尾子节点
+firstChild firstElementChild 第一个子节点
+lastChild lastElementChild  最后一个子节点
+
+兄弟节点
+nextSibling nextElementSibling 下一个节点
+previousSibling previousElementSibling 上一个节点
+
+childNodes - children 子节点
+parentNode 父节点
+nodeType 节点类型 \ 3 = 文本节点  1 = 元素节点 2 = 属性节点
+
+setAttribute();设置元素属性
+getAttribute();获取元素属性
+
+
+offsetLeft
+offsetTop
+offsetParent
+
+
+var oEvent = ev || event;
+event -> clientX clientY
+event -> keyCode
+event -> cancelBubble = true
+ctrlKey shiftKey altKey -> boole
+
+document.documentElement.scrollTop; //非chrome || Left
+document.body.scrollTop; //仅chrome || Left
+
+document.documentElement.clientHeight || document.body.clientHeight // 浏览器高度
+document.documentElement.clientWidth || document.body.clientWidth // 浏览器宽度
+
+:: 一旦用到clientX或clientY 必然用到scrollTop或scrollLeft
+
+\  onmousemove
+   onmouseup
+   onmousedown
+
+   onkeydown
+   onkeyup
+   onkeypress
+   
+
+
+\ keyCode
+  offsetWidth
+  offsetHeight
+  offsetLeft
+  offsetTop
+
+
+\ '默认行为' return false  -> document.oncontextmenu = function(){ return false;}
+\            onsubmit 
+
+
+
+
+\ Js - > document.cookie
+\ document.cookie = ' username = admin ';
+\ expires = ;
+
+
+
+\ Date
+\ oDate = new Date();
+\ getDay(); 星期 0-6
+\ getFullYear(); 年  4
+\ getMonth(); 月 0-11
+\ getDate(); 日  1 - 31
+
+\ getHours(); 时
+\ getMinutes(); 分
+\ getSeconds(); 秒
+
+\ getTime(); 1970-1-1日至今的毫秒

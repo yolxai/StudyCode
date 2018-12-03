@@ -1,0 +1,71 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style>
+		*{
+			text-decoration: none;
+			color:black;
+			font-weight: 700;
+			font-size:16px;
+			list-style:none;
+			line-height: 50px;
+		}
+		ul li{
+			border-bottom:2px solid black;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+
+			var oUl = document.getElementById('class');
+			var oTxt = document.getElementById('txt1');
+			var oSub = document.getElementById('sub');
+			var num = 0;
+
+			oSub.onclick = function(){
+
+				var oLi = document.createElement('li');
+				var aLi = oUl.getElementsByTagName('li');
+
+				if(oTxt.value == '' || oTxt.value.length < 10){
+					alert('请填写帖子标题或者标题长度小于10!');
+					return "";
+				}
+				if(oTxt.value.indexOf('<') > 0 || oTxt.value.indexOf('>') > 0 || oTxt.value.indexOf('/') > 0 ){
+					alert('请勿输入非法字符串 !');
+					return "";
+				}
+
+
+				num++;
+
+				oLi.innerHTML = num + ':&nbsp;<a href="#">'+oTxt.value+'</a>';
+				oTxt.value = '';
+
+				if( aLi == 0 ){
+
+					oUl.appendChild(oLi);
+
+				} else {
+
+					oUl.insertBefore(oLi,aLi[0]);
+
+				}
+
+				
+
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+
+	<input type="text" value="" id="txt1" />
+	<input type="button" value="添加" id="sub" />
+	<ul id="class"></ul>
+
+</body>
+</html>

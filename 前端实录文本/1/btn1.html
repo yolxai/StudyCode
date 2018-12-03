@@ -1,0 +1,56 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title>btn1</title>
+	<style type="text/css">
+
+		#btn{
+			width:200px;
+			height:50px;
+			border:3px solid rgb(0,153,204);
+			border-radius:50px;
+			padding:3px;
+		}
+		#btn .font{
+			left:80px;
+			display:block;
+			text-decoration:none;
+			text-align:center;
+			line-height:50px;
+			color:rgb(0,153,204);
+			font-weight:bold;
+			float:right;
+			margin-right:60px;
+			-moz-transition:0.8s;
+		}
+		#btn .back{
+			width:45px;
+			height:45px;
+			border-radius:50%;
+			background:rgb(0,153,204);
+			-moz-transition:0.8s;
+			display:block;
+			float:right;
+			margin-top:2px;
+		}
+
+		#btn:hover .back{
+			-moz-transform:translate(-150px);
+			background:white;
+		}
+		#btn:hover{
+			background:rgb(0,153,204);
+		}
+		#btn:hover .font{
+			color:white;
+			-moz-transform:translate(50px);
+		}
+	</style>
+</head>
+<body>
+	<div id="btn">
+		<span class="back"></span>
+		<a class="font" href="#">翱翔吧</a>
+	</div>
+</body>
+</html>

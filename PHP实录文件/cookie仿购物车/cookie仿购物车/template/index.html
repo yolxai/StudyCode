@@ -1,0 +1,26 @@
+<?php
+		$goods_db = include "goods_db.php";
+?>
+<html>
+<head>
+	<title>京东网上商城-综合网购首选（JD.COM）-正品低价、品质保障、货到付款、配送及时、放心服务、轻松购物！</title>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		#goods_list li{float:left;width:200px;height:300px;padding:50px;list-style:none;margin:1px;}
+		#goods_list li a.title{font-size:12px;color:#666;line-height:35px;}
+		#goods_list li a{text-decoration:none;}
+	</style>
+</head>
+
+<body>
+	<ul id="goods_list">
+		<?php
+			foreach($goods_db as $id=>$goods):
+		?>
+			<li><img src="<?php echo $goods['img'] ?>"/><br/><a class='title' href="goods.php?id=<?php echo $id;?>"><?php echo $goods['title'];?></a><br/><strong style='color:#B51D1A;font-size:18px;'>¥<?php echo $goods['price'] ?></strong></li>
+		<?php
+			endforeach;
+		?>
+	</ul>
+</body>
+</html>

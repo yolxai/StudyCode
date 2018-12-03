@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#div1{
+			width:200px;
+			height:200px;
+			background:green;
+			position:absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		var timer = null;
+		var iSpeedX = 6;
+		var iSpeedY = 8;
+		function startMove(){
+
+			var oDiv = document.getElementById('div1');
+
+			clearInterval(timer);
+
+			timer = setInterval(function(){
+
+				iSpeedY = iSpeedY + 5;
+
+				var left = iSpeedX + oDiv.offsetLeft;
+
+				var top = iSpeedY + oDiv.offsetTop;
+
+				var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+				var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+				if( top >= clientHeight- oDiv.offsetHeight ){
+					top = clientHeight-oDiv.offsetHeight;
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+				}else if(top <= 0 ){
+					top = 0;
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+				}
+
+				if(left >= clientWidth - oDiv.offsetWidth){
+					left = clientWidth - oDiv.offsetWidth;
+					iSpeedX = iSpeedX * -0.8;
+				}else if(left <=0){
+					left = 0;
+					iSpeedX = iSpeedX * -0.8;
+				}
+
+				oDiv.style.left = left  + 'px' ;
+
+				oDiv.style.top = top  + 'px' ;
+
+
+			},30);
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1" onclick="startMove()"></div>
+</body>
+</html>

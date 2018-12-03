@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	#list{
+		/*width:335px;*/
+		height:40px;
+		background:#E53F42;
+		margin:0 auto;
+	}
+	#list li{
+		list-style:none;
+		float:left;
+		width:80px;
+		height:40px;
+		background:#E53F42;
+		color:#fff;
+		line-height:40px;
+		font-size:14px;
+		text-align:center;
+		font-weight:700;
+		position:relative;
+	}
+	#list .active{
+		background:#A40000;	
+	}
+	#list li:hover{
+		background:#A40000;
+		cursor:pointer;
+	}
+	
+	#list2 li{
+		list-style:none;
+		float:left;
+		width:200px;
+		height:40px;
+		line-height:40px;
+		font-size:14px;
+		background:#000;
+		text-align:center;
+		font-weight:700;
+		color:white;
+		display:none;
+		position:relative;
+		top:10px;
+	}
+</style>
+<script src="test.js"></script>
+<script>
+$(function(){
+	
+	var oUl = $('list');
+	var oUl2 = $('list2');
+	var aLi = oUl.getElementsByTagName('li');
+	var aLi2 = oUl2.getElementsByTagName('li');
+	var Text = ['内容1_1|内容1_2|内容1_3','内容2_1|内容2_2|内容2_3','内容3_1|内容3_2|内容3_3','内容4_1|内容4_2|内容4_3'];
+	var num = 0;
+	var timer = null;
+	var index = 0;
+	
+	for(var i=0;i<aLi.length;i++){
+		oUl2.innerHTML += '<li>'+Text[i]+'</li>';
+	}
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index = i;
+		aLi2[i].index = i;
+		
+		num = i * aLi[i].offsetWidth;
+		aLi2[i].style.left = (num-30)+'px';
+		
+		
+		aLi[i].onmouseover = function(){
+			clearInterval( timer );
+			for(var i=0;i<aLi2.length;i++){
+				aLi2[i].style.display = 'none';
+			}
+			aLi2[this.index].style.display = 'block';
+			
+		}
+		aLi[i].onmouseout = function(){
+			clearInterval( timer );
+			
+			index = this.index;
+			
+			timer = 
+			setTimeout(function(){
+				
+				aLi2[index].style.display = 'none';
+			
+			},1000);
+		}
+		
+		aLi2[i].onmouseover = function(){
+			clearInterval( timer );
+		}
+		aLi2[i].onmouseout = function(){
+				aLi2[this.index].style.display = 'none';
+		}
+	}
+	
+	
+		
+});
+</script>
+</head>
+
+<body>
+	<ul id="list">
+    	<li class="active">首页</li>
+    	<li>关于我们</li>
+    	<li>作品</li>
+    	<li>博客</li>
+    </ul>
+    <ul id="list2">
+    
+    </ul>
+</body>
+</html>

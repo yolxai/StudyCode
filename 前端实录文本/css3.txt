@@ -1,0 +1,48 @@
+﻿2D转换
+
+transform-origin:left/top/bottom/right;50%/60%/100px/150px; 基准
+
+transform:
+
+   	translate(); 位移
+	rotate(); 旋转 deg rad
+	scale(); 缩放
+	skew(); 斜切
+	
+
+3D转换
+
+transform-origin:left/top/bottom/right;50%/60%/100px/150px; 基准
+perspective:800px; 设置景深
+transform-style:preserve-3d; 设置3D跟随
+
+线性渐变:
+	
+	-webkit-gradient( type , start_point , end_point , color-stop() );
+		type:linear,
+		start_point x&y:0 0,
+		end_point x&y:100% 100%,
+		[from(#000),]
+		[to(#FFF),]
+		color-stop(0.2,red),color-stop(0.8,green); // 0-1
+	
+	-moz-linear-gradient(startX startY deg , color % , color %  );
+		startX:0;
+		startY:0;
+		deg:90deg
+		color %:red 10%;
+		color %:green 100%;
+
+径向渐变:
+
+	-webkit-gradient( type , start_point , end_point , color-stop() );
+		type:radial,
+		start_point:x1 x1,
+		start_r:0,
+		end_point:x2 y2,
+		start_r:100,
+		[from(#000),]
+		[to(#FFF),]
+		color-stop(0.2,red),color-stop(0.8,green); // 0-1
+
+	-moz-radial-gradient( circle closest-side , color %, color % );

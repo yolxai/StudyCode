@@ -1,0 +1,21 @@
+<html>
+	
+	<head></head>
+	<body>
+		<?php
+			if($_GET['id'] == NULL || $_GET['id'] < 0){
+				echo "<script>alert('请通过正常途径访问!');location='index.php';</script>";exit;
+			}
+			$id = intval($_GET['id']);
+			$db = include "db.php";
+			
+			echo "需要申请岗位的目标的id为<font color='red'>{$id}</font><br/>";
+			echo "标题是<font color='red'>{$db[$id]['title']}</font><br/>";
+			echo "作者是<font color='red'>{$db[$id]['author']}</font><br/>";
+			
+		?>
+		<hr>
+		<h2>申请职位功能正在完善当中!</h2>
+	</body>
+
+</html>

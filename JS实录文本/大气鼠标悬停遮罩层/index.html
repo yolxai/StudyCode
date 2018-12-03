@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	*{padding:0;margin:0}
+	#list{
+		width:950px;
+		height:300px;
+		margin:100px auto;
+	}
+	#list li{
+		float:left;
+		width:230px;
+		height:300px;
+		list-style:none;
+		margin-left:6px;
+		position:relative;
+		overflow:hidden;
+		background:black;
+	}
+	#list li img{
+		opacity:1;
+	}
+	#list li .img{
+		width:315px;
+		height:102px;
+		padding-left:90px;
+		line-height:102px;
+		font-size:20px;
+		color:#FFF;
+		font-family:"微软雅黑";
+		background:url(touming.png) no-repeat -40px 0;
+		position:absolute;
+		left:0;
+		bottom:0;
+		opacity:0.9;
+	}
+	#list li .jia{
+		width:32px;
+		height:32px;
+		background:url(jia.png) no-repeat;
+		position:absolute;
+		left:100px;
+		top:80px;
+		display:none;
+	}
+</style>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#list li").hover(function(){
+			$(this).find('img').stop(true);
+			$(this).find('.jia').stop(true,true);
+			$(this).find('img').animate({'opacity':'0.5'});
+			$(this).find('.jia').slideDown();
+		},function(){
+			$(this).find('img').animate({'opacity':'1'});
+			$(this).find('.jia').slideUp();
+		});
+	});
+</script>
+</head>
+
+<body>
+	<ul id="list">
+		<li>
+			<div class="jia"></div>
+			<a href="#"><img src="csshello.jpg" alt="" /></a>
+			<div class="img">关于作者</div>
+		</li>
+		<li>
+			<div class="jia"></div>
+			<a href="#"><img src="csshello.jpg" alt="" /></a>
+			<div class="img">联系我们</div>
+		</li>
+		<li>
+			<div class="jia"></div>
+			<a href="#"><img src="csshello.jpg" alt="" /></a>
+			<div class="img">网站首页</div>
+		</li>
+		<li>
+			<div class="jia"></div>
+			<a href="#"><img src="csshello.jpg" alt="" /></a>
+			<div class="img">职业技能</div>
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	* {
+		padding:0;
+		margin:0;
+		font-size:20px;	
+	}
+	#div1 {
+		margin-top:10px;
+		margin-left:20px;
+		width:650px;
+		height:300px;
+		background:#FFC;
+		border:5px solid #C5C5C5;	
+		color:#000;
+		font-family:微软雅黑;
+		padding:30px;
+		overflow:hidden;
+	}
+	input {
+		margin-left:20px;
+		margin-top:20px;	
+	}
+	span.active{
+		background:#B0A80B;
+	}
+</style>
+<script>
+	window.onload = function (){
+		var oDiv = document.getElementById('div1');
+		var aInput = document.getElementsByTagName('input');
+		
+		aInput[1].onclick = function(){
+				
+				str =  oDiv.innerHTML;
+				target = aInput[0].value;
+				
+				if(!target) return ;
+				
+				oDiv.innerHTML = str.split(target).join('<span class="active">'+ target +'</span>') ;
+				
+				
+		}	
+	}
+</script>
+</head>
+
+<body>
+<input type="text" value="" />
+<input type="button" value="查找" />
+<div id="div1">
+	故事女主人公藤宫香织是一名只要一周就会忘记与朋友的回忆的女孩，而男主人长谷佑树公则是努力想和她成为朋友的男孩.他们两个人不断重复认识与遗忘的一周,不断地不断地延续下去。
+担任男女主人公的声优——长谷佑树和雨宫天都是初出道不久的新人,对于二位能否表现出佑树的真挚以及香织的迷茫，还有待动画播出后才能判断。动画制作由曾经制作过《夏目友人帐》系列的Brain's Base动画制作公司负责，相信《一周的朋友》的动画画风也会和《夏目友人帐》相似，纤细且唯美。
+故事简介
+"但是，我…有关朋友的记忆，一周就会消失……"——一直都是独自一人的同班同学藤宫香织宣布了这样的事实，但即便是这样，主人公长谷佑树也想要和香织成为朋友。连缀并环绕着一周的记忆，两人不断地成为朋友，无论多少次依然如此，围绕"朋友"的青春涂鸦也正式开始。
+</div>
+</body>
+</html>

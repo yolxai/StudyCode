@@ -1,0 +1,87 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		div {
+			width:150px;
+			height:150px;
+			background:green;
+			border:1px solid #ccc;
+			filter:alpha(opacity:30);
+			opacity:0.3;
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		function getStyle(obj , attr){
+
+			if( obj.currentStyle ){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj,false)[attr];
+			}
+
+		}
+
+
+		function startMove(obj , attr , iTarget){
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var oAttrsu = 0;
+
+				if( attr == 'opacity'){
+					oAttrsu = parseInt(parseFloat(getStyle(obj,attr))*100);
+				}else{
+					oAttrsu = parseInt(getStyle(obj,attr));
+				}
+
+				var iSpeed = (iTarget-oAttrsu)/8;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+				if(oAttrsu == iTarget){
+					clearInterval(obj.timer);
+				}else{
+					if( attr == 'opacity'){
+						obj.style.opacity = (oAttrsu+iSpeed)/100;
+						obj.style.filter = 'alpha(opacity:'+ (oAttrsu+iSpeed) +')';
+					}else{
+						obj.style[attr] = oAttrsu + iSpeed + 'px';
+					}
+				}
+
+			},30);
+
+		}
+
+		window.onload = function(){
+
+			var aDiv = document.getElementsByTagName('div');
+
+			aDiv[0].onclick = function(){
+
+				startMove(this,'width',500);
+
+			}
+			aDiv[1].onmouseover = function(){
+
+				startMove(this,'opacity',100);
+
+			}
+			aDiv[1].onmouseout = function(){
+
+				startMove(this,'opacity',30);
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

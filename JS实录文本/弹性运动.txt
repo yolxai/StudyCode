@@ -1,0 +1,32 @@
+
+iSpeed += (iTarget - obj.offsetLeft )/50; 目标大于Left
+iSpeed -= (obj.offsetLeft - iTarget ) /50; Left大于目标
+
+
+
+iSpeed = iSpeed + (iTarget - obj.offsetLeft )/50; 目标大于Left
+
+iSpeed = iSpeed - (obj.offsetLeft - iTarget ) /50; Left大于目标
+
+
+
+iSpeed = iSpeed + ( iTarget/50 ) - ( obj.offsetLeft/50 ); 目标大于Left
+iSpeed = iSpeed - ( obj.offsetLeft/50 ) + ( iTarget/50 ); Left大于目标
+
+{
+   a + ( b - c )/x  = a + b/x + c/x
+   a + ( b - c )*x  = a + b*x + c*x
+}
+
+
+iSpeed = iSpeed + iTarget/50 - obj.offsetLeft/50;目标大于Left
+iSpeed = iSpeed + iTarget/50 - obj.offsetLeft/50;Left大于目标
+
+                              
+                               iSpeed = iSpeed + iTarget/50 - obj.offsetLeft/50
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+iSpeed + (iTarget - obj.offsetLeft) / 5;
+iSpeed * 0.7;

@@ -1,0 +1,110 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#box{margin:20px 50px;}
+		#box div{float:left;}
+		#box .small_img{width:400px;height:400px;position:relative;border:1px solid black}
+		#box .small_img .muban{width:100%;height:100%;background:red;display:block;opacity:0;position:absolute;}
+		#box .small_img .float{width:100px;height:100px;background:black;opacity:0.5;display:block;display:none;position:absolute;}
+		#box .big_img{width:400px;height:400px;overflow:hidden;margin-left:10px;border:2px solid #999;display:none;position:relative;}
+		#box .big_img img{position:absolute;}
+	</style>
+<!-- 	<script type="text/javascript">
+		function getClass(oParent,sClass){
+			var all = oParent.getElementsByTagName('*');
+			var result = [];
+
+			for(var i=0;i<all.length;i++){
+				if(all[i].className == sClass){
+					result.push(all[i]);
+				}
+			}
+
+			return result;
+
+		}
+
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var small_img = getClass(oBox,'small_img')[0];
+			var oMuban = getClass(small_img,'muban')[0];
+			var oFloat = getClass(small_img,'float')[0];
+			var oImg = small_img.getElementsByTagName('img')[0];
+			var big_img = getClass(oBox,'big_img')[0];
+
+			oMuban.onmouseover = function(){
+				oFloat.style.display = 'block';
+				big_img.style.display = 'block';
+			}
+			oMuban.onmousemove = function(ev){
+				var oEvent = ev || event;
+				oEvent.cancelBubble = true;
+				oEvent.stopPropagation();
+				oEvent.preventDefault();
+				returnValue = false;
+				var left = oEvent.clientX-oMuban.offsetLeft-small_img.offsetLeft;
+				var top = oEvent.clientY-oMuban.offsetTop-small_img.offsetTop;
+				oFloat.style.left = left + 'px';
+				oFloat.style.top = top + 'px';
+			}
+			oMuban.onmouseout = function(){
+				oFloat.style.display = 'none';
+				big_img.style.display = 'none';
+			}
+
+		}
+	</script> -->
+
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".small_img").hover(function(){
+				$(".float").css('display','block');
+				$(".big_img").css('display','block');
+
+				$(this).mousemove(function(ev){
+
+					var left = ev.pageX - $('.small_img').offset().left - $('.float').width()/2;
+					var top = ev.pageY - $('.small_img').offset().top -$('.float').height()/2;
+
+					if( left < 0 ){
+						left = 0;
+					}else if(left > $('.small_img').width()-$('.float').width()){
+						left = $('.small_img').width()-$('.float').width();
+					}
+
+					if( top < 0){
+						top = 0;
+					}else if(top >= $('.small_img').height()-$('.float').height()){
+						top = $('.small_img').height()-$('.float').height()
+					}
+
+					$(".float").css('left',left);
+					$(".float").css('top',top);
+					$(".big_img img:eq(0)").css('left',-2*left+'px');
+					$(".big_img img:eq(0)").css('top',-2*top+'px');
+
+				});
+
+			},function(){
+				$(".float").css('display','none');
+				$(".big_img").css('display','none');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div class="small_img">
+			<span class="muban"></span>
+			<span class="float"></span>
+			<img src="fangdajing/400.jpg" alt="">
+		</div>
+		<div class="big_img">
+			<img src="fangdajing/800.jpg" alt="">
+		</div>
+	</div>
+</body>
+</html>

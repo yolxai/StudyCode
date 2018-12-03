@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+	<title>检测用户名是否已经存在</title>
+	<script type="text/javascript">
+		window.onload = function(){
+				var oText = document.getElementById('name');
+				var oP = document.getElementById('result');
+				
+				function getAjax(){
+										if ( window.XMLHttpRequest ){
+											return new XMLHttpRequest(); //标准
+										}else{
+											return new ActiveXObject("Microsoft.XMLHTTP"); //非标准
+										}
+				}
+				
+				oText.onblur = function(){
+						var name = this.value;
+						ajax = getAjax();
+						ajax.open('get','异步_2_检测用户名是否存在.php?name='+name);
+						ajax.send();
+						
+						ajax.onreadystatechange = function(){
+								if(ajax.readyState == 4){
+									if(ajax.status == 200){
+										oP.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;'+ajax.responseText;
+									}else{
+										alert('页面错误!');
+									}
+								}
+						}
+				}
+		}
+	</script>
+</head>
+
+<body>
+<input type="text" id="name" value=""/><font color='red' id="result"></font>
+<br/><strong>小提示:鼠标点击输入框外面就可以检测了！</strong>
+</body>
+</html>

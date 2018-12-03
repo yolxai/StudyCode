@@ -1,0 +1,41 @@
+<html>
+<head>
+	<meta http-euqiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style>*{padding:0;margin:0} #div1{width:200px;height:200px;background:green;position:absolute;}</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+
+			oDiv.onclick = function(){
+
+				startMove(this,500);
+
+			}
+		}
+
+
+		function startMove(obj,iTarget){
+
+			clearInterval(obj.timer);
+
+			obj.timer = setInterval(function(){
+
+				var iSpeed = ((iTarget-obj.offsetLeft)/8)>0 ? Math.ceil((iTarget-obj.offsetLeft)/8) : Math.floor((iTarget-obj.offsetLeft)/8);
+
+				if( iTarget == obj.offsetLeft ){
+					clearInterval(obj.timer);
+				}else{
+					obj.style.left = obj.offsetLeft + iSpeed + 'px';
+				}
+
+			},30);
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

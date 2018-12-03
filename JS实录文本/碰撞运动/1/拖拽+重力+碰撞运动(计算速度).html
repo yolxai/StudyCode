@@ -1,0 +1,170 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#div1{
+			width:100px;
+			height:100px;
+			position:absolute;
+			background:green;
+			border-radius:200;
+		}
+	</style>
+	<script type="text/javascript">
+
+		var timer = null
+
+		function startMove(){
+
+			clearInterval(timer);
+
+			var oDiv = document.getElementById('div1');
+			
+
+			timer = setInterval(function(){
+
+				iSpeedY = iSpeedY + 3;
+
+				var left = iSpeedX + oDiv.offsetLeft;
+				var top = iSpeedY + oDiv.offsetTop;
+
+				var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+				var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+				if( left >= clientWidth - oDiv.offsetWidth ){
+
+					left = clientWidth - oDiv.offsetWidth;
+
+					iSpeedX = iSpeedX * -0.8;
+
+
+				}else if(left<=0){
+
+					left = 0;
+					iSpeedX = iSpeedX * -1;
+				}
+
+				if( top >= clientHeight - oDiv.offsetHeight){
+					top = clientHeight - oDiv.offsetHeight;
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+				}else if(top<=0){
+					top = 0;
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+				}
+
+				if(Math.abs(iSpeedX) < 1){
+					iSpeedX = 0;
+				}
+				if(Math.abs(iSpeedY) < 1){
+					iSpeedY = 0;
+				}
+
+				if(iSpeedX == 0 && iSpeedY == 0 && top==clientHeight - oDiv.offsetHeight){
+					clearInterval(timer);
+				}else{
+					oDiv.style.left =  left + 'px';
+					oDiv.style.top = top + 'px';
+				}
+
+				
+
+			},30);
+		}
+
+		window.onload = function (){
+			var oDiv = document.getElementById('div1');
+			var lastX = 0;
+			var lastY = 0;
+
+			oDiv.style.top = (document.documentElement.clientHeight || document.body.clientHeight) - oDiv.offsetHeight + 'px';
+			oDiv.style.left = '200px';
+
+			oDiv.onmousedown = function(ev){
+				
+				var oEvent = ev || event;
+				var disX = oEvent.clientX - oDiv.offsetLeft;
+				var disY = oEvent.clientY - oDiv.offsetTop;
+
+				document.onmousemove = function(ev){
+
+
+
+					var oEvent = ev || event;
+
+					var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+					var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+
+					var left = oEvent.clientX-disX;
+					var top = oEvent.clientY-disY;
+
+
+					if(oEvent.clientY < 0 /*|| oEvent.clientY >= clientHeight-oDiv.offsetHeight*/){
+						document.onmousemove = null;
+						startMove();
+					}
+					if(oEvent.clientX <= 0 /*|| oEvent.clientX>= clientWidth-oDiv.offsetWidth */){
+						document.onmousemove = null;
+						startMove();
+					}
+					if(oEvent.clientX >=clientWidth-oDiv.offsetWidth ){
+						document.onmousemove = null;
+						startMove();
+					}
+
+					if( left >= clientWidth-oDiv.offsetWidth){
+						left = clientWidth-oDiv.offsetWidth;
+					}else if(left <= 0){
+						left = 0;
+					}
+
+					if( top >= clientHeight-oDiv.offsetHeight){
+						top = clientHeight-oDiv.offsetHeight;
+					}else if(top <= 0){
+						top = 0;
+					}
+
+					oDiv.style.left = left + 'px';
+					oDiv.style.top = top + 'px';
+
+					iSpeedX = left - lastX;
+					iSpeedY = top - lastY;
+
+					lastX = left;
+					lastY = top;
+
+				}
+
+				oDiv.onmouseup = function(){
+					document.onmousemove = null;
+					oDiv.onmouseup =null;
+					startMove();
+				}
+
+				clearInterval(timer);
+
+			}
+		}
+
+
+		window.onresize = function(){
+			iSpeedX = 5;
+			iSpeedY = 8;
+			startMove();
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		
+
+	</div>
+</body>
+</html>

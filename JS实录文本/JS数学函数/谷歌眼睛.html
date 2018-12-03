@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin:0;padding:0}
+		#man{background:url(google.jpg);width:1627px;height:721px;position:relative;}
+		#div1{position:absolute;width:10px;height:10px;background:black;border-radius:50%;top:124px;left:225px;}
+		#div2{position:absolute;width:10px;height:10px;background:black;border-radius:50%;top:124px;left:603px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var oDiv1 = document.getElementById('div1');
+			var oDiv2 = document.getElementById('div2');
+
+			var iR = 75;
+
+			document.onmousemove = function(ev){
+
+				var oEvent = ev || event;
+				var changX = 0;
+				var changY = 0;
+
+				change(oDiv1,oEvent.clientX,oEvent.clientY,225,124);
+				change(oDiv2,oEvent.clientX,oEvent.clientY,603,124);
+
+				function change(obj,X,Y,L,T){
+
+					//获得B = 
+
+					var b = X - L;//(obj.offsetLeft + obj.parentNode.offsetLeft);
+					var a = Y - T;//(obj.offsetTop + obj.parentNode.offsetTop);
+
+					// console.log( Math.atan(b/a)*180/Math.PI );
+
+					changX = Math.sin( Math.atan(b/a) ) * iR;
+					changY = Math.cos( Math.atan(b/a) ) * iR;
+
+					obj.style.left = L + changX - 10 + 'px';
+					obj.style.top = T + changY - 10 + 'px';
+
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="man">
+		<div id="div1"></div>
+		<div id="div2"></div>
+	</div>
+</body>
+</html>

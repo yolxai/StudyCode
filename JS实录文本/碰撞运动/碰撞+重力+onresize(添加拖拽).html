@@ -1,0 +1,130 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			padding:0;margin:0;
+		}
+		#div1{
+			position:absolute;
+			width:200px;
+			height:200px;
+			background:red;
+		}
+	</style>
+	<script type="text/javascript">
+
+		timer = null;
+		iSpeedX = 6;
+		iSpeedY = 8;
+
+		function startMove(obj){
+			clearInterval(timer);
+			timer = setInterval(function(){
+
+				iSpeedY = iSpeedY + 3;
+
+				var left = obj.offsetLeft + iSpeedX;
+				var top = obj.offsetTop + iSpeedY;
+
+				var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+				var clientHeight = document.documentElement.cilentHeight || 
+					document.body.clientHeight;
+
+				if( top <= 0  ){
+					top = 0;
+					iSpeedY = iSpeedY * -0.8;
+				}else if(top >= clientHeight - obj.offsetHeight){
+					top = clientHeight - obj.offsetHeight;
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+				}
+
+				if( left <= 0){
+					left = 0;
+					iSpeedX = iSpeedX * -1;
+				}else if( left >= clientWidth-obj.offsetWidth){
+					left = clientWidth-obj.offsetWidth;
+					iSpeedX = iSpeedX * -1;
+				}
+
+				if( Math.abs(iSpeedX) <1 ){
+					iSpeedX = 0;
+				}
+				if( Math.abs(iSpeedY) <1 ){
+					iSpeedY = 0;
+				}
+				if(Math.abs(iSpeedX) <1 && Math.abs(iSpeedY) <1 && top == clientHeight - obj.offsetHeight ){
+					clearInterval(timer);
+				}
+
+				obj.style.left = left + 'px';
+				obj.style.top = top + 'px';
+
+			},30);
+		}
+
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+
+			oDiv.onmousedown = function(ev){
+				var oEvent = ev || event;
+				var disX = oEvent.clientX - oDiv.offsetLeft;
+				var disY = oEvent.clientY - oDiv.offsetTop;
+
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					var left = oEvent.clientX - disX;
+					var top = oEvent.clientY - disY;
+
+					var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+					var clientHeight = document.documentElement.cilentHeight || 
+					document.body.clientHeight;
+
+					if( left <= 0 ){
+						left = 0;
+					}else if(left >= clientWidth-oDiv.offsetWidth ){
+						left = clientWidth-oDiv.offsetWidth;
+					}
+
+					if( top <= 0){
+						top = 0;
+					}else if( top >= clientHeight-oDiv.offsetHeight){
+						top = clientHeight-oDiv.offsetHeight;
+					}
+
+					if( oEvent.clientY < 0 || oEvent.clientY > clientHeight){
+
+						startMove(oDiv);
+						document.onmousemove = null;
+					}
+
+					oDiv.style.left = left + 'px';
+					oDiv.style.top = top + 'px';
+				}
+
+				oDiv.onmouseup = function(){
+					document.onmousemove = null;
+					oDiv.onmouseup = null;
+					startMove(oDiv);
+				}
+
+				clearInterval(timer);
+			}
+
+		}
+
+		window.onresize = function(){
+			var oDiv = document.getElementById('div1');
+			iSpeedX = 6;
+			iSpeedY = 8;
+			startMove(oDiv);
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

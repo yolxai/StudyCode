@@ -1,0 +1,86 @@
+<html>
+<head>
+	<title>CSS选择器练习</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf8" />
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		#ids {
+			color:red;
+			font-size:14px;
+		}
+		.lei {
+			color:green;
+			font-size: 15px;
+		}
+		.b,.c,.d {
+			color:blue;
+			font-size:16px;
+		}
+		div {
+			color:#ccc;
+			font-size:19px;
+		}
+		#divTable .spanTable{
+			color:#FFB6C1;
+		}
+		#test > p > span{
+			color:red;
+		}
+		.pTable+p{
+			color:blue;
+		}
+		div[sb]{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+
+	<span id="ids">我是span标签,使用id选择器</span><br/>
+	<span class="lei">我是span标签,使用class选择器</span><br/>
+
+	<strong class="b">我是strong标签,我们使用群组选择器</strong><br>
+	<strong class="c">我是strong标签,我们使用群组选择器</strong><br/>
+	<strong class="d">我是strong标签,我们使用群组选择器</strong><br/>
+
+	<div>我是div标签,使用标签选择器</div>
+
+	<div id="divTable">
+		<span class="spanTable">我是span标签,class是spanTable,我使用交叉选择器</span>
+	</div>
+<br/>
+	<div id="test">
+		<span>我是div里面的span</span>
+		<p>
+			<span>我是div中p标签里的span标签</span>我们都是div的儿子
+		</p></br/>
+		<p>我们都是div的儿子</p></br/>
+		<p>我们都是div的儿子</p></br/>
+		<p>我们都是div的儿子</p></br/>
+		<p>我们都是div的儿子</p></br/>
+	</div>
+
+	<br/><hr/><br/>
+
+	<div id="test2">
+		<span>我是div里面的span</span>
+		
+		<p>
+			<span>我是div中p标签里的span标签</span>我们都是div的儿子
+		</p>
+
+		</br/>
+
+		<p class="pTable">我们都是div的儿子</p></br/>
+		<p class="pTable">我们都是div的儿子</p></br/>
+		<p>我们都是div的儿子</p></br/>
+		<p>我们都是div的儿子</p></br/>
+	</div>
+
+	<div sb="1">我们有sb<div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		#div1{width:200px;height:300px;position:absolute;background:green;left:-200px}
+		#div2{height:150px;width:40px;background:red;position:absolute;left:200px;top:40px;}
+	</style>
+	<script type="text/javascript">
+
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+			var oDiv2 = document.getElementById('div2');
+			
+			oDiv.onmouseover = function(){
+				startMove(this,0);
+			}
+			oDiv.onmouseout = function(){
+				startMove(this,-200);
+			}
+
+
+		}
+
+		var timer=null;
+			function startMove(obj,iTarget){
+			
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var iSpeed = 0;
+				if( obj.offsetLeft > iTarget){
+					iSpeed = -10;
+				}
+
+				if( obj.offsetLeft < iTarget){
+					iSpeed = 10;
+				}
+
+				if(obj.offsetLeft == iTarget){
+					clearInterval(timer);
+				}else{
+					obj.style.left = obj.offsetLeft + iSpeed + 'px';
+				}
+
+			},30);
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+</body>
+</html>

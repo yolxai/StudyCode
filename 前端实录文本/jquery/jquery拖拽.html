@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{margin:0;padding:0}
+		#div1{width:200px;height:200px;background:red;position:absolute;}
+	</style>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			$("#div1").mousedown(function(ev){
+
+				var disX = ev.clientX - $(this).offset().left;
+				var disY = ev.clientY - $(this).offset().top;
+
+				$(document).mousemove(function(ev){
+					$("#div1").css('left',ev.clientX-disX);
+					$("#div1").css('top',ev.clientY-disY);
+				});
+				
+				$(this).mouseup(function(){
+					$(document).off();
+				});
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

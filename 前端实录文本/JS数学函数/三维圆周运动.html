@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		body{
+			background:black;
+		}
+		#div1{
+			position:absolute;
+			top:400px;
+			left:800px;
+			background:red;
+			width:20px;
+			height:20px;
+		}
+		.box{
+			width:1px;height:1px;background:red;position:absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+
+			var iR = 300; //圆心半径
+			var iLeft = 500; //圆心X
+			var iTop = 400; //圆心Y
+			var angle = 0;
+
+			var timer = setInterval(function(){
+
+				angle++;
+
+				var iX = Math.sin( Math.PI/180 * angle ) * iR;
+				var iY = Math.cos( Math.PI/180 * angle ) * iR;
+
+
+				oDiv.style.left = iY + iLeft + 'px';
+				// oDiv.style.width = '50px';
+				// oDiv.style.height = '50px';
+				oDiv.style.width = iX/200 * 40 + 100 + 'px';
+				oDiv.style.height = iX/200 * 40 + 100 + 'px';
+
+				var oBox = document.createElement('div');
+				oBox.className = "box";
+
+				oBox.style.left = iX + iLeft + 'px';
+				oBox.style.top = iY + iTop + 'px';
+
+				document.body.appendChild(oBox);
+
+				console.log('iX='+iX);
+				console.log('iX/100='+iX/100);
+				console.log('iX/100*40='+iX/100*40);
+				console.log('iX/100*40+60='+iX/100*40+60);
+
+			},1);
+
+
+		}
+	</script>
+</head>
+<body>
+		<div id="div1"></div>
+</body>
+</html>

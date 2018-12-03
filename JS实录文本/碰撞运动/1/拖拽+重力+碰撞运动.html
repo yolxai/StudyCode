@@ -1,0 +1,99 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html">
+	<title></title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		#div1{
+			width:100px;
+			height:100px;
+			background:green;
+			position:absolute;
+		}
+	</style>
+	<script type="text/javascript">
+
+			var iSpeedX = 6;
+			var iSpeedY = 8;
+			var timer = null;
+		
+		function startMove(){
+			 clearInterval(timer);
+			 timer = setInterval(function(){
+				
+				var oDiv = document.getElementById('div1');
+
+				iSpeedY = iSpeedY + 3  ;
+
+				var l = iSpeedX + oDiv.offsetLeft;
+				var t = iSpeedY + oDiv.offsetTop;
+				var cW = document.documentElement.clientWidth || document.body.clientWidth;
+				var cH = document.documentElement.clientHeight || document.body.clientHeight;
+				
+				if(l>=cW-oDiv.offsetWidth){
+					iSpeedX = iSpeedY * -0.8;
+					l=cW-oDiv.offsetWidth;
+				}else if(l<=0){
+					iSpeedX = iSpeedX * -0.8;
+					l=0;
+				}
+
+				if(t>=cH-oDiv.offsetHeight){
+					iSpeedY = iSpeedY * -0.8;
+					iSpeedX = iSpeedX * 0.8;
+					
+					t = cH-oDiv.offsetHeight;
+				}else if(t<=0){
+					iSpeedY = iSpeedY * -1;
+					iSpeedX = iSpeedX * 0.8;
+					t=0;
+				}
+
+					oDiv.style.left = l + 'px';
+
+					oDiv.style.top = t + 'px';
+				
+
+			},30);
+		}
+
+
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+
+			oDiv.onmousedown = function(ev){
+
+				var oEvent = ev || event;
+				var l = oEvent.clientX - oDiv.offsetLeft;
+				var t = oEvent.clientY - oDiv.offsetTop;
+
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					oDiv.style.left = oEvent.clientX - l + 'px';
+					oDiv.style.top = oEvent.clientY - t + 'px';
+				}
+
+				oDiv.onmouseup = function(){
+					document.onmousemove = null;
+					oDiv.onmouseup = null;
+					startMove();
+				}
+
+				clearInterval(timer);
+
+			}
+
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

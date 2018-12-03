@@ -1,0 +1,33 @@
+<?php
+	if($_GET['id'] == NULL || $_GET['id'] < 0){
+		echo "<script>alert('请通过正常途径访问!');location='index.php';</script>";exit;
+	}
+	$id = intval($_GET['id']);
+	$db = include "db.php";
+?>
+<html>
+
+	<head>
+		<title>查看招聘信息</title>
+		<style>
+			#body{width:742px;height:auto;border:1px solid #CFCFCF;margin:10px auto;padding:20px;}
+			#body h3.title{border-bottom:1px solid #CCC;}
+			#body h3.title p{float:right;font-size:15px;}
+			
+			#body2 {margin:0 auto;width:781px;height:70px;}
+			a.submit{float:right;display:block;line-height:40px;text-decoration:none;text-align:center;border-radius:6px;width:90px;height:40px;background:#4682B4;color:white;outline:none;border:none;margin:10px;}
+		</style>
+	</head>
+	
+	<body>
+		<div id="body">
+			<h3 class="title"><?php echo $db[$id]['title']; ?><p>作者:<?php echo $db[$id]['author']; ?></p></h3>
+			<p class="context"><?php echo $db[$id]['context']; ?></p>
+		</div>
+		<div id="body2">
+			<a href="index.php?control=index&action=apply&id=<?php echo $id; ?>" class="submit" >申请岗位>></a>
+			<a href="" class="submit"  >留言咨询>></a>
+		</div>
+	</body>
+
+</html>

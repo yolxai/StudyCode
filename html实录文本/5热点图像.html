@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>10 IMG,img热点 图像地图</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		图像地图 map属性
+
+		<img usemap="#dogmap" >
+
+		<map name="#dogmap"></map>
+		map
+			area
+				shape  - 形状
+				coords - 位置
+				href - 链接
+				target - 打开方式
+
+				shape and coords {
+						shape [Rect = 矩形 , Circle = 圆形 , Poly = 不规则图形 ]
+						Rect = coords [ x1 , y1 , x2 , y2 ]
+						Circle = coords [ x , y , z ]
+						Poly = coords [ x1 , y1 , x2 , y2 , x3 , y3 ]
+				}
+
+
+	 -->
+
+	 <img src="dog.jpg" usemap="#dogmap"/>
+	 <map name="dogmap">
+	 	<area share="circle" coords="595,361,30" href="http://baidu.com" target="_blank"></area>
+	 	<area share="circle" coords="787,387,23" href="http://houdunwang.com" target="_blank"></area>
+	 	<area share="Rect" coords="650,324,738,390" href="http://g.cn" target="_blank"></area>
+	 	<area share="poly" coords="700,440,656,466,596,514,738,482" href="http://taobao.com" target="_blank"></area>
+	 </map>
+
+</body>
+</html>

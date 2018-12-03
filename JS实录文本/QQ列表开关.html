@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		list-style:none;;
+	}
+	#list {
+		width:200px;
+		background:#ccc;
+		border:1px solid #666;
+		padding:10px;	
+		margin:0 auto;
+	}
+	#list .lis h2{
+		width:200px;
+		height:30px;
+		font-size:15px;
+		line-height:30px;
+		background:url(3_img/zhengchang.gif) no-repeat 0px 9px;
+		text-indent:10px;
+	}
+	#list .lis ul {
+		text-indent :10px;
+		width:200px;
+		display:none;
+	}
+	#list .lis ul li{
+		margin:5px;
+	}
+	#list .lis h2.active{
+		background:#B2B2B2 url(3_img/zhankai.gif) no-repeat 0px 9px;
+	}
+	.hover{
+		background:#8E8E8E;
+	}
+</style>
+<script>
+window.onload = function (){
+		var oUl = document.getElementById('list');
+		var aH2= oUl.getElementsByTagName('h2');
+		var aUl = oUl.getElementsByTagName('ul');
+		var aLi = null;
+		var arrLi = []; //每一个分组下的LI
+		
+		for( var i=0;i<aH2.length;i++){
+			aH2[i].index = i ;
+			
+			aH2[i].onclick = function (){
+				if( this.className == 'active'  ){
+					aUl[this.index].style.display = 'none';
+					aH2[this.index].className = '';
+				}else{
+					aUl[this.index].style.display = 'block';
+					aH2[this.index].className = 'active';
+				}
+			}
+		}
+		
+		for( var i=0; i<aUl.length;i++  ){
+			aLi = aUl[i].getElementsByTagName('li');
+			for( var j=0;j<aLi.length;j++){
+				arrLi.push( aLi[j] );
+			}
+		}
+		
+		for( var i=0;i<arrLi.length;i++){
+			arrLi[i].onclick = function (){
+				
+				
+				for(var i=0;i<arrLi.length;i++){
+					if( arrLi[i] !=this ){
+						arrLi[i].className = '';
+					}
+				}
+				
+				
+				if(this.className == '' ){
+					this.className = 'hover';
+				}else{
+					this.className = '';
+				}
+				
+				
+			}
+		}
+}
+</script>
+</head>
+
+<body>
+
+	<ul id="list">
+    	<li class="lis">
+        	<h2>我的好友</h2>   <!-- 列表名称 -->
+            <ul>
+            	<li>张三</li>
+            	<li>李四</li>
+            	<li>王五</li>
+            </ul>
+        </li>
+    	<li class="lis">
+        	<h2>我的家人</h2>   <!-- 列表名称 -->
+            <ul>
+            	<li>张三</li>
+            	<li>李四</li>
+            	<li>王五</li>
+            </ul>
+        </li>
+    	<li class="lis">
+        	<h2>黑名单</h2>   <!-- 列表名称 -->
+            <ul>
+            	<li>张三</li>
+            	<li>李四</li>
+            	<li>王五</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

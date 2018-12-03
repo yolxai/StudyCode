@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#div1{width:100px;height:100px;background:red;position:absolute;left:900px;top:500px;}
+		.box{width:1px;height:1px;background:black;position:absolute;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+
+			var iR = 300; //圆心的半径
+			var iLeft = 600; //圆心的位置X
+			var iTop = 500; //圆心的位置Y
+			var angle = 0; //每次旋转的角度
+
+			setInterval(function(){
+				
+				angle++;
+
+		//获取位置(获得直角三角形的三边)
+				
+				var X = Math.cos( Math.PI/180 * angle ) * iR; //Left
+				var Y = Math.sin( Math.PI/180 * angle ) * iR; //Top
+
+				oDiv.style.left = X + iLeft + 'px';
+				oDiv.style.top = Y + iTop + 'px';
+
+
+				var oBox = document.createElement('div');
+				oBox.className = "box";
+
+				oBox.style.left = X + iLeft + 'px';
+				oBox.style.top = Y + iTop + 'px';
+
+				document.body.appendChild(oBox);
+				
+			},1);
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

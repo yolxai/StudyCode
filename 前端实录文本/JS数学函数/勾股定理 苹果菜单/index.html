@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0;}
+		#div1{position:absolute;width:100%;bottom:0;text-align:center;}
+		#div1 img{width:64px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var aImg = oDiv.getElementsByTagName('img');
+			var aInput = document.getElementsByTagName('input');
+
+			
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+
+				for(var i=0;i<aImg.length;i++){
+
+			//获取每个图片的中心点 X Y
+					var iZhongXinDianX = aImg[i].offsetLeft + aImg[i].offsetWidth/2;
+					var iZhongXinDianY = aImg[i].offsetTop + aImg[i].offsetHeight/2 + oDiv.offsetTop;
+
+					// aInput[i].value = 'x:'+iZhongXinDianX+',y:'+iZhongXinDianY+' ;';
+
+			//获取当前鼠标鼠标 与中心点的位置
+					var iJuLiX = oEvent.clientX - iZhongXinDianX;
+					var iJuLiY = oEvent.clientY - iZhongXinDianY;
+
+					// aInput[i].value = iJuLiX + ':' + iJuLiY;
+					// // alert(iJuLiX);
+					// alert(oEvent.clienX);
+
+			//获得勾股数 A平 + B平 = C平 (获得斜边长度)
+
+					var iXieBianC = Math.sqrt( Math.pow(iJuLiX,2) + Math.pow(iJuLiY,2) );
+
+					// aInput[i].value = iXieBianC/400;
+
+			//设置放大倍数,* + 
+
+					var iCValue = 1 - iXieBianC/400;
+
+					if(iCValue < 0.5){
+						iCValue = 0.5;
+					}
+
+					// aInput[i].value = iCValue;
+
+			//设置图片大小
+					aImg[i].style.width = iCValue * 128 + 'px';
+					aImg[i].style.height = iCValue * 128 + 'px';
+
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+	<input type="text" name="" id="">
+
+	<div id="div1">
+		<img src="img/1.png" alt="">
+		<img src="img/2.png" alt="">
+		<img src="img/3.png" alt="">
+		<img src="img/4.png" alt="">
+		<img src="img/5.png" alt="">
+	</div>
+</body>
+</html>

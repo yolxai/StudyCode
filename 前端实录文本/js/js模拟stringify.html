@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<script type="text/javascript">
+
+		function strify(json){
+
+			var sNewJson = "";
+			/*
+
+			name == name;
+
+			json[name] == value;
+
+			*/
+
+			for( name in json ){
+				sNewJson += '"'+name+'":"'+json[name]+'",';
+			}
+
+
+			//sNewJson.substr(-1,1);
+			sNewJson = sNewJson.substr(0,sNewJson.length-1);
+			sNewJson = '{'+sNewJson+'}';
+
+			return sNewJson;
+
+		}
+
+		var json = {"name":"Monkey","sex":"man"};
+
+		alert(strify(json));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

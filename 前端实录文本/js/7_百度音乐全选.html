@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+	}
+	table{
+		border:1px solid #ccc;
+		margin:10px auto 0;
+		border-bottom:none;
+		width:400px;
+	}
+	table tr{
+		background:#F7FFFF;	
+	}
+	table tr td{
+		padding : 5px;
+		font-size:12px;
+		height:15px;
+		line-height:12px;
+	}
+	#div1 {
+		width:398px;
+		height:20px;
+		background:#FFFFFF;
+		margin:auto;
+		border:1px solid #ccc;
+		border-top:none;
+		text-indent:6px;
+	}
+	#div1 strong{
+		font-weight:normal;
+		line-height:25px;
+		font-size:9px;
+		text-indent:6px;
+		padding-left:6px;
+	}
+</style>
+<script>
+	window.onload = function(){
+		var Table = document.getElementById('table');
+		var aTr = Table.getElementsByTagName('tr');
+		var aInput = Table.getElementsByTagName('input');
+		var All = document.getElementById('all');
+		var colorValue = ''; 
+	
+
+		All.onclick = function(){
+			if(All.checked){
+				for(var i=0;i<aInput.length;i++){
+					aInput[i].checked = true;
+					aTr[i+1].style.background = '#EFEFEF';
+				}
+			}else{
+				for(var i=0;i<aInput.length;i++){
+					aInput[i].checked = '';
+					aTr[i+1].style.background = '#F7FFFF';
+				}
+			}
+		}
+
+		
+		for(var i=0;i<aInput.length;i++){
+			aInput[i].index = i;
+			aInput[i].onclick = function (){
+				colorValue = this.style.background;
+				aTr[this.index+1].style.background = '#EFEFEF';
+				All.checked = '';
+			}
+		}
+		
+		for(var i=1;i<aTr.length;i++){ //隔行变色 for开始
+			aTr[i].index = i-1;
+			if(i%2 == 0){
+				aTr[i].style.background = '#F7FFFF';
+			}else{
+				aTr[i].style.background = '#ffffff';	
+			}
+			aTr[i].onmouseover = function(){ //鼠标移入 改变背景色
+				colorValue = this.style.background;
+				this.style.background = '#EFEFEF';
+			}
+     		aTr[i].onmouseout = function(){ //鼠标移出 还原背景色
+					if( aInput[this.index].checked ){
+						this.style.background = '#EFEFEF';
+					}else{
+						this.style.background = colorValue;
+					}
+			}
+		}	 //for结束
+
+	}
+</script>
+</head>
+
+<body>
+<table id="table" width=400>
+	<tr><th>音乐名称</th><th>作者</th></tr>
+	<tr><td><input type="checkbox" /> 音乐名称</td><td>作者</td></tr>
+	<tr><td><input type="checkbox" /> 音</td><td>作者</td></tr>
+	<tr><td><input type="checkbox" /> 音音乐名称</td><td>作者</td></tr>
+	<tr><td><input type="checkbox" /> 音音乐名称</td><td>作者</td></tr>
+</table>
+<div id="div1"><input type="checkbox" id="all"/><strong>全选</strong></div>
+</body>
+</html>

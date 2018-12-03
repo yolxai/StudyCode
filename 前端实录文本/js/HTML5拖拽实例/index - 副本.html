@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>HTML5拖拽实例</title>
+	<style type="text/css">
+		*{padding:0;margin:0;list-style:none}
+		#recycle{
+			width:128px;
+			height:128px;
+			/*background:green;*/
+			position:fixed;
+			bottom:20px;
+			right:20px;
+		}
+		#recycle img{
+			position:fixed;
+			bottom:20px;
+			right:20px;
+			/*background:red;*/
+		}
+		.ico{
+			position:absolute;
+			width:128px;
+			height:128px;
+			/*-webkit-transform:rotate(10deg);*/
+		}
+		#text{width:500px;height:306px;position:fixed;right:20px;bottom:158px;border:2px solid #999}
+		#text li{
+			width:100%;
+			height:50px;
+			background:#777;
+			text-align:center;
+			line-height:50px;
+			font-family:"微软雅黑";
+			font-size:20px;
+			border-bottom:2px solid #999;
+		}
+		.ok{
+			font-size:50px;
+			text-align:center;
+			font-family: "微软雅黑";
+			line-height:200px;
+		}
+		#jilu{
+			width:300px;
+			height:50px;
+			position:fixed;
+			top:0;
+			left:0;
+			font-size:20px;
+			text-align:center;
+			font-family: "微软雅黑";
+			line-height:50px;
+			background:#444;
+			border:2px solid #333;
+			color:white;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var aIco = document.getElementsByClassName('ico');
+			var oRecycle = document.getElementById('recycle');
+			var oUl = document.getElementById('text');
+			var oJilu = document.getElementById('jilu');
+
+			for(var i=0;i<aIco.length;i++){
+				var angle = (Math.random()*44 + 1) - (Math.random()*79+1 ) ;
+				aIco[i].style.left = Math.random()*700+50 + 'px';
+				aIco[i].style.top = Math.random()*500+50 + 'px';
+				aIco[i].style.WebkitTransform = 'rotate('+ angle +'deg)';
+				aIco[i].draggable = 'true';
+				aIco[i].index = i;
+				aIco[i].ondragstart = function(ev){
+					ev.dataTransfer.setData('title',this.title);
+					ev.dataTransfer.setData('wo',this.index);
+				}
+				startMove(aIco[i]);
+				dragMove(aIco[i]);
+				// oJilu.innerHTML = '开始拖拽了哦!';
+
+			}
+
+			oRecycle.ondragover = function(ev){
+				ev.preventDefault();
+			}
+
+			oRecycle.ondrop = function(ev){
+				ev.preventDefault();
+				var getTitle = ev.dataTransfer.getData('title');
+
+				document.getElementById('box').removeChild( aIco[ev.dataTransfer.getData('wo')] );
+				// console.log(ev.dataTransfer.getData('wo'));
+
+				var oLi = document.createElement('li');
+				oLi.innerHTML = '已经回收了:'+getTitle;
+				oUl.appendChild(oLi);
+
+				for(var i=0;i<aIco.length;i++){
+
+					aIco[i].index = i;
+				}
+
+				var aLi = oUl.getElementsByTagName('li');
+				if(aLi.length == 6){
+					document.body.innerHTML += '<p class="ok">恭喜您已经把万恶的IE给删除掉了！</p>';
+				}
+				// oJilu.innerHTML = '放开鼠标就可以删除了!';
+
+			}
+				
+
+
+			function startMove(obj){
+
+					function fn1(){
+
+					obj.speedY+=2;
+					var left = obj.speedX + obj.offsetLeft;
+					var top = obj.offsetTop + obj.speedY;
+					var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+					var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+
+					if(top >= clientHeight-obj.offsetHeight){
+						top = clientHeight-obj.offsetHeight;
+						obj.speedY = obj.speedY * -0.8;
+						obj.speedX = obj.speedX * 0.8;
+					}
+					if(left >= clientWidth-obj.offsetWidth){
+						left = clientWidth-obj.offsetWidth;
+						obj.speedY = obj.speedY * -0.8;
+						obj.speedX = obj.speedX * -0.8;
+					}
+
+
+						obj.style.left = left + 'px';
+						obj.style.top = top + 'px';
+					
+
+					// top = obj.offsetTop + obj.speedY;
+					
+				}
+				obj.speedY = Math.random()*4+1;
+				obj.speedX = Math.random()*10+1;
+
+				obj.timer = setInterval(fn1,20);
+
+			}
+
+			function dragMove(obj){
+
+				obj.onmousedown = function(ev){
+					var disX = ev.clientX - obj.offsetLeft;
+					var disY = ev.clientY - obj.offsetTop;
+
+					clearInterval(obj.timer);
+
+					document.onmousemove = function(ev){
+						var left = ev.clientX-disX;
+						var top = ev.clientY-disY;
+						obj.style.left = left+'px';
+						obj.style.top = top+'px';
+
+						// oJilu.innerHTML = '拖拽中!';
+					}
+					document.onmouseup = function(){
+						document.onmouseup=null;
+						document.onmousemove=null;
+						startMove(obj)
+
+						// oJilu.innerHTML = '点击就可以松开IE了!';
+					}
+				}
+
+			}
+
+		}
+	</script>
+</head>
+<body style="overflow:hidden">
+
+	<div id="jilu">您当前无操作！</div>
+
+	<div id="box">
+		<img class="ico" src="img/1.ico" title="第1个IE浏览器" alt="">
+		<img class="ico" src="img/2.ico" title="第2个IE浏览器" alt="">
+		<img class="ico" src="img/3.ico" title="第3个IE浏览器" alt="">
+		<img class="ico" src="img/4.ico" title="第4个IE浏览器" alt="">
+		<img class="ico" src="img/5.ico" title="第5个IE浏览器" alt="">
+		<img class="ico" src="img/6.ico" title="第6个IE浏览器" alt="">
+	</div>
+
+	<div id="recycle">
+		<img src="img/lajixiang.jpg" alt="">
+	</div>
+
+	<ul id="text">
+	</ul>
+</body>
+</html>

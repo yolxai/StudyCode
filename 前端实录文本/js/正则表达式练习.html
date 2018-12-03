@@ -1,0 +1,67 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0;font-family:"微软雅黑"}
+		#box{margin:0 auto;width:500px;height:500px;border:10px solid #000}
+		#text{width:480px;height:420px;resize:none;margin-left:10px;margin-top:10px;}
+		#box input.text{width:300px;height:50px;border:1px solid #000;outline:none;margin-left:10px;margin-top:5px;font-size:30px;}
+		#box input.find,#box input.replace{width:50px;height:30px;}
+	</style>
+	<script type="text/javascript">
+		function getByClass(oParent,sClass){
+			var all = oParent.getElementsByTagName('*');
+			var newArr = [];
+			for(var i=0;i<all.length;i++){
+				if(all[i].className == sClass){
+					newArr.push(all[i]);
+				}
+			}
+			return newArr;
+		}
+
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oTextInput = getByClass(oBox,'text')[0];
+			var oFindInput = getByClass(oBox,'find')[0];
+			var oReplace = getByClass(oBox,'replace')[0];
+			var oTextArea = document.getElementById('text');
+
+			oFindInput.onclick = function(){
+
+				var exp = eval('/'+oTextInput.value+'/img');
+				//var result = exp.exec(oTextArea);
+
+				if( !exp.test(oTextArea.innerHTML) ){
+					alert('没有匹配到内容!');
+					return false;
+				}
+				
+				//oTextArea = 11;//oTextArea.replace('啊大神的','1');
+				oTextArea.innerHTML = oTextArea.innerHTML.replace(exp,'<span style="background:red;">'+oTextInput.value+'</span>');
+			
+			}
+			
+			oReplace.onclick = function(){
+				var exp = eval('/'+oTextInput.value+'/g');
+				if( !exp.test(oTextArea.innerHTML) ){
+					alert('没有匹配到内容!');
+					return false;
+				}
+				oTextArea.innerHTML = oTextArea.innerHTML.replace(exp,'*');
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<input type="text" class="text">
+		<input type="button" value="查找" class="find">
+		<input type="button" value="替换" class="replace">
+		<div id="text">啊大神的苦辣了抗生素的12312额卡萨丁骄傲了扣是几点1223sad``21131122334+</div>
+
+	</div>
+</body>
+</html>

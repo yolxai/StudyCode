@@ -1,0 +1,137 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		body div span img{
+			padding:0;
+			margin:0;
+		}
+		#fdj_id div{ /* 大图和小图 */
+			float:left;
+		}
+
+		#fdj_id .small_image{
+			margin-top:120px;
+			width:220px;
+			height:294px;
+			border:1px solid #ccc;
+			position:relative;
+		}
+		#fdj_id .small_image .template{
+			display:block;
+			width:100%;
+			height:100%;
+			z-index: 2;
+			position:absolute;
+		}
+		#fdj_id .small_image .float_select{
+			width:70px;
+			height:70px;
+			position:absolute;
+			background:blue;
+			filter:alpha(opacity:30);
+			opacity:0.3;
+			display:none;
+		}
+
+		#fdj_id div.big_image { /* 大图框架 */
+			margin-top:50px;
+			margin-left:20px;
+			border:2px solid #999;
+			width:300px;
+			height:400px;
+			display:none;
+			position:relative;
+			overflow: hidden;
+		}
+		#fdj_id div.big_image .image {
+		/*	width:300px;
+			height:400px;*/
+			position:absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		function getByClass(oParent,sClass){
+			var aAll = oParent.getElementsByTagName('*');
+			var resArr = [];
+			var i = 0;
+
+			for( i = 0 ; i<aAll.length ; i++){
+				if( aAll[i].className == sClass){
+					resArr.push(aAll[i]);
+				}
+			}
+
+			return resArr;
+		}
+
+		window.onload = function(){
+			var oFdj_id = document.getElementById('fdj_id');
+			var oTemplate = getByClass(oFdj_id,'template')[0];
+			var oFloat = getByClass(oFdj_id,'float_select')[0];
+			var oBig = getByClass(oFdj_id,'big_image')[0];
+			var oSmall = getByClass(oFdj_id,'small_image')[0];
+			var oImg = oBig.getElementsByTagName('img')[0];
+
+			oTemplate.onmouseover = function(){
+				oFloat.style.display = 'block';
+				oBig.style.display = 'block';
+			}
+
+			oTemplate.onmouseout = function(){
+				oFloat.style.display = 'none';
+				oBig.style.display = 'none';
+			}
+
+			oTemplate.onmousemove = function(ev){
+
+				var oEvent = ev || event;
+
+				var left = oEvent.clientX - oSmall.offsetLeft - (oFloat.offsetWidth/2 );
+				var top = oEvent.clientY - oSmall.offsetTop - (oFloat.offsetHeight/2 );
+
+				/*var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+				var clientHeight = document.documentElement.clientHeight ||document.body.clientHeight;*/
+
+				if( left <= 0){
+					left = 0;
+				}else if(left >= oTemplate.offsetWidth-oFloat.offsetWidth){
+					left = oTemplate.offsetWidth-oFloat.offsetWidth;
+				}
+
+				if( top <= 0){
+					top = 0;
+				}else if( top >= oTemplate.offsetHeight - oFloat.offsetHeight){
+					top = oTemplate.offsetHeight - oFloat.offsetHeight;
+				}
+				
+				oFloat.style.left = left + 'px';
+				oFloat.style.top = top + 'px';
+
+				var fX = oFloat.offsetLeft / (oTemplate.offsetWidth-oFloat.offsetWidth);
+				var fY = oFloat.offsetTop / (oTemplate.offsetHeight-oFloat.offsetHeight);
+
+				oImg.style.left = -fX * (oImg.offsetWidth - oBig.offsetWidth ) + 'px';
+				oImg.style.top = -fY * (oImg.offsetHeight - oBig.offsetHeight) + 'px';
+
+
+
+
+			}
+		}
+	</script>	
+</head>
+<body>
+	<div id="fdj_id">
+		<div class="small_image">
+			<span class="template"></span>
+			<span class="float_select"></span>
+			<img src="image/small.jpg" alt="">
+		</div>
+		<div class="big_image">
+			<img class="image" src="image/big.jpg" alt="">
+		</div>
+	</div>
+</body>
+</html>

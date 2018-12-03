@@ -1,0 +1,196 @@
+// 140618
+
+10  : 地图热点 锚点 
+	Rect Cirecle Poly 
+11  : 图片格式详解
+	gif<jpg<png<bmp
+12  : 路径知识
+ 	./ ../ http://
+13  : 列表标签,表格详解  15:00
+	<ul></ul>  <ol></ol>  <dl></dl>
+	<li></li>    <dt></dt>  <dd></dd>
+	
+// 140619
+
+13 ： 表格详解
+	<table></table>
+	<tr></tr> <td></td> <caption></caption>
+	colspan rowspan
+	
+	习题:使用表格制作一个作品
+
+15、16、17 : 表单元素详解
+	<form></form>
+		type=""
+		      -text
+		      -password
+		      -radio
+		      -checkbox
+		      -file
+		      -submit
+		      -button
+		      -hidden
+		      <textarea cols="" rows=""></textarea>
+		     <select>
+		     	<option value="null">null</option>
+		     </select>
+		     <lable for=""></lable>
+		     
+		     习题:用table制作百度首页
+		     
+// 140620
+
+18 : marquee滚动标签
+19、20 : frameset frame iframe 标签
+21 : 使用CSS样式
+22 : 引入式 导入式CSS样式
+
+// 140621
+
+23 : CSS选择器
+	id选择器	= #div{}
+	class选择器 	= .div{}
+	标签选择器	= div{}
+	交叉选择器	= div#div{}
+	群组选择器	= div,a,#test,.class{}
+	后代选择器	= div p{}
+	通用选择器	= *{}
+24 : DIV+CSS 选择器
+	子选择器	= body>p (儿子选择器)
+	相邻选择器	= div+p    (兄弟选择器)
+	属性选择器	= p[name]
+	CSS伪类选择器
+		a:hover
+		a:active
+		a:link
+		a:visited
+		
+		p:first-letter 
+		p:first-line    
+	
+	块级标签:独占一行的标签
+		<p> <li> <div> H1~H6
+	行级标签:与行级元素同占一行的标签,行级标签不能设置宽高
+		<a> <span> <font> <em>
+	行内块级标签:与行级元素同占一行的标签,可以设置宽高
+		<img> <input>
+
+	font-family 文本字体
+	line-height  行高
+	text-align    文本水平对齐方式
+	
+ //140622
+ 
+ 25 : 行内块级标签 
+	text-indent = 首行缩进
+	font-weight = 文字粗细 (100~900) 400 normal常规  700 blod加粗
+	font-style  = 文字风格 normal常规 italic斜体
+	text-decoration = 文字修饰风格 
+		underline下划线 overline上划线 line-through删除线 none去除下划线
+	font-variant = 字体是否大写 small-caps为大写 normal为标准小写	
+	color   =  字体颜色 
+
+26 27 ：
+	27: margin padding属性不同参数的含义详解 外边距详解
+	
+		padding
+		padding-left
+		padding-top
+		padding-right
+		padding-bottom
+				
+		padding:30px;
+			一个参数 为上下左右分别配置30px的内边距
+		padding:30px 100px; 
+			两个参数 第一个参数为上下内边距 第二个参数为左右内边距
+		padding:30px 100px 300px;
+			三个参数 第一个参数为上 第二个参数为左右 第三个参数为下
+		padding:10px 20px 40px 80px;
+			四个参数 第一个为上 第二个为右 第三个为下 第四个为左
+			
+	margin : 外边距
+	padding: 内边距
+
+	margin:0 auto; = 设置上下外边距为0 并对宽度进行水平居中 只支持块级标签的设置
+	margin可以设置负值
+	padding不能设置负值
+	行级标签外边距只有左右方向,没有上下方向
+	两个兄弟节点 左右外边距会叠加 上下外边距会发生合并(50和100 取100)
+	如果不给块级元素设置具体宽度,那么他的宽度默认是100%,跟父级宽度保持一致
+	如果不给元素设置具体高度,那么他的高度会随着内容而变化
+
+ //140624 
+ 
+ 28 : display属性 overflow属性 border属性
+ 
+ 	display:none;block;inline;
+ 	overflow:auto;scroll;hidden;
+ 	list-style:
+ 	
+ 	border-color:red;
+ 	border-style:solid;dotted;double;dashed;
+ 	border-width:2px;
+ 	
+ 	border-right-width:2px;
+ 	border-bottom-width:2px;
+ 	border-left-width:2px;
+ 	border-top-width:2px;
+ 	
+ 29 : float属性详解 浮动元素排列规律
+ 
+ 	float浮动可以让块级元素同占一行
+ 	有float属性的元素是脱离文档流的,它后面的元素视他不见
+ 	
+ 	浮动什么时候停止?
+ 	   1.当遇到一个浮动元素后会停止
+ 	   2.遇到父级时会停止
+ 	   3.若包含的容器太窄(父级),无法容纳多个浮动元素,元素会自动向下移动,
+ 	      如果浮动高度不同,元素很可能会被卡住!
+ 	      
+ //140625 
+ 	31  定位属性详解
+ 	clear:left;right;both; 清除left浮动
+ 	position:
+ 		relative:top:left: 相对定位
+ 			1、相对定位是相对于它原来的位置进行变化
+ 			2、它原来的占有空间的位置还在
+ 			3、下和右是正方向,上和左是反方向
+ 		absolute:top:left: 绝对定位
+ 			1、它相对于离他最近的有定位属性的父级元素进行定位
+ 			2、它原来的占有空间的位置消失了
+ 			3、下和右是正方向,上和左是反方向
+ 			4、要设置父级,可以对父级设置一个空的相对定位
+ 
+ 	z-index:设置元素的堆叠顺序,不能写单位(默认层级是0);
+ 
+  //140627
+  	32 : background
+   		background:color image repeat position
+		background-color:#999;
+		background-image:url(dog.jpg);
+		background-repeat:no-repeat;repeat-x;repeat-y;
+		background-position:left(Value) top(Value);
+		background-attachment:fixed; /* 固定滚动条 */
+		background-color:transparent; /* 背景透明 */
+ //140628
+ 	34 : visibility 透明度属性  floatBug IE6双倍边距
+ 	
+ 	visibility:hidden; 和 display:none一样
+	visibility隐藏后保留空间 display不保留
+	
+	透明度:opacity  0-1  1是不透明 0是完全透明
+	IE6下使用透明度:filter:alpha(opacity=50) 100是不透明 0是完全透明
+	floatBug:元素没设置高度让内容撑开 内容使用float脱离文档流,可以使用overflow:hidden解决
+	IE双倍边距:元素使用float排列在一行,最左边的元素会有双倍边距,解决方法:display:inline;
+	
+ //140629
+ 	35 css hack详解
+ 		background:yellow\9; /* IE浏览器 */
+		background:green\0; /* IE8 IE9 */
+		+background:purple; /* IE6 IE7 */
+		_background:orange; /* IE6 */
+		
+		:root #box{ 
+			/* IE9 */ 
+			background:blue\9;
+		}

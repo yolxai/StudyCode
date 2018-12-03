@@ -1,0 +1,11 @@
+ÕûÕ¾²¼¾Ö
+	
+	top
+	header
+	menu
+	content
+		ad_img
+		look_map
+		shop_display
+		featured_shop
+	footer

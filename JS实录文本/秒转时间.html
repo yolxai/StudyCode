@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<Style>
+	#div1{
+		width:400px;
+		height:100px;
+		margin-top:10px;
+		border:2px solid #ccc;	
+		color:#666;
+		font-size:15px;
+		padding:10px;
+	}
+	strong{
+		color:#666;
+		font-size:15px;
+	}
+</style>
+<script>
+	window.onload = function(){
+		var oDiv = document.getElementById('div1');
+		var oText = document.getElementsByTagName('input')[0];
+		var oBtn = document.getElementsByTagName('input')[1];	
+		var s = '' ;
+		var fen= '';
+		var miao = '';
+		
+		oBtn.onclick = function(){
+			s = Math.floor(oText.value);
+			fen = parseInt(s/60);
+			miao = parseInt(s%60);
+			if(isNaN(fen) || isNaN(miao) ){
+				oDiv.innerHTML = 'Error';
+			}else{
+				oDiv.innerHTML = fen + '分' + miao + '秒';
+			}
+		}
+	}
+</script>
+</head>
+
+<body>
+	<strong>请输入秒：</strong><input type="text" />
+    <input type="button" value="转换"/>
+    <div id="div1">等待操作...</div>
+</body>
+</html>

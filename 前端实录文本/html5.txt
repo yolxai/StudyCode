@@ -1,0 +1,147 @@
+结构化标签
+
+<header>头部标签</header>
+<nav>导航标签</nav>
+<section>描素和表章</section>
+<hgroup>文章标题组</hgroup>
+<article>文章和内容</article>
+<footer>尾部标签</footer>
+
+语义化标签
+
+figure 媒体元素
+time 时间
+address 作者信息
+mark 标记
+datalist 表单提示列表  list="thisId"
+details>summary 缩略信息
+progress max=100 value=76
+
+HTML5音频控件
+<sourec></sourec>
+video
+	src="";
+	controls=controls显示控制台
+	height = pixels设置高度
+	width = pixels设置宽度
+	loop = loop重复播放
+	autoplay = autoplay自动播放
+	preload = preload自动播放
+	poster = IMG 设置图片
+audio
+
+
+HTML5新增表单控件
+
+email 提交时验证是否是email(移动端会变成英文)
+url 提交时验证是否是url
+tel 电话(移动端会变成数字)
+range 数值选择器 step一次走x min最小 max最大 value当前值
+
+number 数字输入框
+color 颜色选择器
+datatime 完整日期时间
+time 当前时间
+month 当前月
+week 当前周
+
+HTML5新增表单属性
+
+placeholder="请输入4-16个字符" 提示信息
+autocomplete="off" 关闭输入记录提示
+autofocus 设置初始聚焦点
+required 此选项不能为空
+
+JS 新增选择器
+
+querySelector();只能选择一个,一组元素只能选择第一个元素
+querySelectorAll();获取一组元素
+
+---------
+
+classList 获取class列表 / 类似数组的object
+  length class的长度
+  add() 添加class
+  remove()删除class
+  toggle()存在就删除 不存在就添加
+
+JSON新方法
+
+ eval 解析任何字符串变JS
+ parse 把字符串转成JS , 必须是json格式
+ stringify 把json转字符串
+
+JS延迟加载
+
+ defer 延迟JS执行,只能加引入
+ async 
+
+
+HTML5的历史管理
+
+改变历史管理的方式:跳转页面,hash值改变,pushState
+onhashchange
+history
+
+history.pushState(data,title,url);
+window.onpopstate = function(){ev.state}
+
+元素的拖放
+
+draggable='true'
+  ondragstart 开始
+  ondragend 结束
+  ondrag 当中
+
+目标元素 
+ ondragenter 进入目标/onmouseover
+ ondragover  进入时开始,离开后结束
+ ondragleave 离开目标/onmouseout
+ ondrop 在目标元素中释放鼠标
+
+解决火狐HTML5拖拽问题
+ ev.dataTransfer对象
+ ev.dataTransfer.setDate();
+ ev.dataTransfer.getDate();
+ ev.dataTransfer.setDargImage(样式,X,Y); 设置拖拽样式
+
+ ev.dataTransfer.files 获取拖拽的文件集合
+   :- length 数量
+   :- type 文件类型
+ 读取文件信息 object
+   var fd = new FileReader();
+   fd.readAsDataURL( ev.dataTransfer.files[0] ); 读取文件内容
+   > fd.onload = this.result 读取文件内容成功后的this.result
+
+
+HTML5 canvas
+<canvas></canvas> 默认 宽300 高150
+getContext('2d');
+fillRect(left,top,width,height); 绘制方块
+strokeRect(left,top,width,height);
+
+绘制: stroke画线 fill rect clearRect save restore
+
+填充 fillStyle stokeStyle
+线宽 lineWidth
+
+绘制边界
+lineJoin : miter()默认 , round()圆角 , bevel()斜角
+端点样式
+lineCap : butt()默认 , round()圆角 , square()高度多出宽一半的值
+
+绘制路径
+beginPath:开始绘制路径
+closePath:结束绘制路径
+moveTo:移动到绘制的新目标点
+lineTo:新的目标点
+
+stroke 画线
+arc(x,y,半径,开始弧度,结束弧度,旋转方向) 圆形 : 弧度=角度*Math.PI()/180;
+fill 填充
+
+clearRect()
+
+arcTo(x1,y1,x2,y2,r) 
+
+插入图片 drawImage(x,y,w,h);

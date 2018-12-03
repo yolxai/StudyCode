@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+
+		}
+		div {
+			width:100px;
+			height:100px;
+			background:black;
+			position:relative;
+			margin-top: 10px;
+			border:1px solid #ccc;
+			border-left: none;
+			filter:alpha(opacity:30);
+			opacity:0.3;
+		}
+	</style>
+	<script>
+		function getStyle(obj,attr){
+			if( obj.currentStyle ){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj)[attr];
+			}
+		}
+
+		function startMove(obj,json,fn){
+
+
+
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var Stop = false;
+				for(var attr in json){
+						var iCu = 0;
+						if( attr == 'opacity' ){
+							iCu = parseInt(parseFloat(getStyle(obj,'opacity') * 100));
+						}else{
+							iCu = parseInt(getStyle(obj,attr));
+						}
+
+						var iSpeed = ( json[attr] - iCu ) / 8;
+						
+						iSpeed = iSpeed >0?Math.ceil(iSpeed):Math.floor(iSpeed);
+
+						if( iCu != json[attr]  ){
+							Stop = false;
+						}else{
+							Stop = true;
+						}
+
+						
+							if( attr == 'opacity' ){
+								obj.style.filter = 'alpha(opacity:'+ (iCu += iSpeed) +')';
+								
+								var a=0;
+								if(parseFloat((iCu + iSpeed) / 100) > 1){
+									a = 1;
+								}else{
+									a = parseFloat((iCu + iSpeed) / 100);
+								}
+								obj.style.opacity = a; 
+							}else{
+								obj.style[attr] = iCu + iSpeed + 'px';
+							}
+						
+					}
+
+					if(Stop){
+						clearInterval(obj.timer);
+						fn && fn();
+					}
+			},20);
+
+			
+
+		
+
+			
+
+
+		}
+
+		window.onload = function(){
+			var aDiv = document.getElementsByTagName('div');
+
+			for(var i=0;i<aDiv.length;i++){
+				aDiv[i].onmouseover = function(){
+					//var a = this;
+					startMove(this,{width:200,opacity:100,height:200});
+				}
+				aDiv[i].onmouseout = function(){
+					//var a = this;
+					startMove(this,{width:100,opacity:30,height:100});
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

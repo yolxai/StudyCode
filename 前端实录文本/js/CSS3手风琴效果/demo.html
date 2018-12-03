@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		body{background:#888}
+		#box{box-shadow:0 0 100px #000;width:800px;height:320px;margin:100px auto;}
+		.list{height:320px;width:800px;overflow:hidden;}
+		.list li{list-style:none;float:left;width:160px;position:relative;transition:width .5s;}
+		.list li p{height:60px;width:640px;position:absolute;bottom:0;left:0;background:rgba(0,0,0,0.5);text-indent:10px;font:20px/60px "微软雅黑";color:#FFF;text-shadow:-10px 0px 10px #000}
+
+		.list:hover li{width:40px;}
+		.list li:hover{width:640px;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul class="list">
+			<li><img src="1.jpg" alt=""><p>Monkey1</p></li>
+			<li><img src="2.jpg" alt=""><p>Monkey2</p></li>
+			<li><img src="3.jpg" alt=""><p>Monkey3</p></li>
+			<li><img src="4.jpg" alt=""><p>Monkey4</p></li>
+			<li><img src="5.jpg" alt=""><p>Monkey5</p></li>
+		</ul>
+	</div>
+</body>
+</html>

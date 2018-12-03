@@ -1,0 +1,126 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+
+		@-moz-keyframes show{
+			0%{
+				opacity:0;
+				-moz-transform:rotateX(180deg);
+			}
+			100%{
+				opacity:1;
+				-moz-transform:rotateX(0deg);
+			}
+		}
+
+		@-moz-keyframes hide{
+			0%{
+				opacity:1;
+				-moz-transform:rotateX(0deg);
+			}
+			100%{
+				opacity:0;
+				-moz-transform:rotateX(-180deg);
+			}
+
+		}
+
+		body,div,a,input{padding:0;margin:0}
+		#box{
+			margin:100px auto;
+			width:500px;
+			height:325px;
+			/*background:red;*/
+			position:relative;
+			-moz-transform-style:preserve-3d;
+			-moz-perspective:800px;
+		}
+		#box img{
+			position:absolute;
+			-moz-transform-origin:bottom;
+			opacity:0;
+			-moz-transform:rotateX(180deg);
+		}
+		#box input{
+			position:absolute;
+			width:60px;
+			height:60px;
+			border-radius:50%;
+			border:3px solid #CCC;
+			outline:none;
+		}
+		#box input:hover{
+			cursor:pointer;
+		}
+		#box input:nth-of-type(1){
+			left:-100px;
+			top:130px;
+		}
+		#box input:nth-of-type(2){
+			right:-100px;
+			top:130px;
+		}
+	/*	.show{
+			opacity:1;
+			-moz-transform:rotateX(0deg);
+			-moz-animation:1s show;
+		}*/
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var aBtn = oBox.getElementsByTagName('input');
+			var aImg = oBox.getElementsByTagName('img');
+			var thisNum = 0;
+
+			var show = 'opacity:1;-moz-transform:rotateX(0deg);-moz-animation:1s show;';
+			var hide = 'opacity:0;-moz-transform:rotateX(-180deg);-moz-animation:0.6s hide;';
+			aImg[0].style.cssText = show;
+
+			aBtn[0].onclick = function(){// 上一张 功能
+
+				aImg[thisNum].style.cssText = hide;
+				thisNum--;
+
+				if(thisNum < 0){
+					thisNum = aImg.length-1;
+				}
+
+				aImg[thisNum].style.cssText = show;
+
+			}
+
+			aBtn[1].onclick = function(){ // 下一张 功能
+
+				aImg[thisNum].style.cssText = hide;
+				
+				thisNum++;
+				if(thisNum >= aImg.length){
+					thisNum = 0;
+				}
+
+				aImg[thisNum].style.cssText = show;
+
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="上一张"/>
+		<img src="css3_img/1.jpg" alt="">
+		<img src="css3_img/2.jpg" alt="">
+		<img src="css3_img/3.jpg" alt="">
+		<img src="css3_img/4.jpg" alt="">
+		<img src="css3_img/5.jpg" alt="">
+		<img src="css3_img/6.jpg" alt="">
+		<img src="css3_img/7.jpg" alt="">
+		<input type="button" value="下一张"/>
+	</div>
+</body>
+</html>

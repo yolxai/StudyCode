@@ -1,0 +1,86 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#list{margin:20px;width:200px;position:relative;border:2px solid #e4393c;}
+		#list li{list-style:none;width:200px;height:30px;font-family:微软雅黑;margin-bottom:1px;border-left:none;z-index:5}
+		/*border:1px solid #999;*/
+		#list li a{text-decoration:none;display:block;width:100%;height:100%;line-height:30px;color:#000;text-align:center;}
+		#list li .hide_box{width:500px;height:500px;position:absolute;top:0;left:205px;background:red;border:1px solid #ddd;display:none;}
+	</style>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#list li").mouseover(function(){
+				$(this).find('.hide_box').show().parent('li').siblings().find('.hide_box').hide();
+				$(this).css({'borderTop':'1px solid #999','borderBottom':'1px solid #999','background':'red'});
+			});
+			$("#list li").mouseout(function(){
+					$(this).find('.hide_box').hide();
+					$(this).css({'border':'none','background':'none'});
+			});
+		});
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<a href="">图书、音像、数字商品</a>
+			<div class="hide_box">图书、音像、数字商品</div>
+		</li>
+		<li>
+			<a href="">家用电器</a>
+			<div class="hide_box">家用电器</div>
+		</li>
+		<li>
+			<a href="">手机、数码、京东通信</a>
+			<div class="hide_box">手机、数码、京东通信</div>
+		</li>
+		<li>
+			<a href="">电脑、办公</a>
+			<div class="hide_box">电脑、办公</div>
+		</li>
+		<li>
+			<a href="">家居、家具、家装、厨具</a>
+			<div class="hide_box">家居、家具、家装、厨具</div>
+		</li>
+		<li>
+			<a href="">男装、女装、内衣、珠宝</a>
+			<div class="hide_box">男装、女装、内衣、珠宝</div>
+		</li>
+		<li>
+			<a href="">个护化妆</a>
+			<div class="hide_box">个护化妆</div>
+		</li>
+		<li>
+			<a href="">鞋靴、箱包、钟表、奢侈品</a>
+			<div class="hide_box">鞋靴、箱包、钟表、奢侈品</div>
+		</li>
+		<li>
+			<a href="">运动户外</a>
+			<div class="hide_box">运动户外</div>
+		</li>
+		<li>
+			<a href="">整车、汽车用品</a>
+			<div class="hide_box">整车、汽车用品</div>
+		</li>
+		<li>
+			<a href="">母婴、玩具乐器</a>
+			<div class="hide_box">母婴、玩具乐器</div>
+		</li>
+		<li>
+			<a href="">食品饮料、酒类、生鲜</a>
+			<div class="hide_box">食品饮料、酒类、生鲜</div>
+		</li>
+		<li>
+			<a href="">营养保健</a>
+			<div class="hide_box">营养保健</div>
+		</li>
+		<li>
+			<a href="">彩票、旅行、充值、票务</a>
+			<div class="hide_box">彩票、旅行、充值、票务</div>
+		</li>
+	</ul>
+</body>
+</html>

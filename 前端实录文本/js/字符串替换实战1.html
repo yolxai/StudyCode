@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title></title>
+</head>
+<body>
+	<input type="button" value="更改"/>
+	<img style="width:500px;height:353px;border:none;outline:none;" src="css3_img/1.jpg" id="img1" alt=""/>
+	<script type="text/javascript">
+		var oBtn = document.getElementsByTagName('input')[0];
+		var oImg = document.getElementById('img1');
+		var oSrc = oImg.src;
+		var bTrue = true;
+
+		oBtn.onclick = function(){
+			if(bTrue){
+				oImg.src = oSrc.replace('1.jpg','2.jpg');
+				bTrue = false;
+			}else{
+				oImg.src = oSrc.replace('2.jpg','1.jpg');
+				bTrue = true;
+			}
+			
+		}
+
+	</script>
+</body>
+</html>

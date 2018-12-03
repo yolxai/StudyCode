@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title></title>
+	<style>
+		#div1 {
+			width:200px;
+			height:200px;
+			background:red;
+			border:1px solid #ccc;
+			border-radius:2px;
+		}
+	</style>
+	<script src="getStyle.js"></script>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			
+
+				alert( getStyle(oDiv,'width') );
+
+
+		}
+	</script>
+</head>
+<body>
+
+	<div id="div1"></div>
+
+</body>
+</html>

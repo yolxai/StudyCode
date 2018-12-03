@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8"/>
+	<script src="Ajax.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		window.onload  = function(){
+				var oText = document.getElementById('name');
+				var oResult = document.getElementById('result');
+				var oBtn = document.getElementById('btn');
+				
+				oBtn.onclick = function(){
+						/*$.ajax({
+								url:'ajax.php',
+								type:'post',
+								data:{"name":oText.value},
+								sucssce:function(data){
+									oResult.innerHTML = data;
+								},
+								error:function(){
+									oResult.innerHTML = '??';
+								}
+						});*/
+						/*$.get({
+								url:'ajax.php?name='+oText.value,
+								sucssce:function(data){
+									oResult.innerHTML = data;
+								}
+						});*/
+						$.post({
+								url:'ajax.php',
+								data:{'name':oText.value},
+								sucssce:function(data){
+									oResult.innerHTML = data;
+								}
+						});
+				}
+				
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="name" value=""/><input id="btn" type="button" value="查询"/><br/>
+	<p id="result"></p>
+</body>
+</html>

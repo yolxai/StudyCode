@@ -1,0 +1,132 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		body{ 
+		    -webkit-user-select:none; 
+		    -moz-user-select:none; 
+		    -ms-user-select:none; 
+		    user-select:none; 
+		}
+		#box{
+			width:800px;
+			height:420px;
+			margin:0 auto;
+			border:5px solid #999;
+			position:relative;
+			/*overflow:hidden;*/
+		}
+		#box .scrollBar{
+			width:790px;
+			height:30px;
+			border:5px solid #888;
+			position:absolute;
+			left:0;
+			bottom:0;
+		}
+		#box .scrollBar .scrBtnLeft{
+			position:absolute;
+			left:0;
+			width:30px;
+			height:30px;
+			background:#777;
+		}
+		#box .scrollBar .scrBtnRight{
+			position:absolute;
+			right:0;
+			width:30px;
+			height:30px;
+			background:#777;
+		}
+		#box .scrollBar .scroll{
+			position:absolute;
+			left:31px;
+			height:30px;
+			width:728px;
+		}
+		#box .scrollBar .scroll .scrollBtn{
+			width:200px;
+			height:30px;
+			position:absolute;
+			background:rgb(188,188,188);
+		}
+
+		#box .list{height:325px;overflow:hidden;cursor:pointer;}
+		#box .list li{float:left;margin-right:10px;}
+	</style>
+	<script type="text/javascript">
+		function getByClass(oParent,sClass){
+			var aAll = oParent.getElementsByTagName('*');
+			var result = [];
+			for(var i=0;i<aAll.length;i++){
+				if(aAll[i].className == sClass){
+					result.push(aAll[i]);
+				}
+			}
+
+			return result[0];
+		}
+		window.onload = function(){
+
+			var aImgArr = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg'];
+			// var aImgArr=['img/1.jpg'];
+			var oBox = document.getElementById('box');
+			var oList = getByClass(oBox,'list');
+			var oScrBtn = getByClass(oBox,'scrollBtn');
+			var oScr = getByClass(oBox,'scroll');
+			var aLi = '';
+
+			for(var i=0;i<aImgArr.length;i++){
+				aLi += '<li><img src="'+aImgArr[i]+'" /></li>';
+			}
+			oList.innerHTML = aLi;
+
+			oList.style.width = 510*aImgArr.length + 'px';
+
+
+			//拖拽部分
+			oScrBtn.onmousedown = function(ev){
+				var oEvent = ev || event;
+				var disX = oEvent.clientX-oScrBtn.offsetLeft;
+				document.onmousemove = function(ev){
+					// alert(1);
+					var oEvent = ev || event;
+					var iLeft = oEvent.clientX-disX;
+					if(iLeft<=0){
+						iLeft=0;
+					}else if(iLeft >= oScr.offsetWidth-oScrBtn.offsetWidth){
+						iLeft = oScr.offsetWidth-oScrBtn.offsetWidth;
+					}
+					oScrBtn.style.left = iLeft + 'px';
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}
+			}
+
+
+			//滚动条宽度设置 滚动条父级宽度 / 内容宽度 * 滚动条父级宽度
+
+			oScrBtn.style.width = (oScr.offsetWidth / oList.offsetWidth) * oScr.offsetWidth + 'px';
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul class="list">
+
+		</ul>
+		<!-- 188188188  border:168168168 -->
+		<div class="scrollBar"> 
+			<div class="scrBtnLeft"></div>
+			<div class="scroll">
+				<div class="scrollBtn"></div>
+			</div>
+			<div class="scrBtnRight"></div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text.html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+		*{padding:0;margin:0;font-family:"微软雅黑"}
+		#bookList{
+			width:1833px;
+			float:left;
+		}
+		#bookList li{
+			float:left;
+			list-style:none;
+			width:430px;
+			border:5px solid #000;
+			margin:5px;
+		}
+		#bookList li img{
+			float:left;
+			width:430px;
+			height:430px;
+			border-bottom:1px solid #000;
+		}
+		#bookList li span{
+			float:left;
+			display:block;
+			width:430px;
+			text-align:center;
+			line-height:50px;
+		}
+
+		#moneyCount{
+			margin:0 auto;
+			clear:both;
+			width:50%;
+			height:550px;
+			border:5px solid #000;
+		}
+		#moneyCount p{
+			width:100%;
+			/*background:red;*/
+			height:100px;
+		}
+		#moneyCount p span{
+			margin-right:3%;
+			margin-bottom:5px;
+			border-bottom:5px solid #000;
+			width:30%;
+			text-align:center;
+			/*background:green;*/
+			display:block;
+			height:100px;
+			line-height:100px;
+			float:left;
+		}
+		#moneyCount p span:last-child(1){
+			margin-right:0;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			var oUl = document.getElementById('bookList');
+			var aLi = oUl.getElementsByTagName('li');
+			var oMoneyCount = document.getElementById('moneyCount');
+			var json = {};
+
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].draggable = 'true';
+				aLi[i].ondragstart = function(ev){
+					var ev = ev || event;
+					var oSpan = this.getElementsByTagName('span');
+					ev.dataTransfer.setData('bookName',oSpan[0].innerHTML);
+					ev.dataTransfer.setData('bookMoney',oSpan[1].innerHTML);
+				}
+			}
+
+
+
+
+			oMoneyCount.ondragover = function(ev){
+				var ev = ev || event;
+				ev.preventDefault();
+			}
+
+			oMoneyCount.ondrop = function(ev){
+				var ev = ev || event;
+				ev.preventDefault();
+
+				var oName = ev.dataTransfer.getData('bookName');
+				var oMoney = ev.dataTransfer.getData('bookMoney');
+
+				if( json[oName] ){
+
+					var aP = oMoneyCount.getElementsByTagName('p');
+
+					for(var i=1;i<aP.length;i++){
+						var oSpanName = aP[i].getElementsByTagName('span');
+						if( oSpanName[1].innerHTML == oName ){
+							oSpanName[0].innerHTML = parseInt(oSpanName[0].innerHTML)+1;
+						}
+					}
+
+				}else{
+
+					var oP = document.createElement('p');
+					var oSpan1 = document.createElement('span');
+					oSpan1.className = 'bookCount';
+					oSpan1.innerHTML = 1;
+					oP.appendChild(oSpan1);
+
+					var oSpan2 = document.createElement('span');
+					oSpan2.className = 'bookName';
+					oSpan2.innerHTML = oName;
+					oP.appendChild(oSpan2);
+
+					var oSpan3 = document.createElement('span');
+					oSpan3.className = 'bookMoney';
+					oSpan3.innerHTML = oMoney;
+					oP.appendChild(oSpan3);
+
+					oMoneyCount.appendChild(oP);
+
+					json[oName] = 1;
+					
+				}
+
+			}
+
+		}
+	</script>
+</head>
+<body onselectstart='return false'>
+	<ul id="bookList">
+		<li>
+			<img src="img/1book.jpg" alt="">
+			<span class="bookName">JavaScript权威指南</span>
+			<span class="bookMoney">50$</span>
+		</li>
+		<li>
+			<img src="img/2book.jpg" alt="">
+			<span class="bookName">JavaScript设计模式</span>
+			<span class="bookMoney">80$</span>
+		</li>
+		<li>
+			<img src="img/3book.jpg" alt="">
+			<span class="bookName">细说PHP</span>
+			<span class="bookMoney">100$</span>
+		</li>
+		<li>
+			<img src="img/4book.jpg" alt="">
+			<span class="bookName">Android和PHP开发最佳实践</span>
+			<span class="bookMoney">10$</span>
+		</li>
+	</ul>
+
+
+	<div id="moneyCount">
+		<p>
+			<span class="bookCount">bookCount</span>
+			<span class="bookName">bookName</span>
+			<span class="bookMoney">bookMoney</span>
+		</p>
+	</div>
+</body>
+</html>

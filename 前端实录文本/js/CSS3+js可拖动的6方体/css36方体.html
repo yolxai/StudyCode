@@ -1,0 +1,128 @@
+﻿<html>
+
+<head>
+<style>
+	*{padding:0;margin:0}
+	#box_3d{
+		width:600px;
+		height:600px;
+		margin:100px auto;
+		border:10px solid #000;
+		perspective:1500px;
+		box-shadow:-10px 0 20px #000;
+	}
+	#box_3d .box {
+		width:200px;
+		height:200px;
+		border:1px solid #ccc;
+		position:relative;
+		margin:200px auto;
+		transform-style:preserve-3d;
+		-webkit-transform-origin:50% 50%;
+		-webkit-user-select:none;
+	}
+	#box_3d .box li{
+		width:200px;
+		height:200px;
+		background:red;
+		position:absolute;
+		list-style:none;
+		text-align:center;
+		font:50px/200px "微软雅黑";
+		color:#FFFFFF;
+	}
+	#box_3d .box li:nth-of-type(1){
+		background:orange;
+		transform-origin:bottom;
+		top:-200px;
+		left:0;
+		transform:rotateX(-90deg);
+	}
+	#box_3d .box li:nth-of-type(2){
+		background:yellow;
+		transform-origin:right;
+		top:0;
+		left:-200px;
+		transform:rotateY(90deg);
+	}
+	#box_3d .box li:nth-of-type(3){
+		background:pink;
+		transform-origin:bottom;
+		top:0;
+		left:0;
+	}
+	#box_3d .box li:nth-of-type(4){
+		background:grey;
+		transform-origin:left;
+		top:0;
+		left:200px;
+		transform:rotateY(-90deg);
+	}
+	#box_3d .box li:nth-of-type(5){
+		background:green;
+		transform-origin:top;
+		top:200px;
+		left:0;
+		transform:rotateX(90deg);
+	}
+	#box_3d .box li:nth-of-type(6){
+		background:red;
+		transform-origin:bottom;
+		top:0;
+		left:0;
+		transform:translateZ(200px);
+	}
+</style>
+<script type="text/javascript">
+
+	window.onload = function(){
+		var oBox = document.getElementById('box_3d');
+		var oUl = oBox.getElementsByTagName('ul')[0];
+
+		var x = 0;
+		var y = 0
+		var nx = 0;
+		var ny = 0;
+
+		oBox.onmousedown = function(ev){
+			var oEvent = ev || event;
+			x = oEvent.clientX-oBox.offsetLeft;
+			y = oEvent.clientY-oBox.offsetTop;
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				nx = oEvent.clientX-oBox.offsetLeft;
+				ny = oEvent.clientY-oBox.offsetTop;
+				console.log("x="+x+";y="+y+";nx="+nx+";ny="+ny+"<br/>");
+			}
+			oBox.onmouseup = function(){
+				document.onmousemove=null;
+				oBox.onmouseup=null;
+				// alert(1);
+				// if( x - nx > 0 ){ //从右往左拖
+					oUl.style.webkitTransition = '-webkit-transform 2s';
+					oUl.style.webkitTransform = 'rotateY('+(nx-x)+'deg) rotateX('+(ny-y)+'deg)';
+				
+				// return false;
+			}
+		}
+	
+	}
+</script>
+</head>
+
+<body>
+	<div id="box_3d">
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+	<p id="p1"></p>
+</body>
+
+
+</html>

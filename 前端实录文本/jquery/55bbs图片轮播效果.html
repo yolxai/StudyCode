@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		*{padding:0;margin:0}
+		#box{width:294px;margin:0 auto;border:1px solid #e0e0e0;background:#FFF;height:538px;position:relative;overflow:hidden;}
+		#box .big_img{height:475px;position:absolute;}
+		#box .big_img li{list-style:none;float:left;width:294px;height:475px;}
+		#box .small_img{float:left;position:absolute;top:475px;left:0}
+		#box .small_img li{background:red;list-style:none;width:42px;height:63px;float:left;opacity:0.7;}
+	</style>
+	<title></title>
+	<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			 var oWidth = $("#box .big_img .one_li").width() * $("#box .big_img li").length;
+
+			 var oneWidth = $("#box .big_img .one_li").width();
+			 
+			 var cur = 0;
+
+			 var timer = null;
+
+			 $("#box .big_img").css('width',oWidth);
+			 
+			 timer = setInterval(Run,1000);
+
+			 function Run(){
+$("#box .big_img").stop();
+			 	cur++;
+
+			 	if( cur == $("#box .big_img li").length ){
+			 		cur = 0;
+			 	}
+
+			 	$("#box .big_img").animate({'left':-(oneWidth*cur)});
+			 	$("#box .small_img li").css('opacity','0.7');
+			 	$("#box .small_img li").eq(cur).css('opacity','1');
+
+			 }
+
+			 $("#box .small_img li").hover(function(){
+			 	$("#box .big_img").stop();
+			 	$(this).siblings('li').css({'opacity':'0.7','cursor':'pointer'});
+			 	$(this).css('opacity','1');
+			 	clearInterval(timer);
+
+			 	$("#box .big_img").stop().animate({'left':-(oneWidth*$(this).index())},200)
+			 },function(){
+			 	timer = setInterval(Run,1000);
+			 });
+
+		});
+	</script>	
+</head>
+<body>
+	<div id="box">
+		<ul class="big_img">
+			<li class="one_li"><img src="55bbs/1.jpg" alt=""></li>
+			<li><img src="55bbs/2.jpg" alt=""></li>
+			<li><img src="55bbs/3.jpg" alt=""></li>
+			<li><img src="55bbs/4.jpg" alt=""></li>
+			<li><img src="55bbs/5.jpg" alt=""></li>
+			<li><img src="55bbs/6.jpg" alt=""></li>
+			<li><img src="55bbs/7.jpg" alt=""></li>
+		</ul>
+		<ul class="small_img">
+			<li><img src="55bbs/s1.jpg" alt=""></li>
+			<li><img src="55bbs/s2.jpg" alt=""></li>
+			<li><img src="55bbs/s3.jpg" alt=""></li>
+			<li><img src="55bbs/s4.jpg" alt=""></li>
+			<li><img src="55bbs/s5.jpg" alt=""></li>
+			<li><img src="55bbs/s6.jpg" alt=""></li>
+			<li><img src="55bbs/s7.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>

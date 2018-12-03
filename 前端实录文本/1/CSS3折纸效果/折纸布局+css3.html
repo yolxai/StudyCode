@@ -1,0 +1,142 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+	<title></title>
+	<style type="text/css">
+
+		@-moz-keyframes open{
+			0%{
+				-moz-transform:rotateX(-120deg);
+			}
+			25%{
+				-moz-transform:rotateX(30deg);
+			}
+			50%{
+				-moz-transform:rotateX(-15deg);
+			}
+			75%{
+				-moz-transform:rotateX(8deg);
+			}
+			100%{
+				-moz-transform:rotateX(0deg);
+			}
+		}
+
+		@-moz-keyframes close{
+			0%{
+				-moz-transform:rotateX(0deg);
+			}
+			100%{
+				-moz-transform:rotateX(-120deg);
+			}
+		}
+		*{margin:0;padding:0}
+		#wrap{
+			width:200px;
+			margin:100px auto;
+			position:relative;
+			-moz-perspective:800px;
+		}
+		#wrap h2{
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:80px;
+			background:pink;
+			font:20px/80px "微软雅黑";
+			text-align:center;
+			z-index:1;
+		}
+		#wrap>div:nth-of-type(1){
+			top:80px;
+		}
+		#wrap div{
+			position:absolute;
+			top:62px;
+			width:100%;
+			height:60px;
+			background: red;
+			-moz-transform-style:preserve-3d;
+			-moz-transform-origin:top;
+			-moz-transform:rotateX(-120deg);
+		}
+		#wrap div span{
+			width:100%;
+			height:60px;
+			display:block;
+			outline:none;
+			text-align:center;
+			font:12px/60px "微软雅黑";
+		}
+
+		#wrap .show{
+			-moz-animation:2s open;
+			-moz-transform:rotateX(0deg);
+		}
+		#wrap .close{
+			-moz-animation:1.2s close;
+			-moz-transform:rotateX(-120deg);
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oWrap = document.getElementById('wrap');
+			var aDiv = oWrap.getElementsByTagName('div');
+			var oTime = null;
+			var oDelay = 100;
+			var num = 0;
+
+			oWrap.onmouseover = function(){
+				clearInterval(oTime);
+				oTime = setInterval(function(){
+					aDiv[num].className = 'show';
+					num++;
+					if(num == aDiv.length){
+						num = aDiv.length-1;
+						clearInterval(oTime);
+					}
+				},oDelay);
+			}
+
+			oWrap.onmouseout = function(){
+				clearInterval(oTime);
+				oTime = setInterval(function(){
+					aDiv[num].className = 'close';
+					num--;
+					if(num<0){
+						num = 0;
+						clearInterval(oTime);
+					}
+				},100);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<h2>我是标题奥</h2>
+	    <div>
+	    	<span>选项1</span>
+	        <div>
+	        	<span>选项2</span>
+	            <div>
+	            	<span>选项3</span>
+	                <div>
+	                	<span>选项4</span>
+	                    <div>
+	                    	<span>选项5</span>
+	                        <div>
+	                        	<span>选项6</span>
+	                            <div>
+	                            	<span>选项7</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

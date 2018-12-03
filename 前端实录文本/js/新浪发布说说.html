@@ -1,0 +1,79 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#content {margin-left:10px;padding:10px;font-size:14px;}
+		#ul1{
+			list-style:none;
+			width:370px;
+			border:2px solid #999;
+			padding:10px;
+			margin-left:10px;
+		}
+		#ul1 div{
+
+			padding:10px;
+			padding-bottom:5px;
+			border-bottom:2px dashed #ccc;
+			font-size:14px;
+			overflow:hidden;
+
+		}
+
+
+	</style>
+	<script type="text/javascript" src="move.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTxt = document.getElementById('content');
+			var oBtn = document.getElementById('btn');
+			var oUl = document.getElementById('ul1');
+
+			var aLi = oUl.getElementsByTagName('div');
+			if(aLi.length > 0){
+				aLi[aLi.length-1].style.border = 'none'
+			}
+
+			oBtn.onclick = function(){
+
+				var oLi = document.createElement('div');
+				//var aLi = oUl.getElementsByTagName('li');
+
+				oLi.innerHTML = oTxt.value;
+				oTxt.value = '';
+
+				if( aLi == 0 ){
+					oUl.appendChild(oLi);
+
+				}else{
+					oUl.insertBefore(oLi,aLi[0]);
+				}
+				aLi[aLi.length-1].style.border = 'none';
+				iHeight = oLi.offsetHeight;
+				oLi.style.height = 0;
+				oLi.style.opacity = 0;
+				oLi.style.filter = 'alpha(opacity:0)';
+
+				startMove(oLi,{height:iHeight},function(){
+					startMove(oLi,{opacity:100});
+				});
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<textarea rows="10" cols="50" id="content"></textarea>
+	<input type="button" value="发布" id="btn" />
+	<div id="ul1">
+		
+		<div>1111</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>添加文章</title>
+	<script charset="utf-8" src="./kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="./kindeditor/lang/zh_CN.js"></script>
+	<script>
+			KindEditor.ready(function(K) {
+					window.editor = K.create('#context');
+			});
+	</script>
+</head>
+<body>
+	<form action="index.php?control=news&action=add" method="post">
+		<table border=1>
+			<tbody>
+				<tr>
+					<td>标题</td>
+					<td><input type="text" name="title" value=""></td>
+				</tr>
+				<tr>
+					<td>作者</td>
+					<td><input type="text" name="author" value=""></td>
+				</tr>
+				<tr>
+					<td>描述</td>
+					<td>
+						<textarea name="description" cols=20 rows=5 style="resize:none"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>正文</td>
+					<td>
+						<textarea id="context" name="context" style="width:700px;height:300px;"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>点击数</td>
+					<td><input type="text" name="click" value="0"></td>
+				</tr>
+				<tr>
+					<td colspan=2>
+						<input style="float:right" type="submit" value="发表文章"/>
+						<input style="float:right" type="reset" value="重写"/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

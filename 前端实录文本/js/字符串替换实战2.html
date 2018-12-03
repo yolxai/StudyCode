@@ -1,0 +1,62 @@
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title></title>
+	<style type="text/css">
+		#div1{
+			padding:10px;
+			width:500px;
+			height:200px;
+			border:5px solid rgba(10,50,49,0.5);
+			margin-top:10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var aInput = document.getElementsByTagName('input');
+			var oDiv = document.getElementById('div1');
+			var newString = oDiv.innerHTML;
+
+			aInput[1].onclick = function(){
+
+				if(aInput[0].value == ''){
+					alert('请输出内容!');
+					aInput[2].value = '';
+					return false;
+				}
+
+				if(aInput[0].value.length > 1){
+					alert('只能查找一个字符串!');
+					aInput[0].value = '';
+					aInput[2].value = '';
+					return false;
+				}
+					
+				aInput[2].value = '您查找的字符串位置 : ';
+
+				for(var i=0;i<newString.length;i++){
+
+					//alert(newString.indexOf(aInput[0].value));
+					//alert(i);
+					if(newString.indexOf(aInput[0].value) >= 0){
+
+						aInput[2].value += newString.indexOf(aInput[0].value) + ',';
+						newString = newString.replace(aInput[0].value,'1');
+					}
+				}
+
+				aInput[2].value = aInput[2].value.substr(0,aInput[2].value.length-1);
+
+			}
+			
+		}
+
+	</script>
+</head>
+<body>
+	<input type="text" value=""/>
+	<input type="button" value="查找位置"/>
+	<input style="width:800px" type="text" value=""/>
+	<div id="div1">我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript,我在学习Javascript</div>
+</body>
+</html>
